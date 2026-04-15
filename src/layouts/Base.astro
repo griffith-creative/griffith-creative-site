@@ -1,0 +1,204 @@
+---
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical || Astro.url.href}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: 'https://griffithcreative.co/og-image.jpg',
+        },
+        optional: {
+          description: description,
+          siteName: 'Griffith Creative',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: title,
+        description: description,
+      }}
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
+      <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="/" class="text-offwhite font-bold text-xl tracking-tight hover:text-accent transition-colors">
+          Griffith Creative
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'text-sm font-medium transition-colors',
+                currentPath === link.href
+                  ? 'text-accent'
+                  : 'text-offwhite-muted hover:text-offwhite',
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/contact"
+            class="text-sm font-semibold bg-accent text-dark px-5 py-2.5 rounded hover:bg-accent-hover transition-colors"
+          >
+            Get Started
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-offwhite p-2"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-offwhite/5">
+        <div class="px-6 py-4 flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'text-base font-medium transition-colors',
+                currentPath === link.href
+                  ? 'text-accent'
+                  : 'text-offwhite-muted hover:text-offwhite',
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/contact"
+            class="text-base font-semibold bg-accent text-dark px-5 py-3 rounded text-center hover:bg-accent-hover transition-colors"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 pt-20">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-offwhite/5 bg-dark-secondary">
+      <div class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div>
+            <h3 class="text-offwhite font-bold text-lg mb-4">Griffith Creative</h3>
+            <p class="text-offwhite-muted text-sm leading-relaxed">
+              Web design and SEO for medical and financial services in Los Angeles.
+              Built to perform, priced to make sense.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-offwhite font-semibold text-sm uppercase tracking-wider mb-4">Pages</h4>
+            <div class="flex flex-col gap-3">
+              {navLinks.map((link) => (
+                <a href={link.href} class="text-offwhite-muted text-sm hover:text-offwhite transition-colors">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-offwhite font-semibold text-sm uppercase tracking-wider mb-4">Contact</h4>
+            <div class="flex flex-col gap-3 text-offwhite-muted text-sm">
+              <a href="mailto:hello@griffithcreative.co" class="hover:text-offwhite transition-colors">
+                hello@griffithcreative.co
+              </a>
+              <p>Los Angeles, CA</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-offwhite/5 mt-12 pt-8 text-center">
+          <p class="text-offwhite-muted text-xs">
+            &copy; {new Date().getFullYear()} Griffith Creative. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      let open = false;
+
+      btn?.addEventListener('click', () => {
+        open = !open;
+        menu?.classList.toggle('hidden');
+        if (icon) {
+          icon.setAttribute(
+            'd',
+            open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'
+          );
+        }
+      });
+    </script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
