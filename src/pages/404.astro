@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Page Not Found — Griffith Creative"
+  description="The page you're looking for doesn't exist. Head back to the homepage or contact us if you need help."
+>
+  <section class="min-h-[70vh] flex items-center">
+    <div class="max-w-3xl mx-auto px-6 py-24 text-center">
+      <p class="text-accent font-bold text-7xl md:text-9xl mb-6 fade-in">404</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-6 fade-in fade-in-delay-1">
+        This page wandered off.
+      </h1>
+      <p class="text-offwhite-muted text-lg leading-relaxed mb-10 fade-in fade-in-delay-2">
+        The page you're looking for doesn't exist or has moved. Let's get you back on track.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in fade-in-delay-3">
+        <a
+          href="/"
+          class="bg-accent text-dark font-semibold px-8 py-4 rounded text-center hover:bg-accent-hover transition-colors"
+        >
+          Back to Home
+        </a>
+        <a
+          href="/contact"
+          class="border border-offwhite/20 text-offwhite font-semibold px-8 py-4 rounded text-center hover:border-offwhite/40 transition-colors"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -17,6 +17,34 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Griffith Creative',
+  url: 'https://griffithcreative.co',
+  logo: 'https://griffithcreative.co/seal.png',
+  image: 'https://griffithcreative.co/og-image.png',
+  description:
+    'Web design and SEO for small and mid-sized businesses. Based in Los Angeles, serving the US.',
+  email: 'hello@griffithcreative.co',
+  areaServed: 'US',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Los Angeles',
+    addressRegion: 'CA',
+    addressCountry: 'US',
+  },
+  sameAs: [],
+  serviceType: ['Web Design', 'Search Engine Optimization', 'AI Search Visibility'],
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Griffith Creative',
+  url: 'https://griffithcreative.co',
+};
 ---
 
 <!doctype html>
@@ -24,7 +52,10 @@ const navLinks = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -36,7 +67,7 @@ const navLinks = [
         basic: {
           title: title,
           type: 'website',
-          image: 'https://griffithcreative.co/og-image.jpg',
+          image: 'https://griffithcreative.co/og-image.png',
         },
         optional: {
           description: description,
@@ -49,13 +80,16 @@ const navLinks = [
         description: description,
       }}
     />
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
       <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="/" class="text-offwhite font-bold text-xl tracking-tight hover:text-accent transition-colors">
-          Griffith Creative
+        <a href="/" class="flex items-center gap-3 text-offwhite font-bold text-xl tracking-tight hover:text-accent transition-colors">
+          <img src="/icon-192.png" alt="" width="36" height="36" class="w-9 h-9" loading="eager" decoding="async" />
+          <span>Griffith Creative</span>
         </a>
 
         <!-- Desktop Nav -->
@@ -129,7 +163,10 @@ const navLinks = [
       <div class="max-w-6xl mx-auto px-6 py-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 class="text-offwhite font-bold text-lg mb-4">Griffith Creative</h3>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="/icon-192.png" alt="" width="40" height="40" class="w-10 h-10" loading="lazy" decoding="async" />
+              <h3 class="text-offwhite font-bold text-lg">Griffith Creative</h3>
+            </div>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               Web design and SEO for small and mid-sized businesses across the US.
               Based in Los Angeles, CA.
@@ -158,10 +195,13 @@ const navLinks = [
           </div>
         </div>
 
-        <div class="border-t border-offwhite/5 mt-12 pt-8 text-center">
+        <div class="border-t border-offwhite/5 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p class="text-offwhite-muted text-xs">
             &copy; {new Date().getFullYear()} Griffith Creative. All rights reserved.
           </p>
+          <a href="/privacy" class="text-offwhite-muted text-xs hover:text-offwhite transition-colors">
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>

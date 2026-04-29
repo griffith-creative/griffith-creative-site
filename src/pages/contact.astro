@@ -30,14 +30,32 @@ import Base from '../layouts/Base.astro';
 
         <!-- Form -->
         <div class="lg:col-span-3 fade-in">
+          <div
+            id="contact-error"
+            role="alert"
+            aria-live="assertive"
+            hidden
+            class="mb-6 border border-red-500/40 bg-red-500/10 text-red-200 text-sm px-4 py-3 rounded"
+          >
+            Something went wrong sending your message. Please try again, or email us directly at <a href="mailto:hello@griffithcreative.co" class="underline">hello@griffithcreative.co</a>.
+          </div>
+          <script is:inline>
+            if (new URLSearchParams(location.search).get('error')) {
+              const el = document.getElementById('contact-error');
+              if (el) el.removeAttribute('hidden');
+            }
+          </script>
           <form
             name="contact"
             method="POST"
-            data-netlify="true"
-            action="/contact?success=true"
+            action="/api/contact"
             class="space-y-6"
           >
-            <input type="hidden" name="form-name" value="contact" />
+            <!-- Honeypot: real users won't fill this; bots will -->
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label for="company-website">Company website</label>
+              <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
+            </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
@@ -50,7 +68,7 @@ import Base from '../layouts/Base.astro';
                   name="name"
                   required
                   autocomplete="name"
-                  class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/50 focus:outline-none focus:border-accent transition-colors"
+                  class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                   placeholder="Dr. Jane Smith"
                 />
               </div>
@@ -65,7 +83,7 @@ import Base from '../layouts/Base.astro';
                   name="email"
                   required
                   autocomplete="email"
-                  class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/50 focus:outline-none focus:border-accent transition-colors"
+                  class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                   placeholder="jane@practice.com"
                 />
               </div>
@@ -80,7 +98,7 @@ import Base from '../layouts/Base.astro';
                 id="business"
                 name="business"
                 autocomplete="organization"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/50 focus:outline-none focus:border-accent transition-colors"
+                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                 placeholder="Acme Services"
               />
             </div>
@@ -113,7 +131,7 @@ import Base from '../layouts/Base.astro';
                 id="website"
                 name="website"
                 autocomplete="url"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/50 focus:outline-none focus:border-accent transition-colors"
+                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                 placeholder="https://currentsite.com"
               />
             </div>
@@ -126,7 +144,7 @@ import Base from '../layouts/Base.astro';
                 id="message"
                 name="message"
                 rows="5"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/50 focus:outline-none focus:border-accent transition-colors resize-y"
+                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors resize-y"
                 placeholder="What are your goals? Any specific features or timeline in mind?"
               ></textarea>
             </div>
