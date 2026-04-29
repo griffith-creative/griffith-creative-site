@@ -30,6 +30,6 @@ Griffith Creative ships agency-grade websites in 1–4 weeks at a fraction of tr
 
 - Speed: Sites ship in weeks, not months.
 - Pricing: Transparent quotes, no scope-creep invoices, no bloated agency overhead.
-- AI-first: Every site is structured to be cited by language-model search (ChatGPT, Claude, Perplexity, Google AI Overviews) — schema.org markup, llms.txt, semantic HTML, answer-engine content patterns.
+- AI-first: Every site is structured to be cited by language-model search (ChatGPT, Claude, Perplexity, Google AI Overviews) via schema.org markup, llms.txt, semantic HTML, and answer-engine content patterns.
 - Performance: Targets Lighthouse 100, edge-deployed on a global CDN, modern image formats.
-- Focus: Works exclusively with small and mid-sized businesses — service businesses, local businesses, and growing companies.
+- Focus: Works exclusively with small and mid-sized businesses, including service businesses, local businesses, and growing companies.
