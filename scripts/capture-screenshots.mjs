@@ -21,6 +21,8 @@ const projects = [
   { slug: 'snaptoai', url: 'https://snaptoai.app' },
   { slug: 'nadia-tolar', url: 'https://nadiatolar.com' },
   { slug: 'ms-property-partners', url: 'https://mspropertypartners.com' },
+  { slug: 'ca-accounting', url: 'https://ca-accounting-site.vercel.app/' },
+  { slug: 'sbld-lighting', url: 'https://sbld.vercel.app/' },
 ];
 
 async function main() {
