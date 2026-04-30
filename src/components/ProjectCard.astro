@@ -1,0 +1,45 @@
+---
+interface Props {
+  name: string;
+  label: string;
+  imageUrl: string;
+  projectUrl: string;
+}
+
+const { name, label, imageUrl, projectUrl } = Astro.props;
+---
+
+<a
+  href={projectUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block rounded-lg overflow-hidden bg-dark-tertiary border border-offwhite/5 transition-transform duration-150 hover:scale-[1.005] active:scale-[0.99] focus:outline-2 focus:outline-offset-2 focus:outline-accent cursor-pointer"
+>
+  <article>
+    <div class="relative aspect-[16/10] overflow-hidden bg-dark-secondary">
+      <img
+        src={imageUrl}
+        alt={`${name} — ${label}`}
+        width="720"
+        height="450"
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover transition-transform duration-150 group-hover:scale-[1.02]"
+      />
+      <svg
+        class="absolute top-3 right-3 w-4 h-4 text-offwhite/0 group-hover:text-offwhite/70 transition-colors duration-150"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+      </svg>
+    </div>
+    <div class="px-5 py-4">
+      <p class="text-offwhite font-semibold text-base leading-tight">{name}</p>
+      <div class="mt-1.5 h-0.5 w-0 bg-accent transition-all duration-150 group-hover:w-8"></div>
+      <p class="text-offwhite-muted text-sm mt-2">{label}</p>
+    </div>
+  </article>
+</a>
