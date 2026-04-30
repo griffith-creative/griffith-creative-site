@@ -16,12 +16,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, '..', 'public', 'work');
 
 const projects = [
+  { slug: 'd-space-studio', url: 'https://www.dspacestudio.com' },
   { slug: 'castle-11', url: 'https://castle11.com' },
   { slug: 'the-rapture', url: 'https://therapturemusic.com' },
   { slug: 'snaptoai', url: 'https://snaptoai.app' },
   { slug: 'nadia-tolar', url: 'https://nadiatolar.com' },
   { slug: 'ms-property-partners', url: 'https://mspropertypartners.com' },
   { slug: 'ca-accounting', url: 'https://ca-accounting-site.vercel.app/' },
+  { slug: 'cresset-capital', url: 'https://cressetcapital.com' },
   { slug: 'sbld-lighting', url: 'https://sbld.vercel.app/' },
 ];
 
