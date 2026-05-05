@@ -17,19 +17,57 @@ import Base from '../layouts/Base.astro';
           Let's get to work.
         </h1>
         <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed fade-in fade-in-delay-2">
-          Tell us about your project and we'll get back to you within one business day. No forms longer than a prescription pad. Just the basics.
+          Two ways to reach us. Book a 30-minute discovery call or send a message. Either works.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form + Info -->
+  <!-- Booking + Form -->
   <section class="bg-dark-secondary py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
-        <!-- Form -->
-        <div class="lg:col-span-3 fade-in">
+        <!-- Book a discovery call -->
+        <div class="bg-dark border border-accent/30 rounded-lg p-8 lg:p-10 fade-in flex flex-col h-full">
+          <p class="text-accent font-semibold text-xs uppercase tracking-widest mb-4">
+            Fastest path
+          </p>
+          <h2 class="text-2xl md:text-3xl font-bold text-offwhite mb-4">
+            Book a discovery call
+          </h2>
+          <p class="text-offwhite-muted text-base leading-relaxed mb-8">
+            30 minutes. We'll talk through your project, your goals, and whether we're the right fit. No pitch.
+          </p>
+          <a
+            href="https://cal.com/griffithcreative/30min?user=griffithcreative&overlayCalendar=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto bg-accent text-dark font-semibold px-10 py-4 rounded text-center hover:bg-accent-hover transition-colors"
+          >
+            Book a time
+          </a>
+          <p class="text-offwhite-muted/70 text-xs mt-4">
+            Opens cal.com in a new tab. No account required.
+          </p>
+        </div>
+
+        <!-- Mobile-only OR divider -->
+        <div class="lg:hidden flex items-center gap-4 -my-2" aria-hidden="true">
+          <div class="flex-1 h-px bg-offwhite/10"></div>
+          <span class="text-offwhite-muted text-xs uppercase tracking-widest">or</span>
+          <div class="flex-1 h-px bg-offwhite/10"></div>
+        </div>
+
+        <!-- Or send a message -->
+        <div class="bg-dark border border-offwhite/10 rounded-lg p-8 lg:p-10 fade-in fade-in-delay-1">
+          <h2 class="text-2xl md:text-3xl font-bold text-offwhite mb-4">
+            Or send a message
+          </h2>
+          <p class="text-offwhite-muted text-base leading-relaxed mb-8">
+            Prefer to write it out first? Tell me about your project and I'll get back within 24 hours.
+          </p>
+
           <div
             id="contact-error"
             role="alert"
@@ -68,7 +106,7 @@ import Base from '../layouts/Base.astro';
                   name="name"
                   required
                   autocomplete="name"
-                  class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
+                  class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                   placeholder="Dr. Jane Smith"
                 />
               </div>
@@ -83,7 +121,7 @@ import Base from '../layouts/Base.astro';
                   name="email"
                   required
                   autocomplete="email"
-                  class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
+                  class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                   placeholder="jane@practice.com"
                 />
               </div>
@@ -98,7 +136,7 @@ import Base from '../layouts/Base.astro';
                 id="business"
                 name="business"
                 autocomplete="organization"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
+                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                 placeholder="Acme Services"
               />
             </div>
@@ -110,7 +148,7 @@ import Base from '../layouts/Base.astro';
               <select
                 id="service"
                 name="service"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm focus:outline-none focus:border-accent transition-colors"
+                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm focus:outline-none focus:border-accent transition-colors"
               >
                 <option value="" class="text-offwhite-muted">Select a service</option>
                 <option value="starter">Starter — 5-Page Website</option>
@@ -131,7 +169,7 @@ import Base from '../layouts/Base.astro';
                 id="website"
                 name="website"
                 autocomplete="url"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
+                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
                 placeholder="https://currentsite.com"
               />
             </div>
@@ -144,68 +182,42 @@ import Base from '../layouts/Base.astro';
                 id="message"
                 name="message"
                 rows="5"
-                class="w-full bg-dark border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors resize-y"
+                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors resize-y"
                 placeholder="What are your goals? Any specific features or timeline in mind?"
               ></textarea>
             </div>
 
             <button
               type="submit"
-              class="w-full sm:w-auto bg-accent text-dark font-semibold px-10 py-4 rounded hover:bg-accent-hover transition-colors"
+              class="w-full sm:w-auto border border-offwhite/20 text-offwhite font-semibold px-10 py-4 rounded hover:border-offwhite/40 transition-colors"
             >
               Send Message
             </button>
           </form>
         </div>
+      </div>
 
-        <!-- Contact Info -->
-        <div class="lg:col-span-2 fade-in fade-in-delay-1">
-          <div class="space-y-8">
-            <div>
-              <h3 class="text-offwhite font-semibold text-lg mb-4">Get in touch directly.</h3>
-              <p class="text-offwhite-muted text-sm leading-relaxed">
-                Prefer email? Skip the form and reach out. We respond within one business day, usually faster.
-              </p>
-            </div>
-
-            <div class="space-y-4">
-              <div>
-                <p class="text-offwhite text-sm font-medium mb-1">Email</p>
-                <a href="mailto:hello@griffithcreative.co" class="text-accent text-sm hover:text-accent-hover transition-colors">
-                  hello@griffithcreative.co
-                </a>
-              </div>
-
-              <div>
-                <p class="text-offwhite text-sm font-medium mb-1">Location</p>
-                <p class="text-offwhite-muted text-sm">Los Angeles, CA</p>
-              </div>
-
-              <div>
-                <p class="text-offwhite text-sm font-medium mb-1">Response Time</p>
-                <p class="text-offwhite-muted text-sm">Within 1 business day</p>
-              </div>
-            </div>
-
-            <div class="border-t border-offwhite/5 pt-8">
-              <h3 class="text-offwhite font-semibold mb-4">What happens next?</h3>
-              <div class="space-y-4">
-                <div class="flex items-start gap-3">
-                  <span class="text-accent font-bold text-sm mt-0.5">1.</span>
-                  <p class="text-offwhite-muted text-sm">We review your inquiry and respond within one business day.</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <span class="text-accent font-bold text-sm mt-0.5">2.</span>
-                  <p class="text-offwhite-muted text-sm">We schedule a 30-minute discovery call to discuss your goals and recommend a package.</p>
-                </div>
-                <div class="flex items-start gap-3">
-                  <span class="text-accent font-bold text-sm mt-0.5">3.</span>
-                  <p class="text-offwhite-muted text-sm">You get a clear proposal with scope, timeline, and pricing. No surprises.</p>
-                </div>
-              </div>
-            </div>
+      <!-- Contact info row -->
+      <div class="max-w-4xl mx-auto mt-16 pt-12 border-t border-offwhite/5 fade-in fade-in-delay-2">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
+          <div>
+            <p class="text-offwhite text-sm font-medium mb-1">Email</p>
+            <a href="mailto:hello@griffithcreative.co" class="text-accent text-sm hover:text-accent-hover transition-colors">
+              hello@griffithcreative.co
+            </a>
+          </div>
+          <div>
+            <p class="text-offwhite text-sm font-medium mb-1">Location</p>
+            <p class="text-offwhite-muted text-sm">Los Angeles, CA</p>
+          </div>
+          <div>
+            <p class="text-offwhite text-sm font-medium mb-1">Response Time</p>
+            <p class="text-offwhite-muted text-sm">Within 1 business day</p>
           </div>
         </div>
+        <p class="text-offwhite-muted text-sm text-center mt-8">
+          Either path lands in the same inbox. We'll respond within one business day.
+        </p>
       </div>
     </div>
   </section>
