@@ -24,7 +24,7 @@ const orgJsonLd = {
   '@type': 'ProfessionalService',
   name: 'Griffith Creative',
   url: 'https://griffithcreative.co',
-  logo: 'https://griffithcreative.co/seal.png',
+  logo: 'https://griffithcreative.co/icon-512.png',
   image: 'https://griffithcreative.co/og-image.png',
   description:
     'Web design for small and mid-sized businesses. Based in Los Angeles, serving the US.',
@@ -59,7 +59,7 @@ const websiteJsonLd = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <SEO
       title={title}
       description={description}
@@ -89,8 +89,8 @@ const websiteJsonLd = {
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
       <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3 text-offwhite font-bold text-xl tracking-tight hover:text-accent transition-colors">
-          <img src="/icon-192.png" alt="" width="36" height="36" class="w-9 h-9" loading="eager" decoding="async" />
-          <span>Griffith Creative</span>
+          <img src="/icon-192.png" alt="" width="36" height="36" class="w-9 h-9 rounded" loading="eager" decoding="async" />
+          <span class="font-wordmark">Griffith Creative</span>
         </a>
 
         <!-- Desktop Nav -->
@@ -166,7 +166,7 @@ const websiteJsonLd = {
           <div>
             <div class="flex items-center gap-3 mb-4">
               <img src="/icon-192.png" alt="" width="40" height="40" class="w-10 h-10" loading="lazy" decoding="async" />
-              <h3 class="text-offwhite font-bold text-lg">Griffith Creative</h3>
+              <h3 class="text-offwhite font-wordmark text-lg">Griffith Creative</h3>
             </div>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               Web design for small and mid-sized businesses across the US.
