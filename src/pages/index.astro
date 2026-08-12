@@ -8,76 +8,68 @@ import Base from '../layouts/Base.astro';
 >
   <!-- Hero -->
   <section class="min-h-[90vh] flex items-center">
-    <div class="w-full max-w-6xl mx-auto px-6 py-24">
-      <div class="max-w-3xl">
-        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-6 fade-in">
-          Based in Los Angeles. Built for businesses across the US.
-        </p>
-        <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8 fade-in fade-in-delay-1">
-          Websites that look<br />
-          <span class="text-accent">as good as they work.</span>
-        </h1>
-        <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-10 fade-in fade-in-delay-2">
-          We build websites for growing businesses and established brands. What traditional agencies take months to deliver, we ship in weeks, without the agency bloat.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 fade-in fade-in-delay-3">
-          <a
-            href="/contact"
-            class="bg-accent text-dark font-semibold px-8 py-4 rounded text-center hover:bg-accent-hover transition-colors"
-          >
-            Start Your Project
-          </a>
-          <a
-            href="/services"
-            class="border border-offwhite/20 text-offwhite font-semibold px-8 py-4 rounded text-center hover:border-offwhite/40 transition-colors"
-          >
-            View Services
-          </a>
-          <a
-            href="/enterprise"
-            class="border border-accent/40 text-accent font-semibold px-8 py-4 rounded text-center hover:border-accent hover:text-accent-hover transition-colors"
-          >
-            Enterprise Solutions
-          </a>
-        </div>
+    <div class="max-w-6xl mx-auto px-6 py-24 w-full">
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
+        Based in Los Angeles. Built for businesses across the US.
+      </p>
+      <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-10 max-w-6xl">
+        Websites that look<br />
+        <span class="text-accent">as good as they work.</span>
+      </h1>
+      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-12">
+        We build websites for growing businesses and established brands. What traditional agencies take months to deliver, we ship in weeks, without the agency bloat.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="border border-offwhite/30 text-offwhite font-semibold px-8 py-4 rounded text-center hover:border-offwhite/60 transition-colors"
+        >
+          Start Your Project
+        </a>
+        <a
+          href="/enterprise"
+          class="border border-accent/40 text-accent font-semibold px-8 py-4 rounded text-center hover:border-accent transition-colors"
+        >
+          Enterprise Solutions
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Problem/Solution -->
-  <section class="bg-dark-secondary py-24">
+  <!-- The argument -->
+  <section class="border-t border-offwhite/10 py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+      <div class="max-w-4xl mb-20">
+        <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-8">
           Most agency websites are overpriced and underbuilt.
         </h2>
-        <p class="text-offwhite-muted text-lg leading-relaxed">
-          You've seen the pitch: six figures, six months, and a site that loads slower than your patience runs out. Your customers are searching for you right now. They're finding your competitors instead.
+        <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl">
+          You've seen the pitch: months of process, layers of account management, and a site that loads slower than your patience runs out. Your customers are searching for you right now. They're finding your competitors instead.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-dark-tertiary p-8 rounded-lg border border-offwhite/5 fade-in">
-          <div class="text-accent text-3xl font-bold mb-3">1–3 Weeks</div>
-          <h3 class="text-offwhite font-semibold text-lg mb-3">Fast Delivery</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+        <div class="border-t border-offwhite/15 pt-6">
+          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">Delivery</p>
+          <h3 class="text-offwhite text-2xl mb-3">Weeks, not months</h3>
           <p class="text-offwhite-muted text-sm leading-relaxed">
-            No six-month timelines. We scope tight, build fast, and launch on schedule. Your site goes live while competitors are still in "discovery."
+            We scope tight, build fast, and launch on schedule. Your site goes live while competitors are still in discovery.
           </p>
         </div>
 
-        <div class="bg-dark-tertiary p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-1">
-          <div class="text-accent text-3xl font-bold mb-3">No Bloat</div>
-          <h3 class="text-offwhite font-semibold text-lg mb-3">Honest Pricing</h3>
+        <div class="border-t border-offwhite/15 pt-6">
+          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">Pricing</p>
+          <h3 class="text-offwhite text-2xl mb-3">Quoted up front</h3>
           <p class="text-offwhite-muted text-sm leading-relaxed">
-            Agency-quality output without the agency markup. We use modern tools and AI-driven workflows to cut overhead, not corners.
+            You know the scope and the number before we start. Modern tooling keeps our overhead low, and the price honest.
           </p>
         </div>
 
-        <div class="bg-dark-tertiary p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-2">
-          <div class="text-accent text-3xl font-bold mb-3">Built to Rank</div>
-          <h3 class="text-offwhite font-semibold text-lg mb-3">Search-Ready by Default</h3>
+        <div class="border-t border-offwhite/15 pt-6">
+          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">Search</p>
+          <h3 class="text-offwhite text-2xl mb-3">Built to be found</h3>
           <p class="text-offwhite-muted text-sm leading-relaxed">
-            Every site is built with clean structure, schema markup, and semantic HTML so it ranks on Google and gets cited by AI search engines out of the box.
+            Clean structure, schema markup, and semantic HTML, so the site ranks on Google and gets cited by AI search engines from day one.
           </p>
         </div>
       </div>
@@ -85,14 +77,14 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- Who We Work With -->
-  <section class="bg-dark-secondary py-24">
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div class="fade-in">
-          <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+        <div>
+          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
             Who We Work With
           </p>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          <h2 class="text-3xl md:text-5xl leading-[1.05] tracking-tight mb-6 text-balance">
             Businesses that need to be found and trusted online.
           </h2>
           <p class="text-offwhite-muted text-lg leading-relaxed">
@@ -100,32 +92,32 @@ import Base from '../layouts/Base.astro';
           </p>
         </div>
 
-        <div class="space-y-6 fade-in fade-in-delay-1">
+        <div class="space-y-8">
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Service Businesses</h3>
+            <h3 class="text-offwhite text-lg mb-2">Service Businesses</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               From professional practices to home services. If your business depends on trust and reputation, your website needs to reflect that. We build sites that convert visitors into clients.
             </p>
           </div>
 
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Local Businesses</h3>
+            <h3 class="text-offwhite text-lg mb-2">Local Businesses</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               Brick-and-mortar shops, multi-location operators, and local service providers. We build websites that put you on the map and close the deal.
             </p>
           </div>
 
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Growing Companies</h3>
+            <h3 class="text-offwhite text-lg mb-2">Growing Companies</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               B2B firms, consultancies, and startups that have outgrown their DIY website and need a digital presence that matches the caliber of their work.
             </p>
           </div>
 
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Established Brands</h3>
+            <h3 class="text-offwhite text-lg mb-2">Established Brands</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
-              High-traffic sites with real stakes: legacy platforms to migrate, infrastructure to modernize, and teams that need a partner on call. <a href="/enterprise" class="text-accent hover:text-accent-hover transition-colors">See our enterprise practice</a>.
+              High-traffic sites with real stakes: legacy platforms to migrate, infrastructure to modernize, and teams that need a partner on call. <a href="/enterprise" class="text-offwhite underline decoration-accent underline-offset-4 hover:text-accent transition-colors">See our enterprise practice</a>.
             </p>
           </div>
         </div>
@@ -134,37 +126,32 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- How It Works -->
-  <section class="py-24">
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16 fade-in">
-        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-          How It Works
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold">
-          Three steps. No runaround.
-        </h2>
-      </div>
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-16">
+        How It Works
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div class="text-center fade-in">
-          <div class="text-accent text-5xl font-extrabold mb-4">01</div>
-          <h3 class="text-offwhite font-semibold text-lg mb-3">Discovery Call</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+        <div class="border-t border-offwhite/15 pt-6">
+          <p class="font-mono text-offwhite-muted text-sm mb-4">01</p>
+          <h3 class="text-offwhite text-2xl mb-3">Discovery Call</h3>
           <p class="text-offwhite-muted text-sm leading-relaxed">
             A 15-minute call to understand your business, your customers, and your goals. We'll define scope and timeline on the spot.
           </p>
         </div>
 
-        <div class="text-center fade-in fade-in-delay-1">
-          <div class="text-accent text-5xl font-extrabold mb-4">02</div>
-          <h3 class="text-offwhite font-semibold text-lg mb-3">Build & Review</h3>
+        <div class="border-t border-offwhite/15 pt-6">
+          <p class="font-mono text-offwhite-muted text-sm mb-4">02</p>
+          <h3 class="text-offwhite text-2xl mb-3">Build & Review</h3>
           <p class="text-offwhite-muted text-sm leading-relaxed">
-            We build your site and send a working preview within days. Two rounds of revisions included. You stay focused on your business while we handle the rest.
+            We build your site and send a working preview within days. Revision rounds are included. You stay focused on your business while we handle the rest.
           </p>
         </div>
 
-        <div class="text-center fade-in fade-in-delay-2">
-          <div class="text-accent text-5xl font-extrabold mb-4">03</div>
-          <h3 class="text-offwhite font-semibold text-lg mb-3">Launch & Grow</h3>
+        <div class="border-t border-offwhite/15 pt-6">
+          <p class="font-mono text-offwhite-muted text-sm mb-4">03</p>
+          <h3 class="text-offwhite text-2xl mb-3">Launch & Grow</h3>
           <p class="text-offwhite-muted text-sm leading-relaxed">
             Your site goes live, built to rank from day one. Need ongoing support after launch? Our Care Plan covers it.
           </p>
@@ -174,17 +161,17 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- CTA -->
-  <section class="bg-dark-secondary py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center fade-in">
-      <h2 class="text-3xl md:text-5xl font-bold mb-6">
-        Ready to stop losing clients<br />to a better website?
+  <section class="border-t border-offwhite/10 py-32">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+        Your website should be<br />your best salesperson.
       </h2>
       <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        Get a site that actually works for your business. No long contracts, no surprise invoices, no nonsense.
+        Tell us what you're building. We'll tell you exactly how we'd ship it.
       </p>
       <a
         href="/contact"
-        class="inline-block bg-accent text-black font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
+        class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
       >
         Let's Talk
       </a>

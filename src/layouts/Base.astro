@@ -59,7 +59,7 @@ const websiteJsonLd = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <SEO
       title={title}
       description={description}
@@ -110,7 +110,7 @@ const websiteJsonLd = {
           ))}
           <a
             href="/contact"
-            class="text-sm font-semibold bg-accent text-dark px-5 py-2.5 rounded whitespace-nowrap hover:bg-accent-hover transition-colors"
+            class="text-sm font-semibold text-accent whitespace-nowrap hover:text-accent-hover transition-colors"
           >
             Get Started
           </a>
@@ -146,7 +146,7 @@ const websiteJsonLd = {
           ))}
           <a
             href="/contact"
-            class="text-base font-semibold bg-accent text-dark px-5 py-3 rounded text-center hover:bg-accent-hover transition-colors"
+            class="text-base font-semibold text-accent hover:text-accent-hover transition-colors"
           >
             Get Started
           </a>
@@ -160,47 +160,31 @@ const websiteJsonLd = {
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-offwhite/5 bg-dark-secondary">
-      <div class="max-w-6xl mx-auto px-6 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
+    <footer class="border-t border-offwhite/10">
+      <div class="max-w-6xl mx-auto px-6 py-20">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+          <div class="min-w-0">
+            <div class="flex items-center gap-3 mb-6">
               <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-10 h-10"><path fill="#C9A84C" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
-              <h3 class="text-offwhite font-wordmark text-lg">Griffith Creative</h3>
+              <span class="text-offwhite font-wordmark text-lg">Griffith Creative</span>
             </div>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              Web design for growing businesses and established brands across the US.
-              Based in Los Angeles, CA.
-            </p>
+            <a
+              href="mailto:hello@griffithcreative.co"
+              class="font-wordmark text-[clamp(1.25rem,6.4vw,3rem)] tracking-tight text-offwhite hover:text-accent transition-colors"
+            >
+              hello@griffithcreative.co
+            </a>
           </div>
-
-          <div>
-            <h4 class="text-offwhite font-semibold text-sm uppercase tracking-wider mb-4">Pages</h4>
-            <div class="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <a href={link.href} class="text-offwhite-muted text-sm hover:text-offwhite transition-colors">
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-offwhite font-semibold text-sm uppercase tracking-wider mb-4">Contact</h4>
-            <div class="flex flex-col gap-3 text-offwhite-muted text-sm">
-              <a href="mailto:hello@griffithcreative.co" class="hover:text-offwhite transition-colors">
-                hello@griffithcreative.co
-              </a>
-              <p>Los Angeles, CA</p>
-            </div>
-          </div>
+          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest whitespace-nowrap shrink-0 lg:text-right">
+            Los Angeles, CA
+          </p>
         </div>
 
-        <div class="border-t border-offwhite/5 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="text-offwhite-muted text-xs">
-            &copy; {new Date().getFullYear()} Griffith Creative. All rights reserved.
+        <div class="border-t border-offwhite/10 mt-14 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="font-mono text-offwhite-muted text-xs">
+            &copy; {new Date().getFullYear()} Griffith Creative
           </p>
-          <a href="/privacy" class="text-offwhite-muted text-xs hover:text-offwhite transition-colors">
+          <a href="/privacy" class="font-mono text-offwhite-muted text-xs hover:text-offwhite transition-colors">
             Privacy Policy
           </a>
         </div>

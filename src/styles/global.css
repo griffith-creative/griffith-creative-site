@@ -9,7 +9,8 @@
   --color-accent: #c9a84c;
   --color-accent-hover: #d4b85e;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Archivo", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
 }
 
 @layer base {
@@ -24,6 +25,14 @@
     color: var(--color-offwhite);
     font-family: var(--font-sans);
     line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
@@ -54,4 +63,12 @@
   .fade-in-delay-2 { transition-delay: 0.2s; }
   .fade-in-delay-3 { transition-delay: 0.3s; }
   .fade-in-delay-4 { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 }

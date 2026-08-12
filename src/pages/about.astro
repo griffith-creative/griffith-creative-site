@@ -1,50 +1,78 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const approach = [
+  {
+    title: 'Performance-Obsessed',
+    body: 'Every site we build ships with high-90s Lighthouse scores, measured before launch. Static-first architecture, edge deployment, and modern image formats. Your visitors get a fast experience. Google rewards you with better rankings.',
+  },
+  {
+    title: 'Built to Be Found',
+    body: "Search visibility isn't a bolt-on. It's how we structure every site from the ground up: semantic HTML, proper heading hierarchy, schema markup, optimized meta tags, and content that answers what your prospects are searching for.",
+  },
+  {
+    title: 'Built for Business Owners',
+    body: 'We build websites for businesses that depend on trust and reputation. That focus means we understand what your customers expect, how they search, and what makes them pick up the phone or fill out a form.',
+  },
+];
+
+const values = [
+  {
+    title: 'Transparent Pricing',
+    body: "You'll know exactly what you're paying before we write a single line of code. The quote is the price.",
+  },
+  {
+    title: 'Speed Without Sacrifice',
+    body: 'We deliver in weeks, and every site is code-reviewed, performance-tested, and quality-checked before launch. Fast describes the process, not the standard.',
+  },
+  {
+    title: 'Minimal Client Overhead',
+    body: "You're busy running a business. One discovery call, a review cycle, and you're live. Your time goes into decisions, not meetings.",
+  },
+  {
+    title: 'Results Over Aesthetics',
+    body: "Your site should look great, and it will. But design awards don't pay the bills. We optimize for the metrics that matter: rankings, traffic, and conversions.",
+  },
+];
 ---
 
 <Base
   title="About — Griffith Creative | Boutique Web Design Studio"
-  description="Griffith Creative is a boutique web design studio based in Los Angeles, serving businesses across the US. AI-driven workflows deliver agency-grade websites without agency overhead."
+  description="Griffith Creative is a boutique web design studio based in Los Angeles, serving businesses across the US. Senior work, direct access, agency-grade websites without agency overhead."
 >
   <!-- Header -->
   <section class="py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl">
-        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-6 fade-in">
-          About
-        </p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6 fade-in fade-in-delay-1">
-          Built different.<br />
-          On purpose.
-        </h1>
-        <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed fade-in fade-in-delay-2">
-          Griffith Creative is a boutique web design studio based in Los Angeles, serving businesses across the country. We exist because the traditional agency model is broken, and we decided to fix it.
-        </p>
-      </div>
+      <h1 class="text-5xl md:text-7xl tracking-tight mb-8 max-w-4xl leading-[0.95]">
+        A small studio built for serious work.
+      </h1>
+      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl">
+        Griffith Creative is a boutique web design studio based in Los Angeles, serving businesses across the country. Small by design: the people you talk to are the people who design, write, and build your site.
+      </p>
     </div>
   </section>
 
   <!-- Story -->
-  <section class="bg-dark-secondary py-24">
+  <section class="border-t border-offwhite/10 py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-        <div class="fade-in">
-          <h2 class="text-3xl font-bold mb-6">The problem we saw.</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div>
+          <h2 class="text-3xl md:text-4xl tracking-tight mb-6">The problem we saw.</h2>
           <p class="text-offwhite-muted text-base leading-relaxed mb-4">
             Businesses at every size were getting squeezed. Big agencies charge tens of thousands for websites that take three to six months to deliver. Freelancers are cheaper but unreliable. DIY builders look cheap and rank poorly.
           </p>
           <p class="text-offwhite-muted text-base leading-relaxed">
-            The result? Businesses stuck with outdated websites that don't generate leads, don't rank in search, and don't reflect the quality of the work they actually do.
+            The result? Businesses stuck with outdated websites that don't generate leads, don't rank in search, and don't reflect the quality of the work they do.
           </p>
         </div>
 
-        <div class="fade-in fade-in-delay-1">
-          <h2 class="text-3xl font-bold mb-6">What we do about it.</h2>
+        <div>
+          <h2 class="text-3xl md:text-4xl tracking-tight mb-6">What we do about it.</h2>
           <p class="text-offwhite-muted text-base leading-relaxed mb-4">
-            We built Griffith Creative around one idea: use modern tools and AI-accelerated workflows to deliver the same caliber of work that large agencies produce, faster and without the overhead.
+            We built Griffith Creative around one idea: modern tools in senior hands deliver the caliber of work large agencies produce, faster and without the overhead.
           </p>
           <p class="text-offwhite-muted text-base leading-relaxed">
-            We're not cutting corners. We're cutting overhead. No bloated project teams, no endless revision cycles, no layers of account management between you and the people building your site. You talk to us. We build it. It ships.
+            The savings come from cutting overhead, not corners. Every project gets direct access to the people doing the work, a tight scope, and a build that ships.
           </p>
         </div>
       </div>
@@ -52,98 +80,59 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- Approach -->
-  <section class="py-24">
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
-        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-          Our Approach
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold">
-          Modern tools. Human judgment.
-        </h2>
-      </div>
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
+        Our Approach
+      </p>
+      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-16 max-w-3xl">
+        Modern tools. Human judgment.
+      </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-dark-secondary p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-1">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Performance-Obsessed</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Every site we build targets a perfect 100 on Google PageSpeed. We use static-first architecture, edge deployment, and modern image formats. Your visitors get a fast experience. Google rewards you with better rankings.
-          </p>
-        </div>
-
-        <div class="bg-dark-secondary p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-2">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Built to Be Found</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Search visibility isn't a bolt-on. It's how we structure every site from the ground up: semantic HTML, proper heading hierarchy, schema markup, optimized meta tags, and content that answers what your prospects are actually searching for.
-          </p>
-        </div>
-
-        <div class="bg-dark-secondary p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-3">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Built for Business Owners</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            We build websites for businesses that depend on trust and reputation. That focus means we understand what your customers expect, how they search, and what makes them pick up the phone or fill out a form.
-          </p>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+        {approach.map((item) => (
+          <div class="border-t border-offwhite/15 pt-6">
+            <h3 class="text-offwhite text-xl mb-3">{item.title}</h3>
+            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Values -->
-  <section class="bg-dark-secondary py-24">
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl mx-auto fade-in">
-        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-          What We Stand For
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-12">
-          Principles over process.
-        </h2>
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
+        What We Stand For
+      </p>
+      <h2 class="text-3xl md:text-4xl tracking-tight mb-12 max-w-3xl">
+        Principles over process.
+      </h2>
 
-        <div class="space-y-8">
+      <div class="max-w-3xl space-y-8">
+        {values.map((item) => (
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold text-lg mb-2">Transparent Pricing</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              You'll know exactly what you're paying before we write a single line of code. No scope creep invoices, no surprise fees, no "we'll figure it out as we go."
-            </p>
+            <h3 class="text-offwhite text-lg mb-2">{item.title}</h3>
+            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
           </div>
-
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold text-lg mb-2">Speed Without Sacrifice</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              We deliver in weeks, not months. But fast doesn't mean sloppy. Every site is code-reviewed, performance-tested, and quality-checked before launch.
-            </p>
-          </div>
-
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold text-lg mb-2">Minimal Client Overhead</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              You're busy running a practice or firm. We don't need twelve meetings and a shared Slack channel. One discovery call, a review cycle, and you're live.
-            </p>
-          </div>
-
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold text-lg mb-2">Results Over Aesthetics</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              Your site should look great, and it will. But design awards don't pay the bills. We optimize for the metrics that matter: rankings, traffic, and conversions.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center fade-in">
-      <h2 class="text-3xl md:text-5xl font-bold mb-6">
-        Let's build something<br />that actually works.
+  <section class="border-t border-offwhite/10 py-32">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+        Let's build yours.
       </h2>
       <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        No pitch decks. No discovery phases that last longer than your lease. Just a conversation about what your business needs and how we get there.
+        A conversation about what your business needs and how we get there.
       </p>
       <a
         href="/contact"
-        class="inline-block bg-accent text-black font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
+        class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
       >
         Start a Conversation
       </a>

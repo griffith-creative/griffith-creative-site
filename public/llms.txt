@@ -31,5 +31,5 @@ Griffith Creative ships agency-grade websites in weeks rather than months. Every
 - Speed: Sites ship in weeks, not months.
 - Pricing: Transparent quotes, no scope-creep invoices, no bloated agency overhead.
 - Search and AI visibility: Every site is structured to rank in Google and be cited by language-model search via schema.org markup, llms.txt, semantic HTML, and answer-engine content patterns.
-- Performance: Targets Lighthouse 100, edge-deployed on a global CDN, modern image formats.
+- Performance: High-90s Lighthouse scores measured before launch, edge-deployed on a global CDN, modern image formats.
 - Scale: Enterprise practice for high-traffic sites, legacy platform migrations, and ongoing partnerships with a dedicated team.

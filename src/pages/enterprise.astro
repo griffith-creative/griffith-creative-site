@@ -1,5 +1,32 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const partnership = [
+  {
+    title: 'Built to Scale',
+    body: "Traffic spikes shouldn't be a fire drill. We architect for peak load: product launches, press mentions, seasonal demand, live events. Your site holds up when it matters most, not just on a quiet Tuesday.",
+  },
+  {
+    title: 'A Team, Not a Ticket Queue',
+    body: "You get a small senior team that knows your business, your stack, and your goals. Not a rotating cast filing support tickets. Priority response, direct access, and the people you talk to are the people who build.",
+  },
+  {
+    title: 'Full-Lifecycle Management',
+    body: 'Redesign is the starting point, not the whole engagement. We handle ongoing development, content operations, performance monitoring, security patching, and continuous optimization, so your team can focus on the business.',
+  },
+  {
+    title: 'Modern Infrastructure, Migrated Cleanly',
+    body: "Legacy CMS. Years of accumulated tech debt. Third-party scripts nobody remembers adding. We audit what's running under the hood and migrate you to a modern, fast, secure stack without breaking what works.",
+  },
+  {
+    title: 'Security & Compliance',
+    body: 'End-of-life software, unpatched dependencies, missing consent management, accessibility gaps. We close them as part of the rebuild: current platforms, hardened headers, privacy compliance, and WCAG-informed markup on every page.',
+  },
+  {
+    title: 'Search & AI Visibility at Scale',
+    body: 'Clean structure, schema, and semantic markup across your entire site, not just the homepage. You keep showing up in Google and get cited correctly by AI search engines as your business grows.',
+  },
+];
 ---
 
 <Base
@@ -8,75 +35,69 @@ import Base from '../layouts/Base.astro';
 >
   <!-- Hero -->
   <section class="min-h-[80vh] flex items-center">
-    <div class="w-full max-w-6xl mx-auto px-6 py-24">
-      <div class="max-w-4xl">
-        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-6 fade-in">
-          Enterprise Web Partnerships
-        </p>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8 fade-in fade-in-delay-1">
-          Built for the sites that<br />
-          <span class="text-accent">can't afford to go down.</span>
-        </h1>
-        <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-10 fade-in fade-in-delay-2">
-          When traffic spikes, deadlines don't move, and stakeholders are watching, your website has to hold. We design, rebuild, and manage high-traffic websites for established companies that need enterprise reliability without enterprise bloat.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 fade-in fade-in-delay-3">
-          <a
-            href="/contact"
-            class="bg-accent text-dark font-semibold px-8 py-4 rounded text-center hover:bg-accent-hover transition-colors"
-          >
-            Talk to Our Team
-          </a>
-        </div>
-      </div>
+    <div class="max-w-6xl mx-auto px-6 py-24 w-full">
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
+        Enterprise Web Partnerships
+      </p>
+      <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-10 max-w-6xl">
+        Built for the sites that<br />
+        <span class="text-accent">can't afford to go down.</span>
+      </h1>
+      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-12">
+        When traffic spikes, deadlines don't move, and stakeholders are watching, your website has to hold. We design, rebuild, and manage high-traffic websites for established companies that need enterprise reliability without enterprise bloat.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border border-accent/40 text-accent font-semibold px-8 py-4 rounded hover:border-accent transition-colors"
+      >
+        Talk to Our Team
+      </a>
     </div>
   </section>
 
   <!-- Problem -->
-  <section class="bg-dark-secondary py-24">
+  <section class="border-t border-offwhite/10 py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center fade-in">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          Most agencies weren't built for your traffic.
-        </h2>
-        <p class="text-offwhite-muted text-lg leading-relaxed">
-          Your site isn't a brochure. It's a live product: generating leads, processing transactions, and representing your brand to every customer who finds you. A dated CMS, a stack of unmanaged tracking scripts, and a team that only shows up for the redesign isn't enough. You need infrastructure that scales on demand and a partner who's still there in month thirteen, not just week one.
-        </p>
-      </div>
+      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-8 max-w-4xl">
+        Most agencies weren't built for your traffic.
+      </h2>
+      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-3xl">
+        Your site isn't a brochure. It's a live product: generating leads, processing transactions, and representing your brand to every customer who finds you. A dated CMS, a stack of unmanaged tracking scripts, and a team that only shows up for the redesign isn't enough. You need infrastructure that scales on demand and a partner who's still there in month thirteen, not just week one.
+      </p>
     </div>
   </section>
 
-  <!-- Cost story -->
-  <section class="py-24">
+  <!-- Total Cost of Ownership -->
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div class="fade-in">
-          <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
-            The Money Story
+        <div>
+          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
+            Total Cost of Ownership
           </p>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-balance">
+          <h2 class="text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6 text-balance">
             You're paying enterprise prices to keep old technology alive.
           </h2>
           <p class="text-offwhite-muted text-lg leading-relaxed">
-            Legacy platforms accumulate cost the way they accumulate tech debt: enterprise hosting contracts, redundant CDN layers, extended support for end-of-life software, licenses for services you stopped using years ago, and a retainer just to keep it all standing. We audit what you're actually paying for, then rebuild on modern infrastructure that collapses most of that spend and outperforms what it replaces.
+            Legacy platforms accumulate cost the way they accumulate tech debt: enterprise hosting contracts, redundant CDN layers, extended support for end-of-life software, licenses for services you stopped using years ago, and a retainer just to keep it all standing. We audit what you're paying for, then rebuild on modern infrastructure that collapses most of that spend and outperforms what it replaces.
           </p>
         </div>
 
-        <div class="space-y-6 fade-in fade-in-delay-1">
+        <div class="space-y-8">
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Audit the real cost</h3>
+            <h3 class="text-offwhite text-lg mb-2">Audit the real cost</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               We map every contract, license, and dependency in your current stack and show you what each one is for, and which ones are dead weight.
             </p>
           </div>
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Rebuild on modern infrastructure</h3>
+            <h3 class="text-offwhite text-lg mb-2">Rebuild on modern infrastructure</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               Static-first architecture on a global edge network. Faster under load, more secure by default, and a fraction of the hosting bill.
             </p>
           </div>
           <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite font-semibold mb-2">Keep what works</h3>
+            <h3 class="text-offwhite text-lg mb-2">Keep what works</h3>
             <p class="text-offwhite-muted text-sm leading-relaxed">
               Your data relationships, your measurement stack, your content library. We migrate cleanly instead of burning it down.
             </p>
@@ -86,101 +107,48 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <!-- Partnership features -->
-  <section class="bg-dark-secondary py-24">
+  <!-- Partnership -->
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-3xl md:text-4xl font-bold">
-          What enterprise partnership looks like.
-        </h2>
-      </div>
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-16">
+        What Partnership Looks Like
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-dark p-8 rounded-lg border border-offwhite/5 fade-in">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Built to Scale</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Traffic spikes shouldn't be a fire drill. We architect for peak load: product launches, press mentions, seasonal demand, live events. Your site holds up when it matters most, not just on a quiet Tuesday.
-          </p>
-        </div>
-
-        <div class="bg-dark p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-1">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Dedicated Team, Not a Ticket Queue</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            You get a named team that knows your business, your stack, and your goals. Not a rotating cast filing support tickets. Priority response, direct access, and a partner who treats your site like it's theirs.
-          </p>
-        </div>
-
-        <div class="bg-dark p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-2">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Full-Lifecycle Management</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Redesign is the starting point, not the whole engagement. We handle ongoing development, content operations, performance monitoring, security patching, and continuous optimization, so your team can focus on the business.
-          </p>
-        </div>
-
-        <div class="bg-dark p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-1">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Modern Infrastructure, Migrated Cleanly</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Legacy CMS. Years of accumulated tech debt. Third-party scripts nobody remembers adding. We audit what's actually running under the hood and migrate you to a modern, fast, secure stack without breaking what already works.
-          </p>
-        </div>
-
-        <div class="bg-dark p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-2">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Security & Compliance</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            End-of-life software, unpatched dependencies, missing consent management, accessibility gaps. We close them as part of the rebuild: current platforms, hardened headers, privacy compliance, and WCAG-informed markup on every page.
-          </p>
-        </div>
-
-        <div class="bg-dark p-8 rounded-lg border border-offwhite/5 fade-in fade-in-delay-3">
-          <h3 class="text-offwhite font-semibold text-lg mb-3 md:min-h-[3.6rem]">Search & AI Visibility at Scale</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Clean structure, schema, and semantic markup across your entire site, not just the homepage. You keep showing up in Google and get cited correctly by AI search engines as your business grows.
-          </p>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+        {partnership.map((item) => (
+          <div class="border-t border-offwhite/15 pt-6">
+            <h3 class="text-offwhite text-xl mb-3 md:min-h-[4rem]">{item.title}</h3>
+            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Proof strip -->
-  <section class="py-24">
+  <!-- Commitments -->
+  <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="text-center p-6 fade-in">
-          <div class="text-accent text-2xl font-bold mb-3">100</div>
-          <h3 class="text-offwhite font-semibold text-sm mb-2">PageSpeed Target</h3>
-          <p class="text-offwhite-muted text-xs">Perfect Lighthouse scores are the standard we build to, sitewide.</p>
-        </div>
-        <div class="text-center p-6 fade-in fade-in-delay-1">
-          <div class="text-accent text-2xl font-bold mb-3">Edge</div>
-          <h3 class="text-offwhite font-semibold text-sm mb-2">Global Infrastructure</h3>
-          <p class="text-offwhite-muted text-xs">Deployed to a global edge network. Fast everywhere, resilient under spikes.</p>
-        </div>
-        <div class="text-center p-6 fade-in fade-in-delay-2">
-          <div class="text-accent text-2xl font-bold mb-3">24/7</div>
-          <h3 class="text-offwhite font-semibold text-sm mb-2">Monitoring</h3>
-          <p class="text-offwhite-muted text-xs">Uptime and performance monitoring with a team that answers when it matters.</p>
-        </div>
-        <div class="text-center p-6 fade-in fade-in-delay-3">
-          <div class="text-accent text-2xl font-bold mb-3">SLA</div>
-          <h3 class="text-offwhite font-semibold text-sm mb-2">Real Commitments</h3>
-          <p class="text-offwhite-muted text-xs">Named contacts, response-time guarantees, and terms in writing.</p>
-        </div>
-      </div>
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
+        What We Commit To
+      </p>
+      <p class="text-offwhite text-2xl md:text-3xl leading-snug tracking-tight max-w-4xl text-pretty">
+        Uptime and performance monitoring on every site we manage. A response within one business day, usually much sooner. High-90s Lighthouse scores we measure before launch. And every commitment written into the agreement, not implied on a landing page.
+      </p>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-dark-secondary py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center fade-in">
-      <h2 class="text-3xl md:text-5xl font-bold mb-6">
-        Ready to talk scale?
+  <section class="border-t border-offwhite/10 py-32">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+        Bring us the site<br />you can't afford to break.
       </h2>
       <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        If your site handles real traffic, real revenue, and real stakes, let's talk about what a partner built for that actually looks like. The audit comes first, so you'll know exactly what you're deciding on.
+        The audit comes first: performance, structure, security, and cost, mapped before you commit to anything. You'll know exactly what you're deciding on.
       </p>
       <a
         href="/contact"
-        class="inline-block bg-accent text-black font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
+        class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
       >
         Schedule a Discovery Call
       </a>
