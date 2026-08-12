@@ -15,6 +15,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
+  { href: '/enterprise', label: 'Enterprise' },
   { href: '/about', label: 'About' },
 ];
 
@@ -26,7 +27,7 @@ const orgJsonLd = {
   logo: 'https://griffithcreative.co/icon-512.png',
   image: 'https://griffithcreative.co/og-image.png',
   description:
-    'Web design for small and mid-sized businesses. Based in Los Angeles, serving the US.',
+    'Web design for growing businesses and established brands. Based in Los Angeles, serving the US.',
   email: 'hello@griffithcreative.co',
   areaServed: 'US',
   address: {
@@ -87,18 +88,18 @@ const websiteJsonLd = {
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
       <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 text-offwhite font-bold text-xl tracking-tight hover:text-accent transition-colors">
+        <a href="/" class="flex items-center gap-3 shrink-0 text-offwhite font-bold text-xl tracking-tight whitespace-nowrap hover:text-accent transition-colors">
           <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-9 h-9"><path fill="#C9A84C" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
           <span class="font-wordmark">Griffith Creative</span>
         </a>
 
         <!-- Desktop Nav -->
-        <div class="hidden md:flex items-center gap-8">
+        <div class="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               href={link.href}
               class:list={[
-                'text-sm font-medium transition-colors',
+                'text-sm font-medium whitespace-nowrap transition-colors',
                 currentPath === link.href
                   ? 'text-accent'
                   : 'text-offwhite-muted hover:text-offwhite',
@@ -109,7 +110,7 @@ const websiteJsonLd = {
           ))}
           <a
             href="/contact"
-            class="text-sm font-semibold bg-accent text-dark px-5 py-2.5 rounded hover:bg-accent-hover transition-colors"
+            class="text-sm font-semibold bg-accent text-dark px-5 py-2.5 rounded whitespace-nowrap hover:bg-accent-hover transition-colors"
           >
             Get Started
           </a>
@@ -118,7 +119,7 @@ const websiteJsonLd = {
         <!-- Mobile Menu Button -->
         <button
           id="mobile-menu-btn"
-          class="md:hidden text-offwhite p-2"
+          class="lg:hidden text-offwhite p-2"
           aria-label="Toggle menu"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +129,7 @@ const websiteJsonLd = {
       </div>
 
       <!-- Mobile Nav -->
-      <div id="mobile-menu" class="hidden md:hidden border-t border-offwhite/5">
+      <div id="mobile-menu" class="hidden lg:hidden bg-dark border-t border-offwhite/5">
         <div class="px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
@@ -168,7 +169,7 @@ const websiteJsonLd = {
               <h3 class="text-offwhite font-wordmark text-lg">Griffith Creative</h3>
             </div>
             <p class="text-offwhite-muted text-sm leading-relaxed">
-              Web design for small and mid-sized businesses across the US.
+              Web design for growing businesses and established brands across the US.
               Based in Los Angeles, CA.
             </p>
           </div>

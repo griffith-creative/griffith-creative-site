@@ -1,21 +1,21 @@
 # Griffith Creative
 
-> Boutique web design and SEO agency based in Los Angeles, serving small and mid-sized businesses across the United States. Builds high-performance websites and runs SEO campaigns optimized for both traditional search and AI answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews).
+> Boutique web design studio based in Los Angeles, serving growing businesses and established brands across the United States. Builds high-performance websites engineered for both traditional search and AI answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews).
 
-Griffith Creative ships agency-grade websites in 1–4 weeks at a fraction of traditional agency cost by using AI-accelerated, human-directed workflows. Every site is engineered for speed, semantic structure, schema.org markup, and AI citation visibility.
+Griffith Creative ships agency-grade websites in weeks rather than months. Every site is engineered for speed, semantic structure, schema.org markup, and AI citation visibility.
 
 ## Services
 
-- [Starter — 5-Page Website](https://griffithcreative.co/services): Custom-designed 5-page site with on-page SEO, mobile-responsive design, schema markup, llms.txt, and contact form. Delivered in 1–2 weeks.
-- [Growth — 10-Page Website + SEO](https://griffithcreative.co/services): 10-page site with full keyword strategy, AI search optimization, blog setup with 3 initial posts, Google Business Profile optimization, local schema, and conversion tracking. Delivered in 2–3 weeks. Most popular tier.
-- [Authority — 20-Page Site](https://griffithcreative.co/services): 20+ page site with comprehensive content strategy, AI citation tracking, 10 SEO-optimized blog posts, service area pages, competitor analysis, and custom integrations. Delivered in 3–4 weeks.
-- [SEO Retainer](https://griffithcreative.co/services): Monthly retainer including 2–4 SEO blog posts, technical SEO maintenance, Core Web Vitals monitoring, Google Business Profile management, citation building, and monthly reporting.
+- [Custom Design & Build](https://griffithcreative.co/services): Website design, copy, and development scoped to the business rather than a fixed page count. Includes mobile-responsive design, semantic structure, metadata and schema, AI search optimization, contact forms, analytics and conversion tracking, custom integrations (booking, CRM, e-commerce), edge hosting, and revision rounds.
+- [Enterprise Partnerships](https://griffithcreative.co/enterprise): For high-traffic sites and established companies. Technical and content audits, legacy platform migrations, modern static-first infrastructure on a global edge network, security and compliance remediation, full-lifecycle management, a dedicated named team, and SLA-backed response times.
+- [Care Plan](https://griffithcreative.co/services): Optional monthly plan covering content edits and new sections, managed hosting, uptime and performance monitoring, dependency updates, SSL, backups, and priority support.
 
 ## Pages
 
-- [Home](https://griffithcreative.co/): Overview, three-step process, AI search visibility, who we serve.
-- [Services](https://griffithcreative.co/services): Three website tiers, SEO retainer, what's included in every project.
-- [About](https://griffithcreative.co/about): The agency's story, AI-first approach, principles.
+- [Home](https://griffithcreative.co/): Overview, three-step process, who we serve.
+- [Services](https://griffithcreative.co/services): Custom design and build, enterprise partnerships, Care Plan, what's included in every project.
+- [Enterprise](https://griffithcreative.co/enterprise): High-traffic website partnerships, legacy migrations, infrastructure cost audits, ongoing management.
+- [About](https://griffithcreative.co/about): The studio's story, approach, principles.
 - [Contact](https://griffithcreative.co/contact): Inquiry form and FAQs.
 - [Privacy Policy](https://griffithcreative.co/privacy): How user data submitted via the contact form is handled.
 
@@ -30,6 +30,6 @@ Griffith Creative ships agency-grade websites in 1–4 weeks at a fraction of tr
 
 - Speed: Sites ship in weeks, not months.
 - Pricing: Transparent quotes, no scope-creep invoices, no bloated agency overhead.
-- AI-first: Every site is structured to be cited by language-model search (ChatGPT, Claude, Perplexity, Google AI Overviews) via schema.org markup, llms.txt, semantic HTML, and answer-engine content patterns.
+- Search and AI visibility: Every site is structured to rank in Google and be cited by language-model search via schema.org markup, llms.txt, semantic HTML, and answer-engine content patterns.
 - Performance: Targets Lighthouse 100, edge-deployed on a global CDN, modern image formats.
-- Focus: Works exclusively with small and mid-sized businesses, including service businesses, local businesses, and growing companies.
+- Scale: Enterprise practice for high-traffic sites, legacy platform migrations, and ongoing partnerships with a dedicated team.
