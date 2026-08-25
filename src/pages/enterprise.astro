@@ -1,181 +1,69 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const partnership = [
-  {
-    title: 'Built to scale',
-    body: 'Peak load is the design target: launches, press, seasonal demand, live events. The site holds when it matters, not just on a quiet Tuesday.',
-  },
-  {
-    title: 'A team, not a ticket queue',
-    body: 'A small senior team that knows your business and your stack. The people you talk to are the people who build.',
-  },
-  {
-    title: 'Full-lifecycle management',
-    body: 'Redesign is the starting point. Ongoing development, content operations, monitoring, security patching, and the operational side once the audit is done.',
-  },
-  {
-    title: 'Security and compliance',
-    body: 'End-of-life software, unpatched dependencies, missing consent management, accessibility gaps. Closed as part of the rebuild, not billed as extras.',
-  },
-];
-
-const auditAreas = [
-  {
-    title: 'Storage & archive',
-    body: 'Years of files in Drive or Dropbox, every one billed at active rates. We move the archive to object storage with a dashboard your team can search, and leave the working files where they are.',
-  },
-  {
-    title: 'Software sprawl',
-    body: 'Seats nobody uses, three tools doing one job, licenses renewing on autopilot. We inventory every subscription, tie it to a person and a purpose, and cut the dead weight.',
-  },
-  {
-    title: 'Workflow',
-    body: 'The hand-offs between tools are where the hours go. We trace how work actually moves through the company and replace the duct tape with something that runs on its own.',
-  },
-];
 ---
 
 <Base
   title="Enterprise | Griffith Creative"
-  description="Griffith Creative designs, rebuilds, and manages high-traffic websites, and helps established companies build the systems they run on."
+  description="Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them. Griffith Creative, Los Angeles, working worldwide."
 >
-  <!-- Hero -->
-  <section class="min-h-[80vh] flex items-center">
-    <div class="max-w-6xl mx-auto px-6 py-24 w-full">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
-        Enterprise Partnerships
+  <section class="hero">
+    <div class="container-site">
+      <p class="eyebrow mb-7">Enterprise</p>
+      <h1 class="h1 mb-7">Enterprise.</h1>
+      <p class="lede mb-8">
+        When traffic spikes and the deadline does not move, everything has to hold: the site, the storage, and the tools the team runs on. We audit, rebuild, and manage the infrastructure established companies depend on.
       </p>
-      <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-10 max-w-6xl">
-        Built for the companies<br />
-        <span class="text-accent">that can't afford to go down.</span>
-      </h1>
-      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-12">
-        When traffic spikes, deadlines don't move, and stakeholders are watching, everything has to hold: the website, the storage, the tools your team runs on. We audit, rebuild, and manage the infrastructure established companies depend on, without enterprise bloat.
-      </p>
-      <ul class="flex flex-wrap gap-3 mb-12" aria-label="Tracks">
-        <li class="font-mono text-xs text-offwhite-muted border border-offwhite/15 rounded-full px-4 py-2">Web Partnerships</li>
-        <li class="font-mono text-xs text-offwhite-muted border border-offwhite/15 rounded-full px-4 py-2">Systems</li>
-      </ul>
       <a href="/contact" class="btn btn-primary">Book a call</a>
     </div>
   </section>
 
-  <!-- Problem -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-8 max-w-4xl">
-        Most agencies weren't built for your traffic.
-      </h2>
-      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-3xl">
-        Your site isn't a brochure. It's a live product: generating leads, processing transactions, and representing your brand to every customer who finds you. A dated CMS, a stack of unmanaged tracking scripts, and a team that only shows up for the redesign isn't enough. You need infrastructure that scales on demand and a partner who's still there in month thirteen, not just week one.
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">What we take on</h2>
+      <p class="para">
+        A rebuild of the site, a migration off whatever it runs on now, and management once it is live. Peak load is the design target: launches, press, seasonal demand, live events. The senior people who build it stay on it afterwards, through ongoing development, content operations, monitoring, and security patching.
       </p>
     </div>
   </section>
 
-  <!-- Total Cost of Ownership -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div>
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-            Total Cost of Ownership
-          </p>
-          <h2 class="text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6 text-balance">
-            You're paying enterprise prices to keep old technology alive.
-          </h2>
-          <p class="text-offwhite-muted text-lg leading-relaxed">
-            Legacy platforms accumulate cost the way they accumulate tech debt: enterprise hosting contracts, redundant CDN layers, extended support for end-of-life software, licenses for services you stopped using years ago, and a retainer just to keep it all standing. We audit what you're paying for, then rebuild on modern infrastructure that collapses most of that spend and outperforms what it replaces.
-          </p>
-        </div>
-
-        <div class="space-y-8">
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Audit the real cost</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              We map every contract, license, and dependency in your current stack and show you what each one is for, and which ones are dead weight.
-            </p>
-          </div>
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Rebuild on modern infrastructure</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              Static-first architecture on a global edge network. Faster under load, more secure by default, and a fraction of the hosting bill.
-            </p>
-          </div>
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Keep what works</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              Your data relationships, your measurement stack, your content library. We migrate cleanly instead of burning it down.
-            </p>
-          </div>
-        </div>
-      </div>
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">The audit</h2>
+      <p class="para">
+        Old platforms accumulate cost the way they accumulate tech debt: hosting contracts, redundant delivery layers, extended support for end-of-life software, licenses for services you stopped using years ago, and a retainer to keep it all standing. We map every contract, license, and dependency in the current stack and show you what each one is for, before anything is rebuilt.
+      </p>
     </div>
   </section>
 
-  <!-- Systems -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-        Systems
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">The rebuild</h2>
+      <p class="para">
+        Static-first architecture served from a global edge network, faster under load and more secure by default. Your data relationships, your measurement, and your content library come across with it. End-of-life software, unpatched dependencies, missing consent management, and accessibility gaps are closed as part of the work.
       </p>
-      <h2 class="text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6 max-w-3xl text-balance">
-        Systems that work the way you do.
-      </h2>
-      <p class="text-offwhite-muted text-lg leading-relaxed max-w-3xl mb-16">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">Systems</h2>
+      <p class="para">
         Most companies run on systems nobody chose. We sit with your team, learn how the work really happens, and rebuild the storage, software, and workflows around it. <a href="/systems" class="underline decoration-accent underline-offset-4 hover:text-offwhite">More on Systems</a>.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
-        {auditAreas.map((item) => (
-          <div class="border-t border-offwhite/15 pt-6">
-            <h3 class="text-offwhite text-xl mb-3">{item.title}</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
-  <!-- Partnership -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
-        What Partnership Looks Like
-      </p>
-
-      <div class="divide-y divide-offwhite/15 border-t border-offwhite/15">
-        {partnership.map((item) => (
-          <div class="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,4fr)] gap-x-12 gap-y-2 py-7">
-            <h3 class="text-offwhite text-xl">{item.title}</h3>
-            <p class="text-offwhite-muted leading-relaxed">{item.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Commitments -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-        What We Commit To
-      </p>
-      <p class="text-offwhite text-2xl md:text-3xl leading-snug tracking-tight max-w-4xl text-pretty">
-        Uptime and performance monitoring on every site we manage. A response within one business day, usually much sooner. High-90s Lighthouse scores we measure before launch. Every saving from a systems rebuild checked against the invoices afterwards.
+  <section class="section">
+    <div class="container-site">
+      <p class="statement">
+        Uptime and performance monitoring on every site we manage. Performance measured before launch and after. Every saving from a systems rebuild checked against the invoices afterwards.
       </p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
-        Bring us the site, or the stack,<br />you can't afford to break.
-      </h2>
-      <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        The audit comes first: performance, structure, security, storage, software, and cost, mapped before you commit to anything. You'll know exactly what you're deciding on.
-      </p>
+  <section class="section py-24 md:py-32">
+    <div class="container-site">
+      <h2 class="h2-close mb-8">Start with the audit.</h2>
       <a href="/contact" class="btn btn-primary">Book a call</a>
     </div>
   </section>
