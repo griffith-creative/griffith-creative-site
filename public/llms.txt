@@ -1,6 +1,6 @@
 # Griffith Creative
 
-> Boutique web design studio based in Los Angeles, serving growing businesses and established brands across the United States. Builds high-performance websites engineered for both traditional search and AI answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews).
+> Boutique web design studio based in Los Angeles, serving growing businesses and established brands worldwide. Builds high-performance websites engineered for both traditional search and AI answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews).
 
 Griffith Creative ships agency-grade websites in weeks rather than months. Every site is engineered for speed, semantic structure, schema.org markup, and AI citation visibility.
 
@@ -23,7 +23,7 @@ Griffith Creative ships agency-grade websites in weeks rather than months. Every
 
 - Email: hello@griffithcreative.co
 - Location: Los Angeles, CA
-- Service area: United States
+- Service area: worldwide, based in Los Angeles
 - Response time: Within 1 business day
 
 ## Differentiators
