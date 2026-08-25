@@ -19,7 +19,7 @@ const navLinks = [
   { href: '/systems', label: 'Systems' },
   { href: '/about', label: 'About' },
 ];
-const footerLinks = [...navLinks, { href: '/contact', label: 'Contact' }, { href: '/care', label: 'Care Plan' }, { href: '/process', label: 'Process' }, { href: '/privacy', label: 'Privacy' }];
+const footerLinks = [...navLinks, { href: '/contact', label: 'Contact' }, { href: '/care', label: 'Care Plan' }, { href: '/process', label: 'Process' }];
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -160,17 +160,17 @@ const websiteJsonLd = {
     <!-- Footer -->
     <footer class="border-t border-offwhite/10">
       <div class="container-site pt-10 pb-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <nav aria-label="Footer" class="flex flex-wrap gap-x-7 gap-y-3">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <a href="mailto:hello@griffithcreative.co" class="md:order-2 text-base md:text-sm font-medium text-offwhite hover:text-accent transition-colors">hello@griffithcreative.co</a>
+          <nav aria-label="Footer" class="md:order-1 grid grid-cols-2 gap-x-8 gap-y-3 md:flex md:flex-wrap md:gap-x-7">
             {footerLinks.map((link) => (
               <a href={link.href} class="text-sm text-offwhite-muted hover:text-offwhite transition-colors">{link.label}</a>
             ))}
           </nav>
-          <a href="mailto:hello@griffithcreative.co" class="text-sm font-medium text-offwhite hover:text-accent transition-colors">hello@griffithcreative.co</a>
         </div>
-        <div class="mt-8 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
+        <div class="mt-10 md:mt-8 pt-6 md:pt-0 border-t md:border-t-0 border-offwhite/10 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
           <p>Los Angeles &middot; Worldwide &middot; Since 2020</p>
-          <p>&copy; {new Date().getFullYear()}</p>
+          <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy" class="hover:text-offwhite transition-colors">Privacy</a></p>
         </div>
       </div>
     </footer>
