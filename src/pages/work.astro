@@ -1,88 +1,122 @@
 ---
 import Base from '../layouts/Base.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 
-const projects = [
+interface Site {
+  name: string;
+  caption: string;
+  image: string;
+  url?: string;
+}
+
+interface Industry {
+  name: string;
+  line: string;
+  sites: Site[];
+}
+
+const industries: Industry[] = [
   {
-    name: 'Nadia Tolar',
-    label: 'Personal Portfolio',
-    imageUrl: '/work/nadia-tolar.webp',
-    projectUrl: 'https://nadiatolar.com',
+    name: 'Music and entertainment',
+    line: 'Artists, managers, and labels.',
+    sites: [
+      { name: 'Amin Mortada', caption: 'aminmortada.com', image: '/work/amin-mortada.webp', url: 'https://aminmortada.com' },
+      { name: 'Nadia Tolar', caption: 'nadiatolar.com', image: '/work/nadia-tolar.webp', url: 'https://nadiatolar.com' },
+    ],
   },
   {
-    name: 'SnapToAI',
-    label: 'macOS Productivity Tool',
-    imageUrl: '/work/snaptoai.webp',
-    projectUrl: 'https://snaptoai.app',
+    name: 'Home, trade and construction',
+    line: 'Interior designers, contractors, and builders.',
+    sites: [
+      { name: 'JAG Creative', caption: 'jagcreative.com', image: '/work/jag-creative.webp', url: 'https://www.jagcreative.com' },
+    ],
   },
   {
-    name: 'JAG Creative',
-    label: 'Interior Design Studio',
-    imageUrl: '/work/jag-creative.webp',
-    projectUrl: 'https://jagcreative.com',
+    name: 'Professional and financial services',
+    line: 'Accountants, consultants, and advisors.',
+    sites: [
+      { name: 'Haven Financial', caption: 'Concept', image: '/work/haven-financial.webp', url: 'https://havenfinancial.griffithcreative.co' },
+      { name: 'Six Points Global', caption: 'sixpointsglobal.com', image: '/work/six-points-global.webp', url: 'https://six-points-global.vercel.app' },
+    ],
   },
   {
-    name: 'PhaseeLuv',
-    label: 'Music Artist',
-    imageUrl: '/work/phaseeluv.webp',
-    projectUrl: 'https://phaseeluv.pages.dev',
-  },
-  {
-    name: 'Amin Mortada',
-    label: 'Musician Portfolio',
-    imageUrl: '/work/amin-mortada.webp',
-    projectUrl: 'https://aminmortada.com',
-  },
-  {
-    name: 'CA Accounting',
-    label: 'Financial Services',
-    imageUrl: '/work/ca-accounting.webp',
-    projectUrl: 'https://ca-accounting-site.vercel.app/',
+    name: 'Retail and product',
+    line: 'Online stores and software products.',
+    sites: [
+      { name: 'Guardian Sleeves', caption: 'guardiansleeves.com', image: '/work/guardian-sleeves.webp', url: 'https://guardiansleeves.com' },
+      { name: 'SnapToAI', caption: 'snaptoai.app', image: '/work/snaptoai.webp', url: 'https://snaptoai.app' },
+    ],
   },
 ];
 ---
 
 <Base
-  title="Selected work — Griffith Creative"
-  description="A selection of websites designed and built by Griffith Creative."
+  title="Industries | Griffith Creative"
+  description="Web design and development for music and entertainment, home and construction, professional and financial services, and retail and product businesses."
 >
-  <!-- Page Intro -->
-  <section class="py-24">
+  <!-- Hero -->
+  <section class="py-24 md:py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl md:text-7xl tracking-tight mb-6">
-        Selected work
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
+        Industries
+      </p>
+      <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-8">
+        Who we build for.
       </h1>
-      <p class="text-lg md:text-xl text-offwhite-muted leading-relaxed max-w-2xl">
-        Designed, written, and built by Griffith Creative.
+      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl">
+        Web design and development for these industries.
       </p>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section class="pb-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="space-y-24 md:space-y-32">
-        {projects.map((project, i) => (
-          <div class="fade-in">
-            <ProjectCard
-              name={project.name}
-              label={project.label}
-              imageUrl={project.imageUrl}
-              projectUrl={project.projectUrl}
-              eager={i === 0}
-            />
-          </div>
-        ))}
+  <!-- Industries -->
+  {industries.map((industry) => (
+    <section class="border-t border-offwhite/10 py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-10 lg:gap-20 items-start">
+        <div>
+          <h2 class="text-4xl md:text-5xl leading-[1.0] tracking-tight mb-4 max-w-xl text-balance">
+            {industry.name}
+          </h2>
+          <p class="text-offwhite-muted text-lg">{industry.line}</p>
+        </div>
+        <ul class="flex flex-wrap gap-6 lg:pt-2" aria-label={`${industry.name} examples`}>
+          {industry.sites.map((site) => (
+            <li class="w-52">
+              <a
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block"
+              >
+                <div class="overflow-hidden rounded-md border border-offwhite/10 aspect-[8/5]">
+                  <img
+                    src={site.image}
+                    alt={`${site.name}, website by Griffith Creative`}
+                    width="1440"
+                    height="900"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <p class="text-offwhite text-sm mt-3 group-hover:text-accent transition-colors">{site.name}</p>
+                <p class="font-mono text-offwhite-muted text-[11px] uppercase tracking-widest mt-1">{site.caption}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
+  ))}
 
-  <!-- Closing CTA -->
+  <!-- CTA -->
   <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-10 text-balance">
-        Yours could be next.
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+        Don't see your industry?
       </h2>
+      <p class="text-offwhite-muted text-lg max-w-2xl mb-10">
+        Get in touch and we'll let you know if it's a fit.
+      </p>
       <a
         href="/contact"
         class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"

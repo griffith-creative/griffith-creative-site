@@ -44,7 +44,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   const resend = new Resend(apiKey);
 
-  const subject = `New inquiry — ${name}${business ? ` (${business})` : ''}`;
+  const subject = `New inquiry: ${name}${business ? ` (${business})` : ''}`;
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,

@@ -33,7 +33,7 @@ const carePlan = [
 ---
 
 <Base
-  title="Services — Griffith Creative | Custom Web Design & Development"
+  title="Services | Griffith Creative | Custom Web Design & Development"
   description="Custom website design and development, scoped to your business. Ongoing care and enterprise partnerships available. Book a free call to get started."
 >
   <!-- Header -->
@@ -71,12 +71,9 @@ const carePlan = [
         </div>
 
         <ul>
-          {buildIncludes.map((item, i) => (
-            <li class="flex items-baseline gap-5 border-t border-offwhite/15 py-4 text-sm text-offwhite-muted">
-              <span class="font-mono text-xs text-offwhite-muted/70 shrink-0">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span>{item}</span>
+          {buildIncludes.map((item) => (
+            <li class="border-t border-offwhite/15 py-4 text-sm text-offwhite-muted">
+              {item}
             </li>
           ))}
         </ul>
