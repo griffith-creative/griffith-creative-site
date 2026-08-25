@@ -1,43 +1,38 @@
-# Astro Starter Kit: Minimal
+# griffithcreative.co
 
-```sh
-npm create astro@latest -- --template minimal
+Marketing site for Griffith Creative. Astro, Tailwind v4, deployed on Vercel.
+
+## Stack
+
+- Astro (static output) with `@astrojs/vercel` for the one server route
+- Tailwind v4 via `@tailwindcss/vite`, tokens in `src/styles/global.css`
+- Fonts self-hosted from `public/fonts` (Archivo 800, Inter 400 to 700, IBM Plex Mono 400 and 500)
+- Contact form posts to `src/pages/api/contact.ts`, which sends via Resend
+- Sitemap from `@astrojs/sitemap`, SEO tags from `astro-seo`
+
+## Environment
+
+Set in Vercel, never committed:
+
+- `RESEND_API_KEY`
+- `CONTACT_TO_ADDRESS` (inbox that receives inquiries)
+- `CONTACT_FROM_ADDRESS` (verified sender on griffithcreative.co)
+
+## Commands
+
+```
+npm install
+npm run dev
+npm run build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deploy
 
-## 🚀 Project Structure
+Pushes to `main` deploy to production through the Vercel Git integration.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Layout
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `src/layouts/Base.astro`: head, nav, footer, JSON-LD
+- `src/pages/`: one file per route
+- `src/assets/work/`: site thumbnails, optimised at build time
+- `public/`: icons, fonts, robots, llms.txt

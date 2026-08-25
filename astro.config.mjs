@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://www.griffithcreative.co',
   output: 'static',
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes('/contact/thanks') })],
   vite: {
     plugins: [tailwindcss()],
   },

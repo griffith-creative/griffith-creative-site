@@ -6,18 +6,18 @@ Griffith Creative ships agency-grade websites in weeks rather than months. Every
 
 ## Services
 
-- [Custom Design & Build](https://griffithcreative.co/services): Website design, copy, and development scoped to the business rather than a fixed page count. Includes mobile-responsive design, semantic structure, metadata and schema, AI search optimization, contact forms, analytics and conversion tracking, custom integrations (booking, CRM, e-commerce), edge hosting, and revision rounds.
-- [Enterprise Partnerships](https://griffithcreative.co/enterprise): For high-traffic sites and established companies. Technical and content audits, legacy platform migrations, modern static-first infrastructure on a global edge network, security and compliance remediation, full-lifecycle management, a dedicated named team, and SLA-backed response times.
-- [Care Plan](https://griffithcreative.co/services): Optional monthly plan covering content edits and new sections, managed hosting, uptime and performance monitoring, dependency updates, SSL, backups, and priority support.
+- [Custom Design & Build](https://www.griffithcreative.co/services): Website design, copy, and development scoped to the business rather than a fixed page count. Includes mobile-responsive design, semantic structure, metadata and schema, AI search optimization, contact forms, analytics and conversion tracking, custom integrations (booking, CRM, e-commerce), edge hosting, and revision rounds.
+- [Enterprise Partnerships](https://www.griffithcreative.co/enterprise): For high-traffic sites and established companies. Technical and content audits, legacy platform migrations, modern static-first infrastructure on a global edge network, security and compliance remediation, full-lifecycle management, a dedicated named team, and SLA-backed response times.
+- [Care Plan](https://www.griffithcreative.co/services): Optional monthly plan covering content edits and new sections, managed hosting, uptime and performance monitoring, dependency updates, SSL, backups, and priority support.
 
 ## Pages
 
-- [Home](https://griffithcreative.co/): Overview, three-step process, who we serve.
-- [Services](https://griffithcreative.co/services): Custom design and build, enterprise partnerships, Care Plan, what's included in every project.
-- [Enterprise](https://griffithcreative.co/enterprise): High-traffic website partnerships, legacy migrations, infrastructure cost audits, ongoing management.
-- [About](https://griffithcreative.co/about): The studio's story, approach, principles.
-- [Contact](https://griffithcreative.co/contact): Inquiry form and FAQs.
-- [Privacy Policy](https://griffithcreative.co/privacy): How user data submitted via the contact form is handled.
+- [Home](https://www.griffithcreative.co/): Overview, three-step process, who we serve.
+- [Services](https://www.griffithcreative.co/services): Custom design and build, enterprise partnerships, Care Plan, what's included in every project.
+- [Enterprise](https://www.griffithcreative.co/enterprise): High-traffic website partnerships, legacy migrations, infrastructure cost audits, ongoing management.
+- [About](https://www.griffithcreative.co/about): The studio's story, approach, principles.
+- [Contact](https://www.griffithcreative.co/contact): Inquiry form and FAQs.
+- [Privacy Policy](https://www.griffithcreative.co/privacy): How user data submitted via the contact form is handled.
 
 ## Contact
 

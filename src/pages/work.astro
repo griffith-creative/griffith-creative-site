@@ -1,10 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const thumbs = import.meta.glob<{ default: ImageMetadata }>('../assets/work/*.webp', { eager: true });
+const thumb = (file: string) => thumbs[`../assets/work/${file}`].default;
 
 interface Site {
   name: string;
   caption: string;
-  image: string;
+  image: ImageMetadata;
   url?: string;
 }
 
@@ -19,31 +24,31 @@ const industries: Industry[] = [
     name: 'Music and entertainment',
     line: 'Artists, managers, and labels.',
     sites: [
-      { name: 'Amin Mortada', caption: 'aminmortada.com', image: '/work/amin-mortada.webp', url: 'https://aminmortada.com' },
-      { name: 'Nadia Tolar', caption: 'nadiatolar.com', image: '/work/nadia-tolar.webp', url: 'https://nadiatolar.com' },
+      { name: 'Amin Mortada', caption: 'aminmortada.com', image: thumb('amin-mortada.webp'), url: 'https://aminmortada.com' },
+      { name: 'Nadia Tolar', caption: 'nadiatolar.com', image: thumb('nadia-tolar.webp'), url: 'https://nadiatolar.com' },
     ],
   },
   {
     name: 'Home, trade and construction',
     line: 'Interior designers, contractors, and builders.',
     sites: [
-      { name: 'JAG Creative', caption: 'jagcreative.com', image: '/work/jag-creative.webp', url: 'https://www.jagcreative.com' },
+      { name: 'JAG Creative', caption: 'jagcreative.com', image: thumb('jag-creative.webp'), url: 'https://www.jagcreative.com' },
     ],
   },
   {
     name: 'Professional and financial services',
     line: 'Accountants, consultants, and advisors.',
     sites: [
-      { name: 'Haven Financial', caption: 'Concept', image: '/work/haven-financial.webp', url: 'https://havenfinancial.griffithcreative.co' },
-      { name: 'Six Points Global', caption: 'sixpointsglobal.com', image: '/work/six-points-global.webp', url: 'https://six-points-global.vercel.app' },
+      { name: 'Haven Financial', caption: 'Concept', image: thumb('haven-financial.webp'), url: 'https://havenfinancial.griffithcreative.co' },
+      { name: 'Six Points Global', caption: 'sixpointsglobal.com', image: thumb('six-points-global.webp'), url: 'https://six-points-global.vercel.app' },
     ],
   },
   {
     name: 'Retail and product',
     line: 'Online stores and software products.',
     sites: [
-      { name: 'Guardian Sleeves', caption: 'guardiansleeves.com', image: '/work/guardian-sleeves.webp', url: 'https://guardiansleeves.com' },
-      { name: 'SnapToAI', caption: 'snaptoai.app', image: '/work/snaptoai.webp', url: 'https://snaptoai.app' },
+      { name: 'Guardian Sleeves', caption: 'guardiansleeves.com', image: thumb('guardian-sleeves.webp'), url: 'https://guardiansleeves.com' },
+      { name: 'SnapToAI', caption: 'snaptoai.app', image: thumb('snaptoai.webp'), url: 'https://snaptoai.app' },
     ],
   },
 ];
@@ -80,7 +85,7 @@ const industries: Industry[] = [
         </div>
         <ul class="flex flex-wrap gap-6 lg:pt-2" aria-label={`${industry.name} examples`}>
           {industry.sites.map((site) => (
-            <li class="w-52">
+            <li class="basis-[calc(50%-0.75rem)] sm:basis-52 grow sm:grow-0 max-w-64">
               <a
                 href={site.url}
                 target="_blank"
@@ -88,11 +93,11 @@ const industries: Industry[] = [
                 class="group block"
               >
                 <div class="overflow-hidden rounded-md border border-offwhite/10 aspect-[8/5]">
-                  <img
+                  <Image
                     src={site.image}
                     alt={`${site.name}, website by Griffith Creative`}
-                    width="1440"
-                    height="900"
+                    widths={[256, 512]}
+                    sizes="(min-width: 640px) 208px, 45vw"
                     loading="lazy"
                     decoding="async"
                     class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"

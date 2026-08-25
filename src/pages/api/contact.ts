@@ -87,6 +87,32 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return redirect('/contact?error=1', 303);
   }
 
+  // Confirmation to the person who wrote in. Failure here must not fail the inquiry.
+  try {
+    const firstName = name.split(/\s+/)[0];
+    await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: email,
+      replyTo: TO_ADDRESS,
+      subject: 'Got your message',
+      text: [
+        `Hi ${firstName},`,
+        '',
+        'Thanks for getting in touch with Griffith Creative. We have your message and will reply within one business day, usually sooner.',
+        '',
+        'If you want to talk before then, book a time here: https://cal.com/griffithcreative/disco',
+        'Or call +1 (310) 818-3092.',
+        '',
+        'Replying to this email reaches us directly.',
+        '',
+        'Griffith Creative',
+        'Los Angeles',
+      ].join('\n'),
+    });
+  } catch (err) {
+    console.error('Confirmation email failed', err);
+  }
+
   return redirect('/contact/thanks', 303);
 };
 
