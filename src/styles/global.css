@@ -106,3 +106,22 @@
     }
   }
 }
+
+@layer components {
+  .container-site { @apply max-w-6xl mx-auto px-6; }
+  .section { @apply border-t border-offwhite/10 py-16 md:py-24; }
+  .hero { @apply pt-20 pb-16 md:pt-28 md:pb-24; }
+  .eyebrow { @apply text-accent text-xs font-semibold uppercase tracking-[0.12em]; }
+  .h1 { @apply text-[clamp(2.5rem,6vw,4.75rem)] leading-[1] tracking-[-0.02em] text-balance; }
+  .h2 { @apply text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.05] tracking-[-0.015em]; }
+  .h2-close { @apply text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.015em] text-balance; }
+  .lede { @apply text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl; }
+  .para { @apply text-offwhite-muted text-lg leading-[1.65] max-w-2xl; }
+  .statement { @apply text-2xl md:text-3xl leading-[1.45] max-w-4xl text-pretty; }
+  .two-col { @apply grid grid-cols-1 lg:grid-cols-[400px_minmax(0,640px)] gap-6 lg:gap-20 items-start; }
+  .btn { @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-semibold transition-colors whitespace-nowrap; }
+  .btn-primary { @apply bg-accent text-dark hover:bg-accent-hover; }
+  .btn-secondary { @apply border border-offwhite/15 text-offwhite hover:border-offwhite/40; }
+  .field-label { @apply block font-mono text-[11px] uppercase tracking-[0.06em] text-offwhite-muted mb-2; }
+  .field { @apply w-full bg-dark-secondary border border-offwhite/10 rounded-lg px-3.5 py-3 text-offwhite placeholder:text-offwhite-muted/70 focus:outline-none focus:border-accent; }
+}

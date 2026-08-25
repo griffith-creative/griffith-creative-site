@@ -1,272 +1,108 @@
 ---
 import Base from '../layouts/Base.astro';
+import CalEmbed from '../components/CalEmbed.astro';
 ---
 
 <Base
   title="Contact | Griffith Creative"
-  description="Book a discovery call or send a note. Griffith Creative, Los Angeles. Reply within one business day."
+  description="Book a thirty-minute call with Griffith Creative, or write to us. Los Angeles, working worldwide."
 >
-  <!-- Header -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl">
-        <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
-          Contact
-        </p>
-        <h1 class="text-5xl md:text-7xl leading-[0.95] tracking-tight mb-6">
-          Let's get to work.
-        </h1>
-        <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed">
-          Two ways to reach us. Book a 15-minute discovery call or send a message. Either works.
-        </p>
+  <section class="hero pb-10 md:pb-12">
+    <div class="container-site">
+      <p class="eyebrow mb-7">Contact</p>
+      <h1 class="h1 mb-7">Get in touch.</h1>
+      <p class="lede mb-8">Book a thirty-minute call, or write to us.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="tel:+13108183092" class="btn btn-secondary">+1 (310) 818-3092</a>
+        <a href="mailto:hello@griffithcreative.co" class="btn btn-secondary">hello@griffithcreative.co</a>
       </div>
     </div>
   </section>
 
-  <!-- Booking + Form -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-
-        <!-- Book a discovery call -->
-        <div class="border border-accent/30 rounded-lg p-8 lg:p-10 flex flex-col">
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">
-            Fastest path
-          </p>
-          <h2 class="text-2xl md:text-3xl font-bold text-offwhite mb-4">
-            Book a discovery call
-          </h2>
-          <p class="text-offwhite-muted text-base leading-relaxed mb-8">
-            15 minutes. We'll talk through your project, your goals, and whether we're the right fit. No pitch.
-          </p>
-          <a
-            href="https://cal.com/griffithcreative/disco"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full sm:w-auto bg-accent text-dark font-semibold px-10 py-4 rounded text-center hover:bg-accent-hover transition-colors"
-          >
-            Book a time
-          </a>
-          <p class="text-offwhite-muted/70 text-xs mt-4">
-            Opens cal.com in a new tab. No account required.
-          </p>
-        </div>
-
-        <!-- Mobile-only OR divider -->
-        <div class="lg:hidden flex items-center gap-4 -my-2" aria-hidden="true">
-          <div class="flex-1 h-px bg-offwhite/10"></div>
-          <span class="text-offwhite-muted text-xs uppercase tracking-widest">or</span>
-          <div class="flex-1 h-px bg-offwhite/10"></div>
-        </div>
-
-        <!-- Or send a message -->
-        <div class="border border-offwhite/10 rounded-lg p-8 lg:p-10">
-          <h2 class="text-2xl md:text-3xl font-bold text-offwhite mb-4">
-            Or send a message
-          </h2>
-          <p class="text-offwhite-muted text-base leading-relaxed mb-8">
-            Prefer to write it out first? Tell us about your project.
-          </p>
-
-          <div
-            id="contact-error"
-            role="alert"
-            aria-live="assertive"
-            hidden
-            class="mb-6 border border-red-500/40 bg-red-500/10 text-red-200 text-sm px-4 py-3 rounded"
-          >
-            Something went wrong sending your message. Please try again, or email us directly at <a href="mailto:hello@griffithcreative.co" class="underline">hello@griffithcreative.co</a>.
-          </div>
-          <script is:inline>
-            if (new URLSearchParams(location.search).get('error')) {
-              const el = document.getElementById('contact-error');
-              if (el) el.removeAttribute('hidden');
-            }
-          </script>
-          <form
-            name="contact"
-            method="POST"
-            action="/api/contact"
-            class="space-y-6"
-          >
-            <!-- Honeypot: real users won't fill this; bots will -->
-            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-              <label for="company-website">Company website</label>
-              <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-offwhite text-sm font-medium mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  autocomplete="name"
-                  class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
-                  placeholder="Jane Smith"
-                />
-              </div>
-
-              <div>
-                <label for="email" class="block text-offwhite text-sm font-medium mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  autocomplete="email"
-                  class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
-                  placeholder="jane@company.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="business" class="block text-offwhite text-sm font-medium mb-2">
-                Business Name
-              </label>
-              <input
-                type="text"
-                id="business"
-                name="business"
-                autocomplete="organization"
-                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
-                placeholder="Acme Services"
-              />
-            </div>
-
-            <div>
-              <label for="service" class="block text-offwhite text-sm font-medium mb-2">
-                What are you looking for?
-              </label>
-              <select
-                id="service"
-                name="service"
-                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm focus:outline-none focus:border-accent transition-colors"
-              >
-                <option value="" class="text-offwhite-muted">Select a service</option>
-                <option value="new-site">New Website</option>
-                <option value="redesign">Website Redesign or Migration</option>
-                <option value="enterprise">Enterprise Partnership</option>
-                <option value="systems">Systems</option>
-                <option value="ongoing">Ongoing Support (Care Plan)</option>
-                <option value="not-sure">Not sure yet, need guidance</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="website" class="block text-offwhite text-sm font-medium mb-2">
-                Current Website
-                <span class="text-offwhite-muted font-normal">(optional)</span>
-              </label>
-              <input
-                type="url"
-                id="website"
-                name="website"
-                autocomplete="url"
-                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors"
-                placeholder="https://currentsite.com"
-              />
-            </div>
-
-            <div>
-              <label for="message" class="block text-offwhite text-sm font-medium mb-2">
-                Tell us about your project
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                class="w-full bg-dark-secondary border border-offwhite/10 rounded px-4 py-3 text-offwhite text-sm placeholder-offwhite-muted/80 focus:outline-none focus:border-accent transition-colors resize-y"
-                placeholder="What are your goals? Any specific features or timeline in mind?"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="w-full sm:w-auto border border-offwhite/20 text-offwhite font-semibold px-10 py-4 rounded hover:border-offwhite/40 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- Contact info row -->
-      <div class="mt-16 pt-12 border-t border-offwhite/10">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          <div>
-            <p class="text-offwhite text-sm font-medium mb-1">Email</p>
-            <a href="mailto:hello@griffithcreative.co" class="text-accent text-sm hover:text-accent-hover transition-colors">
-              hello@griffithcreative.co
-            </a>
-          </div>
-          <div>
-            <p class="text-offwhite text-sm font-medium mb-1">Location</p>
-            <p class="text-offwhite-muted text-sm">Los Angeles, CA</p>
-            <a href="tel:+13108183092" class="block text-offwhite-muted text-sm mt-1 hover:text-offwhite transition-colors">+1 (310) 818-3092</a>
-          </div>
-          <div>
-            <p class="text-offwhite text-sm font-medium mb-1">Response Time</p>
-            <p class="text-offwhite-muted text-sm">Within 1 business day</p>
-          </div>
-        </div>
-        <p class="text-offwhite-muted text-sm mt-8">
-          Either path lands in the same inbox.
-        </p>
-      </div>
+  <section class="pb-16 md:pb-24">
+    <div class="container-site">
+      <CalEmbed />
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl tracking-tight mb-12">
-        Common questions.
-      </h2>
-
-      <div class="max-w-3xl space-y-6">
-        <div class="border-b border-offwhite/10 pb-6">
-          <h3 class="text-offwhite font-semibold mb-3">How long does a project take?</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Most sites ship in weeks, not months. The exact timeline depends on scope, and we'll set it with you on the discovery call before anything starts. Larger builds and migrations are phased so you're never waiting in the dark.
-          </p>
-        </div>
-
-        <div class="border-b border-offwhite/10 pb-6">
-          <h3 class="text-offwhite font-semibold mb-3">Do I need to provide content?</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            No. We write all the copy based on your discovery call and business details. You review and approve before anything goes live. If you have existing content you'd like to use, we'll work with that too.
-          </p>
-        </div>
-
-        <div class="border-b border-offwhite/10 pb-6">
-          <h3 class="text-offwhite font-semibold mb-3">What if I need changes after launch?</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Every project includes revision rounds during the build process. After launch, we offer affordable maintenance options. Care Plan clients get ongoing updates included.
-          </p>
-        </div>
-
-        <div class="border-b border-offwhite/10 pb-6">
-          <h3 class="text-offwhite font-semibold mb-3">Can I see examples of your work?</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Yes. A selection is on our <a href="/work" class="text-offwhite underline decoration-accent underline-offset-4 hover:text-accent transition-colors">work page</a>, and on the discovery call we'll walk through the projects most relevant to your scope.
-          </p>
-        </div>
-
-        <div class="pb-6">
-          <h3 class="text-offwhite font-semibold mb-3">What makes you different from other agencies?</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Speed, focus, and honesty. Modern tooling eliminates the busywork, so senior attention goes to the decisions that matter. We scope every engagement around what moves the needle and price transparently because our overhead is low. The people you talk to are the people who build.
-          </p>
-        </div>
+  <section class="section">
+    <div class="container-site">
+      <div
+        id="contact-error"
+        role="alert"
+        aria-live="assertive"
+        hidden
+        class="mb-8 border border-red-500/40 bg-red-500/10 text-red-200 text-sm px-4 py-3 rounded-lg max-w-3xl"
+      >
+        Something went wrong sending your message. Please try again, or email <a href="mailto:hello@griffithcreative.co" class="underline">hello@griffithcreative.co</a>.
       </div>
+      <script is:inline>
+        if (new URLSearchParams(location.search).get('error')) {
+          const el = document.getElementById('contact-error');
+          if (el) el.removeAttribute('hidden');
+        }
+      </script>
+
+      <form name="contact" method="POST" action="/api/contact" class="max-w-3xl space-y-5">
+        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label for="company-website">Company website</label>
+          <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="field-label">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name" class="field" />
+          </div>
+          <div>
+            <label for="email" class="field-label">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com" class="field" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="business" class="field-label">Company</label>
+            <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company" class="field" />
+          </div>
+          <div>
+            <label for="phone" class="field-label">Phone <span class="text-offwhite-muted/60">optional</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1" class="field" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="service" class="field-label">What do you need</label>
+            <select id="service" name="service" class="field">
+              <option value="">Select</option>
+              <option value="design-build">Design and build</option>
+              <option value="enterprise">Enterprise</option>
+              <option value="systems">Systems</option>
+              <option value="care">Care Plan</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label for="budget" class="field-label">Budget</label>
+            <select id="budget" name="budget" class="field">
+              <option value="">Select a range</option>
+              <option value="under-10k">Under $10k</option>
+              <option value="10-25k">$10k to $25k</option>
+              <option value="25-75k">$25k to $75k</option>
+              <option value="75k-plus">$75k and up</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="field-label">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about the site or the system." class="field"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary px-12">Send</button>
+      </form>
     </div>
   </section>
 </Base>

@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 export const prerender = false;
 
 const TO_ADDRESS = process.env.CONTACT_TO_ADDRESS ?? 'hello@griffithcreative.co';
-// Defaults to Resend's shared onboarding sender — works without domain verification.
+// Defaults to Resend's shared onboarding sender, which works without domain verification.
 // Once griffithcreative.co is verified in Resend, set CONTACT_FROM_ADDRESS to e.g. 'Griffith Creative <hello@griffithcreative.co>'.
 const FROM_ADDRESS =
   process.env.CONTACT_FROM_ADDRESS ?? 'Griffith Creative <onboarding@resend.dev>';
@@ -29,7 +29,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const email = (data.get('email') ?? '').toString().trim();
   const business = (data.get('business') ?? '').toString().trim();
   const service = (data.get('service') ?? '').toString().trim();
-  const website = (data.get('website') ?? '').toString().trim();
+  const phone = (data.get('phone') ?? '').toString().trim();
+  const budget = (data.get('budget') ?? '').toString().trim();
   const message = (data.get('message') ?? '').toString().trim();
 
   if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -50,7 +51,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     `Email: ${email}`,
     business && `Business: ${business}`,
     service && `Service: ${service}`,
-    website && `Website: ${website}`,
+    phone && `Phone: ${phone}`,
+    budget && `Budget: ${budget}`,
     '',
     'Message:',
     message || '(none)',
@@ -64,7 +66,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     <p><strong>Email:</strong> <a href="mailto:${escape(email)}">${escape(email)}</a></p>
     ${business ? `<p><strong>Business:</strong> ${escape(business)}</p>` : ''}
     ${service ? `<p><strong>Service:</strong> ${escape(service)}</p>` : ''}
-    ${website ? `<p><strong>Website:</strong> ${escape(website)}</p>` : ''}
+    ${phone ? `<p><strong>Phone:</strong> ${escape(phone)}</p>` : ''}
+    ${budget ? `<p><strong>Budget:</strong> ${escape(budget)}</p>` : ''}
     <p><strong>Message:</strong></p>
     <p style="white-space:pre-wrap">${escape(message || '(none)')}</p>
   `;

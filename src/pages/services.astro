@@ -1,162 +1,68 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const buildIncludes = [
-  'Custom-designed pages, written and built for conversion',
-  'Mobile-responsive design',
-  'Search-ready foundations: semantic structure, metadata, schema',
-  'AI search optimization (ChatGPT, Claude, Perplexity)',
-  'Contact forms, analytics, and conversion tracking',
-  'Custom integrations: booking, CRM, e-commerce',
-  'Fast, secure edge hosting',
-  'Revision rounds included in every scope',
-];
-
-const carePlan = [
+const offers = [
   {
-    title: 'Updates & Changes',
-    body: 'Content edits, new sections, and seasonal updates, handled within days, not weeks.',
+    title: 'Design and build',
+    body: 'A custom site, scoped to the business and quoted in writing. Copy, design, and code by the same small team.',
   },
   {
-    title: 'Hosting & Monitoring',
-    body: 'Managed hosting, uptime monitoring, and performance checks so the site stays fast.',
+    title: 'Care Plan',
+    body: 'A monthly plan for sites we build. Updates, hosting, monitoring, and priority support.',
+    href: '/care',
   },
   {
-    title: 'Security & Backups',
-    body: 'Dependency updates, SSL, and automatic backups. If something breaks, we fix it.',
+    title: 'Enterprise',
+    body: 'Rebuilds and ongoing management for high-traffic sites. A senior team with response times in the agreement.',
+    href: '/enterprise',
   },
   {
-    title: 'Priority Support',
-    body: 'One point of contact. The people who built your site answer the email.',
+    title: 'Systems',
+    body: 'Storage, software, and workflows reviewed and rebuilt around how your team actually works.',
+    href: '/systems',
   },
 ];
 ---
 
 <Base
-  title="Services | Griffith Creative | Custom Web Design & Development"
-  description="Custom website design and development, scoped to your business. Ongoing care and enterprise partnerships available. Book a call to get started."
+  title="Services | Griffith Creative"
+  description="Websites designed, built, and looked after in house, and two services for companies with more than a website to run. Griffith Creative, Los Angeles."
 >
-  <!-- Header -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl md:text-7xl tracking-tight mb-6">
-        Services
-      </h1>
-      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl">
-        Every engagement is scoped to your business, not a page count. Design, build, ongoing care, and enterprise partnerships. Book a call and we'll map out the right fit.
+  <section class="hero">
+    <div class="container-site">
+      <p class="eyebrow mb-7">Services</p>
+      <h1 class="h1 mb-7">Design, build, care.</h1>
+      <p class="lede">
+        Websites designed, built, and looked after in house, and two services for companies with more than a website to run.
       </p>
     </div>
   </section>
 
-  <!-- Design & Build -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div>
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-            Core Offering
-          </p>
-          <h2 class="text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6 text-balance">
-            Custom Design & Build
-          </h2>
-          <p class="text-offwhite-muted text-lg leading-relaxed mb-8">
-            One team designs, writes, and ships your site. We scope around your goals and your customers, whether that's a five-page presence or a full platform with integrations. You'll know the scope and the number before we start.
-          </p>
-          <a
-            href="/contact"
-            class="inline-block border border-offwhite/30 text-offwhite font-semibold px-8 py-4 rounded hover:border-offwhite/60 transition-colors"
-          >
-            Get a Quote
-          </a>
-        </div>
-
-        <ul>
-          {buildIncludes.map((item) => (
-            <li class="border-t border-offwhite/15 py-4 text-sm text-offwhite-muted">
-              {item}
-            </li>
-          ))}
-        </ul>
+  <section class="section">
+    <div class="container-site">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {offers.map((o) => (
+          <div>
+            <h2 class="text-xl font-semibold mb-3">
+              {o.href ? <a href={o.href} class="hover:text-accent transition-colors">{o.title}</a> : o.title}
+            </h2>
+            <p class="text-offwhite-muted leading-[1.65]">{o.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Enterprise -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-        Enterprise
-      </p>
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6 max-w-3xl">
-        For sites that are infrastructure.
-      </h2>
-      <p class="text-offwhite-muted text-lg leading-relaxed max-w-2xl mb-8">
-        High-traffic sites, legacy platform migrations, and ongoing partnerships with a dedicated team. If your website carries the business, we have a practice built for that.
-      </p>
-      <a
-        href="/enterprise"
-        class="text-offwhite text-lg underline decoration-accent underline-offset-8 hover:text-accent transition-colors"
-      >
-        Enterprise Partnerships
-      </a>
+  <section class="section">
+    <div class="container-site">
+      <p class="statement">Everything is scoped in writing before it starts. Everything we build is yours.</p>
     </div>
   </section>
 
-  <!-- Care Plan -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div>
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-            Optional Add-On
-          </p>
-          <h2 class="text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6">
-            Care Plan
-          </h2>
-          <p class="text-offwhite-muted text-lg leading-relaxed">
-            Your site launches complete. The Care Plan keeps it fast, current, and secure, with updates handled by the people who built it. Monthly, scoped to your site. Book a call to learn more.
-          </p>
-        </div>
-
-        <div>
-          {carePlan.map((item) => (
-            <div class="border-t border-offwhite/15 py-5">
-              <h3 class="text-offwhite text-lg mb-2">{item.title}</h3>
-              <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Standard on every project -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-        Standard, Not Add-Ons
-      </p>
-      <p class="text-offwhite text-2xl md:text-3xl leading-snug tracking-tight max-w-4xl text-pretty">
-        Every build ships with high-90s Lighthouse scores we measure before launch, HTTPS with hardened headers, WCAG-informed markup, and edge deployment on a global CDN.
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6 text-balance">
-        We'll scope it with you.
-      </h2>
-      <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        Book a discovery call. We'll look at your current site, discuss your goals, and map the right engagement. No pressure, no pitch deck.
-      </p>
-      <a
-        href="/contact"
-        class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
-      >
-        Book a Call
-      </a>
+  <section class="section py-24 md:py-32">
+    <div class="container-site">
+      <h2 class="h2-close mb-8">Tell us what you need.</h2>
+      <a href="/contact" class="btn btn-primary">Book a call</a>
     </div>
   </section>
 </Base>

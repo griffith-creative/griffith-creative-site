@@ -1,141 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const approach = [
-  {
-    title: 'Performance-Obsessed',
-    body: 'Every site we build ships with high-90s Lighthouse scores, measured before launch. Static-first architecture, edge deployment, and modern image formats. Your visitors get a fast experience. Google rewards you with better rankings.',
-  },
-  {
-    title: 'Built to Be Found',
-    body: "Search visibility isn't a bolt-on. It's how we structure every site from the ground up: semantic HTML, proper heading hierarchy, schema markup, optimized meta tags, and content that answers what your prospects are searching for.",
-  },
-  {
-    title: 'Built for Business Owners',
-    body: 'We build websites for businesses that depend on trust and reputation. That focus means we understand what your customers expect, how they search, and what makes them pick up the phone or fill out a form.',
-  },
-];
-
-const values = [
-  {
-    title: 'Transparent Pricing',
-    body: "You'll know exactly what you're paying before we write a single line of code. The quote is the price.",
-  },
-  {
-    title: 'Speed Without Sacrifice',
-    body: 'We deliver in weeks, and every site is code-reviewed, performance-tested, and quality-checked before launch. Fast describes the process, not the standard.',
-  },
-  {
-    title: 'Minimal Client Overhead',
-    body: "You're busy running a business. One discovery call, a review cycle, and you're live. Your time goes into decisions, not meetings.",
-  },
-  {
-    title: 'Results Over Aesthetics',
-    body: "Your site should look great, and it will. But design awards don't pay the bills. We optimize for the metrics that matter: rankings, traffic, and conversions.",
-  },
-];
 ---
 
 <Base
-  title="About | Griffith Creative | Boutique Web Design Studio"
-  description="Griffith Creative is a boutique web design studio based in Los Angeles, working worldwide. Senior work, direct access, agency-grade websites without agency overhead."
+  title="About | Griffith Creative"
+  description="Griffith Creative is a web design and infrastructure firm founded in Los Angeles in 2020. We design, build, and run sites for companies around the world, and review the systems behind them."
 >
-  <!-- Header -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl md:text-7xl tracking-tight mb-8 max-w-4xl leading-[0.95]">
-        A small studio built for serious work.
-      </h1>
-      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl">
-        Griffith Creative is a boutique web design studio based in Los Angeles, serving businesses across the country. Small by design: the people you talk to are the people who design, write, and build your site.
+  <section class="hero">
+    <div class="container-site">
+      <p class="eyebrow mb-7">About</p>
+      <h1 class="h1 mb-7">Los Angeles, since 2020.</h1>
+      <p class="lede">
+        Griffith Creative started out building websites for people we knew. Today we design, build, and run sites for companies around the world, and review the systems behind them.
       </p>
     </div>
   </section>
 
-  <!-- Story -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-        <div>
-          <h2 class="text-3xl md:text-4xl tracking-tight mb-6">The problem we saw.</h2>
-          <p class="text-offwhite-muted text-base leading-relaxed mb-4">
-            Businesses at every size were getting squeezed. Big agencies charge tens of thousands for websites that take three to six months to deliver. Freelancers are cheaper but unreliable. DIY builders look cheap and rank poorly.
-          </p>
-          <p class="text-offwhite-muted text-base leading-relaxed">
-            The result? Businesses stuck with outdated websites that don't generate leads, don't rank in search, and don't reflect the quality of the work they do.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-3xl md:text-4xl tracking-tight mb-6">What we do about it.</h2>
-          <p class="text-offwhite-muted text-base leading-relaxed mb-4">
-            We built Griffith Creative around one idea: modern tools in senior hands deliver the caliber of work large agencies produce, faster and without the overhead.
-          </p>
-          <p class="text-offwhite-muted text-base leading-relaxed">
-            The savings come from cutting overhead, not corners. Every project gets direct access to the people doing the work, a tight scope, and a build that ships.
-          </p>
-        </div>
-      </div>
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">How we work</h2>
+      <p class="para">
+        Senior people on every job, with no account layer between you and the work. A written scope and a fixed price before anything starts. Code, domain, hosting, and accounts in your name from day one. Every site measured before it goes live.
+      </p>
     </div>
   </section>
 
-  <!-- Approach -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-        Our Approach
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">What we build on</h2>
+      <p class="para">
+        Static-first sites served from a global edge network. Object storage for archives. Email on your own domain. And whatever your business already runs on: booking, CRM, e-commerce, accounting. We integrate rather than replace.
       </p>
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-16 max-w-3xl">
-        Modern tools. Human judgment.
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
-        {approach.map((item) => (
-          <div class="border-t border-offwhite/15 pt-6">
-            <h3 class="text-offwhite text-xl mb-3">{item.title}</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
-  <!-- Values -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-        What We Stand For
-      </p>
-      <h2 class="text-3xl md:text-4xl tracking-tight mb-12 max-w-3xl">
-        Principles over process.
-      </h2>
-
-      <div class="max-w-3xl space-y-8">
-        {values.map((item) => (
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">{item.title}</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
-        Let's build yours.
-      </h2>
-      <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        A conversation about what your business needs and how we get there.
-      </p>
-      <a
-        href="/contact"
-        class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
-      >
-        Start a Conversation
-      </a>
+  <section class="section py-24 md:py-32">
+    <div class="container-site">
+      <h2 class="h2-close mb-8">Start with a call.</h2>
+      <a href="/contact" class="btn btn-primary">Book a call</a>
     </div>
   </section>
 </Base>

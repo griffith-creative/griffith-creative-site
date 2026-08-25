@@ -13,12 +13,13 @@ const { title, description, canonical, noindex = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/enterprise', label: 'Enterprise' },
+  { href: '/systems', label: 'Systems' },
   { href: '/about', label: 'About' },
 ];
+const footerLinks = [...navLinks, { href: '/contact', label: 'Contact' }, { href: '/care', label: 'Care Plan' }, { href: '/process', label: 'Process' }, { href: '/privacy', label: 'Privacy' }];
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -28,7 +29,7 @@ const orgJsonLd = {
   logo: 'https://www.griffithcreative.co/icon-512.png',
   image: 'https://www.griffithcreative.co/og-image.png',
   description:
-    'Web design for growing businesses and established brands. Based in Los Angeles, working worldwide.',
+    'Griffith Creative is a web design and infrastructure firm in Los Angeles. We design and build websites, keep them running, and help companies build the systems they run on. Working worldwide.',
   email: 'hello@griffithcreative.co',
   telephone: '+1-310-818-3092',
   foundingDate: '2020',
@@ -113,12 +114,7 @@ const websiteJsonLd = {
               {link.label}
             </a>
           ))}
-          <a
-            href="/contact"
-            class="text-sm font-semibold text-accent whitespace-nowrap hover:text-accent-hover transition-colors"
-          >
-            Get Started
-          </a>
+          <a href="/contact" class="btn btn-primary !py-2.5 !px-5 text-sm">Book a call</a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -151,12 +147,7 @@ const websiteJsonLd = {
               {link.label}
             </a>
           ))}
-          <a
-            href="/contact"
-            class="text-base font-semibold text-accent hover:text-accent-hover transition-colors"
-          >
-            Get Started
-          </a>
+          <a href="/contact" class="btn btn-primary self-start">Book a call</a>
         </div>
       </div>
     </nav>
@@ -168,41 +159,18 @@ const websiteJsonLd = {
 
     <!-- Footer -->
     <footer class="border-t border-offwhite/10">
-      <div class="max-w-6xl mx-auto px-6 py-20">
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
-          <div class="min-w-0">
-            <div class="flex items-center gap-3 mb-6">
-              <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-10 h-10"><path fill="#C9A84C" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
-              <span class="text-offwhite font-wordmark text-lg">Griffith Creative</span>
-            </div>
-            <a
-              href="mailto:hello@griffithcreative.co"
-              class="font-wordmark text-[clamp(1.25rem,6.4vw,3rem)] tracking-tight text-offwhite hover:text-accent transition-colors"
-            >
-              hello@griffithcreative.co
-            </a>
-          </div>
-          <div class="shrink-0 lg:text-right">
-            <a href="tel:+13108183092" class="block font-mono text-offwhite text-sm hover:text-accent transition-colors mb-3">+1 (310) 818-3092</a>
-            <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest whitespace-nowrap">
-              Los Angeles, CA &middot; Since 2020
-            </p>
-          </div>
+      <div class="container-site pt-10 pb-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <nav aria-label="Footer" class="flex flex-wrap gap-x-7 gap-y-3">
+            {footerLinks.map((link) => (
+              <a href={link.href} class="text-sm text-offwhite-muted hover:text-offwhite transition-colors">{link.label}</a>
+            ))}
+          </nav>
+          <a href="mailto:hello@griffithcreative.co" class="text-sm font-medium text-offwhite hover:text-accent transition-colors">hello@griffithcreative.co</a>
         </div>
-
-        <nav aria-label="Footer" class="border-t border-offwhite/10 mt-14 pt-8 flex flex-wrap gap-x-8 gap-y-3">
-          {[...navLinks.slice(1), { href: '/contact', label: 'Contact' }].map((link) => (
-            <a href={link.href} class="text-sm text-offwhite-muted hover:text-offwhite transition-colors">{link.label}</a>
-          ))}
-        </nav>
-
-        <div class="mt-10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="font-mono text-offwhite-muted text-xs">
-            &copy; {new Date().getFullYear()} Griffith Creative
-          </p>
-          <a href="/privacy" class="font-mono text-offwhite-muted text-xs hover:text-offwhite transition-colors">
-            Privacy Policy
-          </a>
+        <div class="mt-8 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
+          <p>Los Angeles &middot; Worldwide &middot; Since 2020</p>
+          <p>&copy; {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>

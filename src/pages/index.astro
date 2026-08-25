@@ -1,177 +1,78 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const offers = [
+  {
+    title: 'Design and build',
+    body: 'Custom websites, designed and written in house, built on a static-first stack and served from the edge.',
+    href: '/services',
+  },
+  {
+    title: 'Enterprise',
+    body: 'Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them.',
+    href: '/enterprise',
+  },
+  {
+    title: 'Systems',
+    body: 'Systems that fit how a company actually works. Storage, software, and the workflows between them, reviewed and rebuilt around the team.',
+    href: '/systems',
+  },
+];
 ---
 
 <Base
-  title="Griffith Creative | Web Design for Growing Businesses"
-  description="Griffith Creative builds high-performance websites for growing businesses and established brands. Fast delivery, honest pricing, built to rank. Based in Los Angeles, working worldwide."
+  title="Griffith Creative | Web Design and Infrastructure, Los Angeles"
+  description="Griffith Creative is a web design and infrastructure firm in Los Angeles. We design and build websites, keep them running, and help companies build the systems they run on. Working worldwide."
 >
-  <!-- Hero -->
-  <section class="min-h-[90vh] flex items-center">
-    <div class="max-w-6xl mx-auto px-6 py-24 w-full">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
-        Based in Los Angeles. Working worldwide.
+  <section class="hero">
+    <div class="container-site">
+      <p class="eyebrow mb-7">Los Angeles &middot; Worldwide</p>
+      <h1 class="h1 mb-7">We design websites<br class="hidden md:inline" /> and keep them running.</h1>
+      <p class="lede mb-8">
+        Griffith Creative is a web design and infrastructure firm in Los Angeles. We build sites for companies that depend on them, and we look after what sits behind them.
       </p>
-      <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-10 max-w-6xl">
-        Websites that look<br />
-        <span class="text-accent">as good as they work.</span>
-      </h1>
-      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-12">
-        We build websites for growing businesses and established brands. What traditional agencies take months to deliver, we ship in weeks, without the agency bloat.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a
-          href="/contact"
-          class="border border-offwhite/30 text-offwhite font-semibold px-8 py-4 rounded text-center hover:border-offwhite/60 transition-colors"
-        >
-          Start Your Project
-        </a>
-        <a
-          href="/enterprise"
-          class="border border-accent/40 text-accent font-semibold px-8 py-4 rounded text-center hover:border-accent transition-colors"
-        >
-          Enterprise Solutions
-        </a>
+      <div class="flex flex-wrap gap-3">
+        <a href="/contact" class="btn btn-primary">Book a call</a>
+        <a href="/work" class="btn btn-secondary">See our work</a>
       </div>
     </div>
   </section>
 
-  <!-- The argument -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-4xl mb-20">
-        <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-8">
-          Most agency websites are overpriced and underbuilt.
-        </h2>
-        <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl">
-          You've seen the pitch: months of process, layers of account management, and a site that loads slower than your patience runs out. Your customers are searching for you right now. They're finding your competitors instead.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
-        <div class="border-t border-offwhite/15 pt-6">
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">Delivery</p>
-          <h3 class="text-offwhite text-2xl mb-3">Weeks, not months</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            We scope tight, build fast, and launch on schedule. Your site goes live while competitors are still in discovery.
-          </p>
-        </div>
-
-        <div class="border-t border-offwhite/15 pt-6">
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">Pricing</p>
-          <h3 class="text-offwhite text-2xl mb-3">Quoted up front</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            You know the scope and the number before we start. Modern tooling keeps our overhead low, and the price honest.
-          </p>
-        </div>
-
-        <div class="border-t border-offwhite/15 pt-6">
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-4">Search</p>
-          <h3 class="text-offwhite text-2xl mb-3">Built to be found</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Clean structure, schema markup, and semantic HTML, so the site ranks on Google and gets cited by AI search engines from day one.
-          </p>
-        </div>
+  <section class="section">
+    <div class="container-site">
+      <h2 class="h2 mb-10">What we do</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        {offers.map((o) => (
+          <div>
+            <h3 class="text-xl font-semibold mb-3"><a href={o.href} class="hover:text-accent transition-colors">{o.title}</a></h3>
+            <p class="text-offwhite-muted leading-[1.65]">{o.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Who We Work With -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div>
-          <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
-            Who We Work With
-          </p>
-          <h2 class="text-3xl md:text-5xl leading-[1.05] tracking-tight mb-6 text-balance">
-            Businesses that need to be found and trusted online.
-          </h2>
-          <p class="text-offwhite-muted text-lg leading-relaxed">
-            Your customers decide whether to trust you before they ever pick up the phone. We build digital presences that earn that trust: clean, professional, and optimized to convert.
-          </p>
-        </div>
-
-        <div class="space-y-8">
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Service Businesses</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              From professional practices to home services. If your business depends on trust and reputation, your website needs to reflect that. We build sites that convert visitors into clients.
-            </p>
-          </div>
-
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Local Businesses</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              Brick-and-mortar shops, multi-location operators, and local service providers. We build websites that put you on the map and close the deal.
-            </p>
-          </div>
-
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Growing Companies</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              B2B firms, consultancies, and startups that have outgrown their DIY website and need a digital presence that matches the caliber of their work.
-            </p>
-          </div>
-
-          <div class="border-l-2 border-accent pl-6">
-            <h3 class="text-offwhite text-lg mb-2">Established Brands</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">
-              High-traffic sites with real stakes: legacy platforms to migrate, infrastructure to modernize, and teams that need a partner on call. <a href="/enterprise" class="text-offwhite underline decoration-accent underline-offset-4 hover:text-accent transition-colors">See our enterprise practice</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="border-t border-offwhite/10 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-16">
-        How It Works
+  <section class="section">
+    <div class="container-site">
+      <p class="statement">
+        Every project starts with a call and a written scope. You own the code, the domain, and the accounts. After launch we monitor it, patch it, and pick up the phone.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
-        <div class="border-t border-offwhite/15 pt-6">
-          <h3 class="text-offwhite text-2xl mb-3">Discovery Call</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            A 15-minute call to understand your business, your customers, and your goals. We'll define scope and timeline on the spot.
-          </p>
-        </div>
-
-        <div class="border-t border-offwhite/15 pt-6">
-          <h3 class="text-offwhite text-2xl mb-3">Build & Review</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            We build your site and send a working preview within days. Revision rounds are included. You stay focused on your business while we handle the rest.
-          </p>
-        </div>
-
-        <div class="border-t border-offwhite/15 pt-6">
-          <h3 class="text-offwhite text-2xl mb-3">Launch & Grow</h3>
-          <p class="text-offwhite-muted text-sm leading-relaxed">
-            Your site goes live, built to rank from day one. Need ongoing support after launch? Our Care Plan covers it.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
-        Your website should be<br />your best salesperson.
-      </h2>
-      <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        Tell us what you're building. We'll tell you exactly how we'd ship it.
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">Who we build for</h2>
+      <p class="para">
+        Music and entertainment. Home, trade and construction. Professional and financial services. Retail and product. Those are where most of our work has been, and the same approach carries to any company that depends on its website.
       </p>
-      <a
-        href="/contact"
-        class="inline-block bg-accent text-dark font-bold px-10 py-4 rounded hover:bg-accent-hover transition-colors text-lg"
-      >
-        Let's Talk
-      </a>
+    </div>
+  </section>
+
+  <section class="section py-24 md:py-32">
+    <div class="container-site">
+      <h2 class="h2-close mb-8">Start with a call.</h2>
+      <a href="/contact" class="btn btn-primary">Book a call</a>
     </div>
   </section>
 </Base>
