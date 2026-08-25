@@ -18,29 +18,30 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="section">
-    <div class="container-site two-col">
-      <h2 class="h2">What we take on</h2>
-      <p class="para">
-        A rebuild of the site, a migration off whatever it runs on now, and management once it is live. Peak load is the design target: launches, press, seasonal demand, live events. The senior people who build it stay on it afterwards, through ongoing development, content operations, monitoring, and security patching.
-      </p>
+    <div class="container-site">
+      <div class="stacked">
+        <h2 class="h2">What we take on</h2>
+        <p class="para">
+          A rebuild of the site, a migration off whatever it runs on now, and management once it is live. Peak load is the design target: launches, press, seasonal demand, live events. The senior people who build it stay on it afterwards, through ongoing development, content operations, monitoring, and security patching.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container-site two-col">
-      <h2 class="h2">The audit</h2>
-      <p class="para">
-        Old platforms accumulate cost the way they accumulate tech debt: hosting contracts, redundant delivery layers, extended support for end-of-life software, licenses for services you stopped using years ago, and a retainer to keep it all standing. We map every contract, license, and dependency in the current stack and show you what each one is for, before anything is rebuilt.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container-site two-col">
-      <h2 class="h2">The rebuild</h2>
-      <p class="para">
-        Static-first architecture served from a global edge network, faster under load and more secure by default. Your data relationships, your measurement, and your content library come across with it. End-of-life software, unpatched dependencies, missing consent management, and accessibility gaps are closed as part of the work.
-      </p>
+    <div class="container-site grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+      <div>
+        <h2 class="text-xl font-semibold mb-3">The audit</h2>
+        <p class="text-offwhite-muted leading-[1.65]">
+          Old platforms accumulate cost the way they accumulate tech debt: hosting contracts, redundant delivery layers, extended support for end-of-life software, and licenses for services you stopped using years ago. We map every contract, license, and dependency and show you what each one is for, before anything is rebuilt.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold mb-3">The rebuild</h2>
+        <p class="text-offwhite-muted leading-[1.65]">
+          Static-first architecture served from a global edge network, faster under load and more secure by default. Your data relationships, your measurement, and your content library come across with it. End-of-life software, unpatched dependencies, and accessibility gaps are closed as part of the work.
+        </p>
+      </div>
     </div>
   </section>
 
