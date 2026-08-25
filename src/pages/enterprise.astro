@@ -3,49 +3,60 @@ import Base from '../layouts/Base.astro';
 
 const partnership = [
   {
-    title: 'Built to Scale',
-    body: "Traffic spikes shouldn't be a fire drill. We architect for peak load: product launches, press mentions, seasonal demand, live events. Your site holds up when it matters most, not just on a quiet Tuesday.",
+    title: 'Built to scale',
+    body: 'Peak load is the design target: launches, press, seasonal demand, live events. The site holds when it matters, not just on a quiet Tuesday.',
   },
   {
-    title: 'A Team, Not a Ticket Queue',
-    body: "You get a small senior team that knows your business, your stack, and your goals. Not a rotating cast filing support tickets. Priority response, direct access, and the people you talk to are the people who build.",
+    title: 'A team, not a ticket queue',
+    body: 'A small senior team that knows your business and your stack. The people you talk to are the people who build.',
   },
   {
-    title: 'Full-Lifecycle Management',
-    body: 'Redesign is the starting point, not the whole engagement. We handle ongoing development, content operations, performance monitoring, security patching, and continuous optimization, so your team can focus on the business.',
+    title: 'Full-lifecycle management',
+    body: 'Redesign is the starting point. Ongoing development, content operations, monitoring, security patching, and the operational side once the audit is done.',
   },
   {
-    title: 'Modern Infrastructure, Migrated Cleanly',
-    body: "Legacy CMS. Years of accumulated tech debt. Third-party scripts nobody remembers adding. We audit what's running under the hood and migrate you to a modern, fast, secure stack without breaking what works.",
+    title: 'Security and compliance',
+    body: 'End-of-life software, unpatched dependencies, missing consent management, accessibility gaps. Closed as part of the rebuild, not billed as extras.',
+  },
+];
+
+const auditAreas = [
+  {
+    title: 'Storage & archive',
+    body: 'Years of files in Drive or Dropbox, every one billed at active rates. We move the archive to object storage with a dashboard your team can search, and leave the working files where they are.',
   },
   {
-    title: 'Security & Compliance',
-    body: 'End-of-life software, unpatched dependencies, missing consent management, accessibility gaps. We close them as part of the rebuild: current platforms, hardened headers, privacy compliance, and WCAG-informed markup on every page.',
+    title: 'Software sprawl',
+    body: 'Seats nobody uses, three tools doing one job, licenses renewing on autopilot. We inventory every subscription, tie it to a person and a purpose, and cut the dead weight.',
   },
   {
-    title: 'Search & AI Visibility at Scale',
-    body: 'Clean structure, schema, and semantic markup across your entire site, not just the homepage. You keep showing up in Google and get cited correctly by AI search engines as your business grows.',
+    title: 'Workflow',
+    body: 'The hand-offs between tools are where the hours go. We trace how work actually moves through the company and replace the duct tape with something that runs on its own.',
   },
 ];
 ---
 
 <Base
-  title="Enterprise — Griffith Creative | High-Traffic Website Partnerships"
-  description="Griffith Creative designs, rebuilds, and manages high-traffic websites for established companies. Legacy migrations, modern infrastructure, and a dedicated team, without enterprise bloat."
+  title="Enterprise — Griffith Creative | Web Partnerships and Operations Audits"
+  description="Griffith Creative designs, rebuilds, and manages high-traffic websites, and audits the storage, software, and workflows established companies run on. Modern infrastructure without enterprise bloat."
 >
   <!-- Hero -->
   <section class="min-h-[80vh] flex items-center">
     <div class="max-w-6xl mx-auto px-6 py-24 w-full">
       <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
-        Enterprise Web Partnerships
+        Enterprise Partnerships
       </p>
       <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-10 max-w-6xl">
-        Built for the sites that<br />
-        <span class="text-accent">can't afford to go down.</span>
+        Built for the companies<br />
+        <span class="text-accent">that can't afford to go down.</span>
       </h1>
       <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-2xl mb-12">
-        When traffic spikes, deadlines don't move, and stakeholders are watching, your website has to hold. We design, rebuild, and manage high-traffic websites for established companies that need enterprise reliability without enterprise bloat.
+        When traffic spikes, deadlines don't move, and stakeholders are watching, everything has to hold: the website, the storage, the tools your team runs on. We audit, rebuild, and manage the infrastructure established companies depend on, without enterprise bloat.
       </p>
+      <ul class="flex flex-wrap gap-3 mb-12" aria-label="Tracks">
+        <li class="font-mono text-xs text-offwhite-muted border border-offwhite/15 rounded-full px-4 py-2">Web Partnerships</li>
+        <li class="font-mono text-xs text-offwhite-muted border border-offwhite/15 rounded-full px-4 py-2">Operations Audit</li>
+      </ul>
       <a
         href="/contact"
         class="inline-block border border-accent/40 text-accent font-semibold px-8 py-4 rounded hover:border-accent transition-colors"
@@ -107,18 +118,42 @@ const partnership = [
     </div>
   </section>
 
+  <!-- Operations Audit -->
+  <section class="border-t border-offwhite/10 py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-6">
+        Operations Audit
+      </p>
+      <h2 class="text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6 max-w-3xl text-balance">
+        Your operation costs more than it should to run.
+      </h2>
+      <p class="text-offwhite-muted text-lg leading-relaxed max-w-3xl mb-16">
+        The same audit, applied to the whole organisation. Storage, software seats, and the workflows between them accumulate cost the way a legacy website does: nobody chose it, it grew. We map what you're paying for, show what each line is doing, and rebuild the parts that shouldn't cost what they cost.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+        {auditAreas.map((item) => (
+          <div class="border-t border-offwhite/15 pt-6">
+            <h3 class="text-offwhite text-xl mb-3">{item.title}</h3>
+            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Partnership -->
   <section class="border-t border-offwhite/10 py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-16">
+      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
         What Partnership Looks Like
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+      <div class="divide-y divide-offwhite/15 border-t border-offwhite/15">
         {partnership.map((item) => (
-          <div class="border-t border-offwhite/15 pt-6">
-            <h3 class="text-offwhite text-xl mb-3 md:min-h-[4rem]">{item.title}</h3>
-            <p class="text-offwhite-muted text-sm leading-relaxed">{item.body}</p>
+          <div class="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,4fr)] gap-x-12 gap-y-2 py-7">
+            <h3 class="text-offwhite text-xl">{item.title}</h3>
+            <p class="text-offwhite-muted leading-relaxed">{item.body}</p>
           </div>
         ))}
       </div>
@@ -132,7 +167,7 @@ const partnership = [
         What We Commit To
       </p>
       <p class="text-offwhite text-2xl md:text-3xl leading-snug tracking-tight max-w-4xl text-pretty">
-        Uptime and performance monitoring on every site we manage. A response within one business day, usually much sooner. High-90s Lighthouse scores we measure before launch. And every commitment written into the agreement, not implied on a landing page.
+        Uptime and performance monitoring on every site we manage. A response within one business day, usually much sooner. High-90s Lighthouse scores we measure before launch. Every saving from an operations audit verified against the invoices, not estimated. And every commitment written into the agreement, not implied on a landing page.
       </p>
     </div>
   </section>
@@ -141,10 +176,10 @@ const partnership = [
   <section class="border-t border-offwhite/10 py-32">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
-        Bring us the site<br />you can't afford to break.
+        Bring us the site, or the stack,<br />you can't afford to break.
       </h2>
       <p class="text-offwhite-muted text-lg max-w-2xl mx-auto mb-10">
-        The audit comes first: performance, structure, security, and cost, mapped before you commit to anything. You'll know exactly what you're deciding on.
+        The audit comes first: performance, structure, security, storage, software, and cost, mapped before you commit to anything. You'll know exactly what you're deciding on.
       </p>
       <a
         href="/contact"
