@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import CalEmbed from '../components/CalEmbed.astro';
+import { signToken } from './api/contact';
+
+export const prerender = false;
+const formToken = signToken(Date.now());
 ---
 
 <Base
@@ -48,6 +52,7 @@ import CalEmbed from '../components/CalEmbed.astro';
           <label for="company-website">Company website</label>
           <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
         </div>
+        <input type="hidden" name="t" value={formToken} />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
