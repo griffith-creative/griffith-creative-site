@@ -15,7 +15,7 @@
 - [Work](https://www.griffithcreative.co/work): Industries we build for, with examples.
 - [Process](https://www.griffithcreative.co/process): How an engagement runs.
 - [About](https://www.griffithcreative.co/about)
-- [Contact](https://www.griffithcreative.co/contact): Book a thirty-minute call or send a message.
+- [Contact](https://www.griffithcreative.co/contact): Book a fifteen-minute call or send a message.
 - [Privacy](https://www.griffithcreative.co/privacy)
 
 ## Contact
