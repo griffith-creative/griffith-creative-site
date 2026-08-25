@@ -106,8 +106,14 @@ const formToken = signToken(Date.now());
           <textarea id="message" name="message" rows="5" placeholder="Tell us about the site or the system." class="field"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary px-12">Send</button>
+        <button type="submit" class="btn btn-primary px-12" data-submit>Send</button>
       </form>
+      <script is:inline>
+        document.querySelector('form[name=contact]')?.addEventListener('submit', (e) => {
+          const b = e.currentTarget.querySelector('[data-submit]');
+          if (b) { b.disabled = true; b.textContent = 'Sending'; }
+        });
+      </script>
     </div>
   </section>
 </Base>

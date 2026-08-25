@@ -82,35 +82,12 @@
     letter-spacing: -0.01em;
   }
 
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-  .fade-in-delay-4 { transition-delay: 0.4s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .fade-in {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
 }
 
 @layer components {
   .container-site { @apply max-w-6xl mx-auto px-6; }
   .section { @apply border-t border-offwhite/10 py-16 md:py-24; }
-  .hero { @apply pt-20 pb-16 md:pt-28 md:pb-24; }
+  .hero { @apply pt-16 pb-16 md:pt-24 md:pb-24; }
   .eyebrow { @apply text-accent text-xs font-semibold uppercase tracking-[0.12em]; }
   .h1 { @apply text-[clamp(2.5rem,6vw,4.75rem)] leading-[1] tracking-[-0.02em] text-balance; }
   .h2 { @apply text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.05] tracking-[-0.015em]; }
@@ -119,7 +96,7 @@
   .para { @apply text-offwhite-muted text-lg leading-[1.65] max-w-2xl; }
   .statement { @apply text-2xl md:text-3xl leading-[1.45] max-w-4xl text-pretty; }
   .two-col { @apply grid grid-cols-1 lg:grid-cols-[400px_minmax(0,640px)] gap-6 lg:gap-20 items-start; }
-  .btn { @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-semibold transition-colors whitespace-nowrap; }
+  .btn { @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-semibold transition-[color,background-color,border-color,transform] active:scale-[0.98] whitespace-nowrap disabled:opacity-60 disabled:pointer-events-none; }
   .btn-primary { @apply bg-accent text-dark hover:bg-accent-hover; }
   .btn-secondary { @apply border border-offwhite/15 text-offwhite hover:border-offwhite/40; }
   .field-label { @apply block font-mono text-[11px] uppercase tracking-[0.06em] text-offwhite-muted mb-2; }

@@ -169,7 +169,7 @@ const websiteJsonLd = {
           </nav>
         </div>
         <div class="mt-10 md:mt-8 pt-6 md:pt-0 border-t md:border-t-0 border-offwhite/10 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
-          <p>Los Angeles &middot; Worldwide &middot; Since 2020</p>
+          <p>Los Angeles, working worldwide &middot; Since 2020</p>
           <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy" class="hover:text-offwhite transition-colors">Privacy</a></p>
         </div>
       </div>
@@ -195,20 +195,5 @@ const websiteJsonLd = {
       });
     </script>
 
-    <!-- Scroll Animation Script -->
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-
-      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-    </script>
   </body>
 </html>
