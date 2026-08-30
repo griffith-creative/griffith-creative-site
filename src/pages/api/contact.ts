@@ -39,6 +39,9 @@ const TO_ADDRESS = process.env.CONTACT_TO_ADDRESS ?? 'hello@griffithcreative.co'
 const FROM_ADDRESS =
   process.env.CONTACT_FROM_ADDRESS ?? 'Griffith Creative <onboarding@resend.dev>';
 
+const SERVICES = new Set(['design-build', 'enterprise', 'systems', 'care', 'not-sure']);
+const BUDGETS = new Set(['under-10k', '10-25k', '25-75k', '75k-plus', 'not-sure']);
+
 const escape = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
 
@@ -74,6 +77,11 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const message = (data.get('message') ?? '').toString().trim();
 
   if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return redirect('/contact?error=1', 303);
+  }
+
+  // The two qualifying selects are required in the markup; enforce it here too.
+  if (!SERVICES.has(service) || !BUDGETS.has(budget)) {
     return redirect('/contact?error=1', 303);
   }
 

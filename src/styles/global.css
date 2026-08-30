@@ -103,5 +103,5 @@
   .btn-primary { @apply bg-accent text-dark hover:bg-accent-hover; }
   .btn-secondary { @apply border border-offwhite/15 text-offwhite hover:border-offwhite/40; }
   .field-label { @apply block font-mono text-[11px] uppercase tracking-[0.06em] text-offwhite-muted mb-2; }
-  .field { @apply w-full bg-dark-secondary border border-offwhite/10 rounded-lg px-3.5 py-3 text-offwhite placeholder:text-offwhite-muted/70 focus:outline-none focus:border-accent; }
+  .field { @apply w-full bg-dark-secondary border border-offwhite/40 rounded-lg px-3.5 py-3 text-offwhite placeholder:text-offwhite-muted/70 focus-visible:border-accent; }
 }

@@ -71,7 +71,7 @@ const formToken = signToken(Date.now());
             <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company" class="field" />
           </div>
           <div>
-            <label for="phone" class="field-label">Phone <span class="text-offwhite-muted/60">optional</span></label>
+            <label for="phone" class="field-label">Phone <span class="text-offwhite-muted">optional</span></label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1" class="field" />
           </div>
         </div>
@@ -79,7 +79,7 @@ const formToken = signToken(Date.now());
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label for="service" class="field-label">What do you need</label>
-            <select id="service" name="service" class="field">
+            <select id="service" name="service" required class="field">
               <option value="">Select</option>
               <option value="design-build">Design and build</option>
               <option value="enterprise">Enterprise</option>
@@ -90,7 +90,7 @@ const formToken = signToken(Date.now());
           </div>
           <div>
             <label for="budget" class="field-label">Budget</label>
-            <select id="budget" name="budget" class="field">
+            <select id="budget" name="budget" required class="field">
               <option value="">Select a range</option>
               <option value="under-10k">Under $10k</option>
               <option value="10-25k">$10k to $25k</option>
