@@ -1,29 +1,14 @@
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
-import { createHmac, timingSafeEqual } from 'node:crypto';
+import { tokenOk } from '../../lib/form-token';
 
 export const prerender = false;
 
-// Abuse controls without a shared store: a signed timestamp on the form (rejects instant
-// bot submits and stale replays) plus a per-instance IP throttle. Upgrade path is Turnstile.
-const SECRET = process.env.CONTACT_FORM_SECRET ?? process.env.RESEND_API_KEY ?? 'dev';
-const MIN_FILL_MS = 3000;
-const MAX_AGE_MS = 2 * 60 * 60 * 1000;
+// Abuse controls without a shared store: the signed timestamp from /api/form-token plus a
+// per-instance IP throttle. Upgrade path is Turnstile.
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
 const hits = new Map<string, number[]>();
-
-export const signToken = (ts: number) => `${ts}.${createHmac('sha256', SECRET).update(String(ts)).digest('hex')}`;
-
-const tokenOk = (token: string) => {
-  const [tsRaw, sig] = token.split('.');
-  const ts = Number(tsRaw);
-  if (!ts || !sig) return false;
-  const expected = createHmac('sha256', SECRET).update(String(ts)).digest('hex');
-  if (expected.length !== sig.length || !timingSafeEqual(Buffer.from(expected), Buffer.from(sig))) return false;
-  const age = Date.now() - ts;
-  return age >= MIN_FILL_MS && age <= MAX_AGE_MS;
-};
 
 const throttled = (ip: string) => {
   const now = Date.now();

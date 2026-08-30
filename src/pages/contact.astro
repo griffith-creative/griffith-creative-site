@@ -1,10 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import CalEmbed from '../components/CalEmbed.astro';
-import { signToken } from './api/contact';
 
-export const prerender = false;
-const formToken = signToken(Date.now());
+// Static so the page keeps its CDN cache. The signed timestamp the form needs is
+// fetched from /api/form-token on load.
+export const prerender = true;
 ---
 
 <Base
@@ -20,6 +20,9 @@ const formToken = signToken(Date.now());
         <a href="tel:+13108183092" class="btn btn-secondary">+1 (310) 818-3092</a>
         <a href="mailto:hello@griffithcreative.co" class="btn btn-secondary">hello@griffithcreative.co</a>
       </div>
+      <p class="mt-8">
+        <a href="#contact-form" class="inline-block font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted underline decoration-accent underline-offset-4 py-2 hover:text-accent transition-colors">Skip to the form</a>
+      </p>
     </div>
   </section>
 
@@ -47,12 +50,12 @@ const formToken = signToken(Date.now());
         }
       </script>
 
-      <form name="contact" method="POST" action="/api/contact" class="max-w-3xl space-y-5">
+      <form id="contact-form" tabindex="-1" name="contact" method="POST" action="/api/contact" class="max-w-3xl space-y-5 focus:outline-none">
         <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
           <label for="company-website">Company website</label>
           <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
         </div>
-        <input type="hidden" name="t" value={formToken} />
+        <input type="hidden" name="t" value="" data-form-token />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
@@ -109,10 +112,21 @@ const formToken = signToken(Date.now());
         <button type="submit" class="btn btn-primary px-12" data-submit>Send</button>
       </form>
       <script is:inline>
-        document.querySelector('form[name=contact]')?.addEventListener('submit', (e) => {
-          const b = e.currentTarget.querySelector('[data-submit]');
-          if (b) { b.disabled = true; b.textContent = 'Sending'; }
-        });
+        (function () {
+          var field = document.querySelector('[data-form-token]');
+          var loadToken = function (retry) {
+            fetch('/api/form-token', { headers: { Accept: 'application/json' } })
+              .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+              .then(function (d) { if (field && d && d.token) field.value = d.token; })
+              .catch(function () { if (retry) setTimeout(function () { loadToken(false); }, 1500); });
+          };
+          loadToken(true);
+
+          document.querySelector('form[name=contact]')?.addEventListener('submit', function (e) {
+            var b = e.currentTarget.querySelector('[data-submit]');
+            if (b) { b.disabled = true; b.textContent = 'Sending'; }
+          });
+        })();
       </script>
     </div>
   </section>
