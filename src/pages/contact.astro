@@ -43,7 +43,7 @@ export const prerender = true;
       >
         Something went wrong sending your message. Please try again, or email <a href="mailto:hello@griffithcreative.co" class="underline">hello@griffithcreative.co</a>.
       </div>
-      <script is:inline>
+      <script>
         if (new URLSearchParams(location.search).get('error')) {
           const el = document.getElementById('contact-error');
           if (el) el.removeAttribute('hidden');
@@ -111,7 +111,7 @@ export const prerender = true;
 
         <button type="submit" class="btn btn-primary px-12" data-submit>Send</button>
       </form>
-      <script is:inline>
+      <script>
         (function () {
           var field = document.querySelector('[data-form-token]');
           var loadToken = function (retry) {

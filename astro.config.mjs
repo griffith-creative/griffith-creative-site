@@ -14,5 +14,11 @@ export default defineConfig({
   integrations: [sitemap({ filter: (page) => !page.includes('/contact/thanks') })],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Keep every script in its own file. An inlined script would need 'unsafe-inline' or a
+      // per-build hash in script-src, and the CSP lives in static headers that cannot carry
+      // one. Assets other than JS keep the default 4KB inline threshold.
+      assetsInlineLimit: (filePath) => (filePath.endsWith('.js') ? false : undefined),
+    },
   },
 });
