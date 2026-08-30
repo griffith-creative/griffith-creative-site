@@ -10,7 +10,12 @@ interface Props {
 }
 
 const { title, description, canonical, noindex = false } = Astro.props;
-const currentPath = Astro.url.pathname;
+
+// Canonical URLs are slashed, hrefs are not always. Normalize both sides so the
+// active link resolves whichever form is in the address bar.
+const normalizePath = (path: string) => (path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path);
+const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (href: string) => normalizePath(href) === currentPath;
 
 const navLinks = [
   { href: '/work', label: 'Work' },
@@ -19,7 +24,13 @@ const navLinks = [
   { href: '/systems', label: 'Systems' },
   { href: '/about', label: 'About' },
 ];
-const footerLinks = [...navLinks, { href: '/contact', label: 'Contact' }, { href: '/care', label: 'Care Plan' }, { href: '/process', label: 'Process' }];
+const menuLinks = [
+  ...navLinks,
+  { href: '/contact', label: 'Contact' },
+  { href: '/care', label: 'Care Plan' },
+  { href: '/process', label: 'Process' },
+];
+const footerLinks = menuLinks;
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -92,21 +103,22 @@ const websiteJsonLd = {
   <body class="min-h-screen flex flex-col">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] bg-accent text-dark font-semibold px-4 py-2 rounded">Skip to content</a>
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
       <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3 shrink-0 text-offwhite font-bold text-xl tracking-tight whitespace-nowrap hover:text-accent transition-colors">
-          <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-9 h-9"><path fill="#C9A84C" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
+          <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-9 h-9 text-accent"><path fill="currentColor" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
           <span class="font-wordmark">Griffith Creative</span>
         </a>
 
         <!-- Desktop Nav -->
-        <div class="hidden lg:flex items-center gap-8">
+        <nav aria-label="Primary" class="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               class:list={[
                 'text-sm font-medium whitespace-nowrap transition-colors',
-                currentPath === link.href
+                isActive(link.href)
                   ? 'text-accent'
                   : 'text-offwhite-muted hover:text-offwhite',
               ]}
@@ -115,7 +127,7 @@ const websiteJsonLd = {
             </a>
           ))}
           <a href="/contact" class="btn btn-primary !py-2.5 !px-5 text-sm">Book a call</a>
-        </div>
+        </nav>
 
         <!-- Mobile Menu Button -->
         <button
@@ -132,14 +144,15 @@ const websiteJsonLd = {
       </div>
 
       <!-- Mobile Nav -->
-      <div id="mobile-menu" class="hidden lg:hidden bg-dark border-t border-offwhite/5">
+      <nav aria-label="Primary" id="mobile-menu" class="hidden lg:hidden bg-dark border-t border-offwhite/5">
         <div class="px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {menuLinks.map((link) => (
             <a
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               class:list={[
                 'text-base font-medium transition-colors',
-                currentPath === link.href
+                isActive(link.href)
                   ? 'text-accent'
                   : 'text-offwhite-muted hover:text-offwhite',
               ]}
@@ -149,11 +162,12 @@ const websiteJsonLd = {
           ))}
           <a href="/contact" class="btn btn-primary self-start">Book a call</a>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
+    <div id="mobile-menu-backdrop" class="hidden lg:hidden fixed inset-0 z-40 bg-dark/70" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main id="main" class="flex-1 pt-20">
+    <main id="main" tabindex="-1" class="flex-1 pt-20 focus:outline-none">
       <slot />
     </main>
 
@@ -164,13 +178,13 @@ const websiteJsonLd = {
           <a href="mailto:hello@griffithcreative.co" class="md:order-2 text-base md:text-sm font-medium text-offwhite hover:text-accent transition-colors">hello@griffithcreative.co</a>
           <nav aria-label="Footer" class="md:order-1 grid grid-cols-2 gap-x-8 gap-y-3 md:flex md:flex-wrap md:gap-x-7">
             {footerLinks.map((link) => (
-              <a href={link.href} class="text-sm text-offwhite-muted hover:text-offwhite transition-colors">{link.label}</a>
+              <a href={link.href} class="text-sm text-offwhite-muted hover:text-offwhite transition-colors py-1.5 md:py-0">{link.label}</a>
             ))}
           </nav>
         </div>
         <div class="mt-10 md:mt-8 pt-6 md:pt-0 border-t md:border-t-0 border-offwhite/10 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
           <p>Los Angeles, working worldwide &middot; Since 2020</p>
-          <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy" class="hover:text-offwhite transition-colors">Privacy</a></p>
+          <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy" class="inline-block py-[15px] -my-[15px] hover:text-offwhite transition-colors">Privacy</a></p>
         </div>
       </div>
     </footer>
@@ -179,18 +193,29 @@ const websiteJsonLd = {
     <script>
       const btn = document.getElementById('mobile-menu-btn');
       const menu = document.getElementById('mobile-menu');
+      const backdrop = document.getElementById('mobile-menu-backdrop');
       const icon = document.getElementById('menu-icon');
       let open = false;
 
-      btn?.addEventListener('click', () => {
-        open = !open;
-        menu?.classList.toggle('hidden');
+      const setMenu = (next: boolean) => {
+        open = next;
+        menu?.classList.toggle('hidden', !open);
+        backdrop?.classList.toggle('hidden', !open);
         btn?.setAttribute('aria-expanded', String(open));
+        document.documentElement.classList.toggle('overflow-hidden', open);
+        document.body.classList.toggle('overflow-hidden', open);
         if (icon) {
-          icon.setAttribute(
-            'd',
-            open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'
-          );
+          icon.setAttribute('d', open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16');
+        }
+      };
+
+      btn?.addEventListener('click', () => setMenu(!open));
+      backdrop?.addEventListener('click', () => setMenu(false));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && open) {
+          setMenu(false);
+          btn?.focus();
         }
       });
     </script>
