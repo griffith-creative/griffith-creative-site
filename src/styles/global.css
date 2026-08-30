@@ -8,6 +8,15 @@
   src: url("/fonts/archivo-800.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0100-017F, U+2000-206F, U+2190-21BB, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* Archivo Regular carries only the second word of the wordmark, so it is subset to basic Latin. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/archivo-400.woff2") format("woff2");
+  unicode-range: U+0020-007E;
+}
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -39,11 +48,21 @@
   --color-dark-tertiary: #1e1e1e;
   --color-offwhite: #f0ece4;
   --color-offwhite-muted: #b8b2a6;
+  /* Meta text: mono captions, footer sign-off lines, thumbnail URLs. */
+  --color-offwhite-dim: #8a8478;
+  /* Separation is carried by hairlines, never by shadow. */
+  --color-line: #262626;
+  --color-line-strong: #6b6558;
   --color-accent: #c9a84c;
   --color-accent-hover: #d4b85e;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-display: "Archivo", "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  /* The fixed nav is 68px tall on small screens and 100px from lg up. Anything that has to
+     clear it (sticky headings, in-page anchors) reads these instead of repeating the number. */
+  --nav-height: 68px;
+  --nav-clearance: 92px;
 }
 
 @layer base {
@@ -51,6 +70,14 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: var(--nav-clearance);
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      --nav-height: 100px;
+      --nav-clearance: 124px;
+    }
   }
 
   body {
@@ -92,26 +119,148 @@
     letter-spacing: -0.01em;
   }
 
+  .font-wordmark-light {
+    font-family: "Archivo", var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
 }
 
 @layer components {
-  .container-site { @apply max-w-6xl mx-auto px-6; }
-  .section { @apply border-t border-offwhite/10 py-16 md:py-24; }
-  .hero { @apply pt-16 pb-16 md:pt-24 md:pb-24; }
+  /* Layout ------------------------------------------------------------------ */
+
+  /* 1200px of content, so the gutter lands at 24px on a phone and 120px at 1440. */
+  .container-site { @apply max-w-[1248px] mx-auto px-6; }
+  .section { @apply border-t border-line py-16 lg:py-24; }
+  .section-close { @apply border-t border-line py-[88px] lg:py-32; }
+  .hero { @apply pt-14 pb-14 lg:pt-28 lg:pb-[104px]; }
+
+  /* Hero: eyebrow in a left rail, everything else in the right column. */
+  .hero-grid { @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-[60px]; }
+  .hero-body { @apply flex flex-col items-start gap-8; }
+
+  /* Type -------------------------------------------------------------------- */
+
   .eyebrow { @apply text-accent text-xs font-semibold uppercase tracking-[0.12em]; }
-  .h1 { @apply text-[clamp(2.5rem,6vw,4.75rem)] leading-[1] tracking-[-0.02em] text-balance; }
-  .h2 { @apply text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.05] tracking-[-0.015em] text-balance; }
-  .h2-close { @apply text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[-0.015em] text-balance; }
-  .lede { @apply text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-[580px]; }
-  .para { @apply text-offwhite-muted text-lg leading-[1.65] max-w-[580px]; }
-  .statement { @apply text-2xl md:text-3xl leading-[1.45] max-w-4xl text-pretty; }
-  .stacked { @apply max-w-3xl; }
-  .stacked .h2 { @apply mb-6; }
-  .tag { @apply inline-flex items-center rounded-full border border-offwhite/15 px-4 py-2 text-[15px] text-offwhite-muted; }
-  .two-col { @apply grid grid-cols-1 lg:grid-cols-[400px_minmax(0,640px)] gap-6 lg:gap-20 items-start; }
+  .h1 { @apply text-[clamp(1.75rem,5.3vw,4.75rem)] leading-[1] tracking-[-0.02em] text-balance; }
+  .h2 { @apply text-[clamp(1.375rem,2.8vw,2.5rem)] leading-[1.05] tracking-[-0.015em] text-balance; }
+  .h2-close { @apply text-[clamp(1.5rem,3.9vw,3.5rem)] leading-[1.05] tracking-[-0.015em] text-balance; }
+  /* Column and sub-heads are set in the body face, not the display face. */
+  .col-title { @apply font-sans text-[17px] lg:text-xl font-semibold leading-normal tracking-normal; }
+  .sub-head { @apply font-sans text-2xl lg:text-[32px] font-semibold leading-[1.1] tracking-[-0.01em]; }
+  .lede { @apply text-offwhite-muted text-[17px] lg:text-xl leading-[1.5] max-w-[580px]; }
+  .para { @apply text-offwhite-muted text-base lg:text-[19px] leading-[1.65] max-w-[580px]; }
+  .col-para { @apply text-offwhite-muted text-[15px] lg:text-base leading-[1.65]; }
+  .statement { @apply text-xl lg:text-4xl leading-[1.45] tracking-[-0.005em] max-w-[640px] text-pretty; }
+  .meta { @apply font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-dim; }
+
+  /* Section families -------------------------------------------------------- */
+
+  /* Heading over a 580px measure, side by side from lg up. */
+  .two-col { @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-[400px_minmax(0,580px)] lg:gap-20; }
+  .two-col > :first-child { @apply lg:sticky lg:top-[var(--nav-clearance)]; }
+
+  /* Heading and paragraph stacked, heading allowed to run wider than the measure. */
+  .stacked { @apply flex flex-col items-start gap-6; }
+  .stacked .h2 { @apply max-w-[760px]; }
+
+  /* Two paragraphs of equal weight, no heading above them. */
+  .pair { @apply grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20; }
+
+  /* Columns divided by hairlines, each column a link target in full. Stacked with
+     horizontal rules until there is room to sit them side by side. */
+  .rule-cols { @apply grid grid-cols-1; }
+  .rule-cols > * { @apply relative; }
+  .rule-cols > * + * { @apply mt-7 pt-7 border-t border-line; }
+  .rule-cols > * + *::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -41px;
+    width: 1px;
+    background-color: var(--color-line);
+    transition: background-color 150ms;
+    display: none;
+  }
+  .rule-cols-3 { @apply md:grid-cols-3 md:gap-x-[81px]; }
+  .rule-cols-4 { @apply lg:grid-cols-4 lg:gap-x-[81px]; }
+  @media (min-width: 768px) {
+    .rule-cols-3 > * + * { @apply mt-0 pt-0 border-t-0; }
+    .rule-cols-3 > * + *::before { display: block; }
+  }
+  @media (min-width: 1024px) {
+    .rule-cols-4 > * + * { @apply mt-0 pt-0 border-t-0; }
+    .rule-cols-4 > * + *::before { display: block; }
+  }
+  .rule-cols > a { @apply transition-colors; }
+  .rule-cols > a:hover .col-title,
+  .rule-cols > a:focus-visible .col-title { @apply text-accent; }
+  .rule-cols > a:hover, .rule-cols > a:focus-visible { @apply border-accent; }
+  .rule-cols > a:hover::before,
+  .rule-cols > a:focus-visible::before { background-color: var(--color-accent); }
+
+  /* Close block: heading and pill on the left, the next page on the right. */
+  .close { @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-20; }
+  .close-main { @apply flex flex-col items-start gap-8; }
+  .close-next { @apply flex flex-col items-start gap-5 border-t border-line pt-5; }
+  .next-link { @apply text-base lg:text-[19px] font-medium text-accent hover:text-accent-hover transition-colors; }
+
+  /* Ordering device on /process: a track beside each step block, filled with gold to a
+     third, two thirds, then the whole height. The track is sized by the block it sits in,
+     so it scales with the content at every width. */
+  .step { @apply flex items-stretch gap-5; }
+  .step-track { @apply w-0.5 shrink-0 bg-line; }
+  .step-track > span { @apply block w-full bg-accent; }
+  .step-body { @apply min-w-0 flex-1; }
+
+  /* Components -------------------------------------------------------------- */
+
+  .tag { @apply inline-flex items-center rounded-full border border-line px-4 py-2.5 text-[15px] text-offwhite-muted; }
   .btn { @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-semibold transition-[color,background-color,border-color,transform] motion-safe:active:scale-[0.98] whitespace-nowrap disabled:opacity-60 disabled:pointer-events-none; }
   .btn-primary { @apply bg-accent text-dark hover:bg-accent-hover; }
   .btn-secondary { @apply border border-offwhite/15 text-offwhite hover:border-offwhite/40; }
   .field-label { @apply block font-mono text-[11px] uppercase tracking-[0.06em] text-offwhite-muted mb-2; }
   .field { @apply w-full bg-dark-secondary border border-offwhite/40 rounded-lg px-3.5 py-3 text-offwhite placeholder:text-offwhite-muted/70 focus-visible:border-accent; }
+  .text-link { @apply underline decoration-accent underline-offset-4 hover:text-accent transition-colors; }
+
+  /* Nav --------------------------------------------------------------------- */
+
+  /* Borderless and transparent over the hero; the border and blur arrive on scroll. */
+  .site-header {
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color 200ms, border-color 200ms;
+  }
+  .site-header[data-scrolled] {
+    /* Solid, so nothing from the page reads through the bar as it passes underneath. */
+    background-color: var(--color-dark);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-bottom-color: var(--color-line);
+  }
+  /* The open mobile sheet is one solid surface from the wordmark down. */
+  .site-header:has(#mobile-menu:not(.hidden)) {
+    background-color: var(--color-dark);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .nav-link { @apply text-[15px] font-medium whitespace-nowrap transition-colors; }
+  .nav-link-rest { @apply text-offwhite-muted hover:text-offwhite; }
+  .nav-link-active { @apply text-accent; }
+  .nav-menu {
+    /* Pulled back by the panel's own padding so the first item lines up with the trigger. */
+    @apply absolute top-full left-0 -translate-x-6 mt-[-8px] w-[200px] flex flex-col gap-4
+      rounded-[10px] border border-line bg-dark-secondary px-6 py-5;
+  }
+  .nav-menu a { @apply text-[15px] font-medium text-offwhite hover:text-accent transition-colors; }
+
+  /* Work rows: the whole row is one hover target. */
+  .work-row { @apply border-t border-line transition-colors; }
+  .work-row:hover, .work-row:focus-within { @apply border-offwhite-dim; }
+  .work-tiles { @apply flex flex-wrap gap-6 motion-safe:transition-transform motion-safe:duration-300; }
+  .work-row:hover .work-tiles, .work-row:focus-within .work-tiles { @apply motion-safe:-translate-y-1; }
+  .work-thumb { @apply overflow-hidden rounded-md border border-line transition-colors; }
+  .work-row:hover .work-thumb, .work-row:focus-within .work-thumb { @apply border-line-strong; }
+  .work-name { @apply text-offwhite text-sm transition-colors; }
+  .work-row:hover .work-name, .work-row:focus-within .work-name { @apply text-accent; }
 }

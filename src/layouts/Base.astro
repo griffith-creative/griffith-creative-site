@@ -17,20 +17,23 @@ const normalizePath = (path: string) => (path.length > 1 && path.endsWith('/') ?
 const currentPath = normalizePath(Astro.url.pathname);
 const isActive = (href: string) => normalizePath(href) === currentPath;
 
-const navLinks = [
+const servicesLinks = [
+  { href: '/services/', label: 'Services' },
+  { href: '/care/', label: 'Care Plan' },
+  { href: '/process/', label: 'Process' },
+];
+const servicesOpen = servicesLinks.some((link) => isActive(link.href));
+
+const footerLinks = [
   { href: '/work/', label: 'Work' },
   { href: '/services/', label: 'Services' },
   { href: '/enterprise/', label: 'Enterprise' },
   { href: '/systems/', label: 'Systems' },
   { href: '/about/', label: 'About' },
-];
-const menuLinks = [
-  ...navLinks,
   { href: '/contact/', label: 'Contact' },
   { href: '/care/', label: 'Care Plan' },
   { href: '/process/', label: 'Process' },
 ];
-const footerLinks = menuLinks;
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -73,6 +76,7 @@ const websiteJsonLd = {
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href="/fonts/archivo-800.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/archivo-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin />
     <SEO
@@ -103,101 +107,229 @@ const websiteJsonLd = {
   </head>
   <body class="min-h-screen flex flex-col">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] bg-accent text-dark font-semibold px-4 py-2 rounded">Skip to content</a>
-    <!-- Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-offwhite/5">
-      <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 shrink-0 text-offwhite font-bold text-xl tracking-tight whitespace-nowrap hover:text-accent transition-colors">
-          <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-9 h-9 text-accent"><path fill="currentColor" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
-          <span class="font-wordmark">Griffith Creative</span>
-        </a>
+
+    <!-- Navigation: wordmark left, links centered, action right. Transparent at the top of
+         the page; the border and blur arrive on scroll. -->
+    <header id="site-header" class="site-header fixed top-0 left-0 right-0 z-50">
+      <div class="container-site h-[68px] lg:h-[100px] flex items-center gap-6">
+        <div class="flex-1 min-w-0 flex items-center">
+          <a href="/" class="flex items-center gap-3 shrink-0 text-offwhite whitespace-nowrap hover:text-accent transition-colors">
+            <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-7 h-7 text-accent"><path fill="currentColor" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
+            <span class="text-[17px] lg:text-xl"><span class="font-wordmark">Griffith</span> <span class="font-wordmark-light">Creative</span></span>
+          </a>
+        </div>
 
         <!-- Desktop Nav -->
-        <nav aria-label="Primary" class="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
+        <nav aria-label="Primary" class="hidden lg:flex items-center justify-center gap-9">
+          <a
+            href="/work/"
+            aria-current={isActive('/work/') ? 'page' : undefined}
+            class:list={['nav-link', isActive('/work/') ? 'nav-link-active' : 'nav-link-rest']}
+          >
+            Work
+          </a>
+
+          <div class="nav-dropdown relative" data-dropdown>
+            <button
+              type="button"
+              id="services-trigger"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="services-menu"
+              class:list={['nav-link flex items-center gap-[7px]', servicesOpen ? 'nav-link-active' : 'nav-link-rest']}
+              data-dropdown-trigger
+            >
+              Services
+              <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true" class="shrink-0"><path d="M1 1L4.5 4.5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div id="services-menu" class="nav-menu hidden" data-dropdown-menu>
+              {servicesLinks.map((link) => (
+                <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a>
+              ))}
+            </div>
+          </div>
+
+          {[
+            { href: '/enterprise/', label: 'Enterprise' },
+            { href: '/systems/', label: 'Systems' },
+            { href: '/about/', label: 'About' },
+          ].map((link) => (
             <a
               href={link.href}
               aria-current={isActive(link.href) ? 'page' : undefined}
-              class:list={[
-                'text-sm font-medium whitespace-nowrap transition-colors',
-                isActive(link.href)
-                  ? 'text-accent'
-                  : 'text-offwhite-muted hover:text-offwhite',
-              ]}
+              class:list={['nav-link', isActive(link.href) ? 'nav-link-active' : 'nav-link-rest']}
             >
               {link.label}
             </a>
           ))}
-          <a href="/contact/" class="btn btn-primary !py-2.5 !px-5 text-sm">Book a call</a>
         </nav>
 
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-btn"
-          class="lg:hidden text-offwhite p-2"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <div class="flex-1 min-w-0 flex items-center justify-end">
+          <a href="/contact/" class="hidden lg:inline-flex btn btn-primary">Book a call</a>
+          <button
+            id="mobile-menu-btn"
+            class="lg:hidden text-offwhite p-2 -mr-2"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile Nav -->
-      <nav aria-label="Primary" id="mobile-menu" class="hidden lg:hidden bg-dark border-t border-offwhite/5">
-        <div class="px-6 py-4 flex flex-col gap-4">
-          {menuLinks.map((link) => (
+      <nav aria-label="Primary" id="mobile-menu" class="hidden lg:hidden bg-dark">
+        <div class="container-site pt-10 pb-12 flex flex-col items-start gap-[22px]">
+          <a
+            href="/work/"
+            aria-current={isActive('/work/') ? 'page' : undefined}
+            class:list={['text-[22px] font-medium transition-colors', isActive('/work/') ? 'text-accent' : 'text-offwhite hover:text-accent']}
+          >
+            Work
+          </a>
+          <a
+            href="/services/"
+            aria-current={isActive('/services/') ? 'page' : undefined}
+            class:list={['text-[22px] font-medium transition-colors', isActive('/services/') ? 'text-accent' : 'text-offwhite hover:text-accent']}
+          >
+            Services
+          </a>
+          <div class="flex flex-col items-start gap-[18px] pl-5">
+            {servicesLinks.slice(1).map((link) => (
+              <a
+                href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                class:list={['text-lg transition-colors', isActive(link.href) ? 'text-accent' : 'text-offwhite-muted hover:text-offwhite']}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          {[
+            { href: '/enterprise/', label: 'Enterprise' },
+            { href: '/systems/', label: 'Systems' },
+            { href: '/about/', label: 'About' },
+            { href: '/contact/', label: 'Contact' },
+          ].map((link) => (
             <a
               href={link.href}
               aria-current={isActive(link.href) ? 'page' : undefined}
-              class:list={[
-                'text-base font-medium transition-colors',
-                isActive(link.href)
-                  ? 'text-accent'
-                  : 'text-offwhite-muted hover:text-offwhite',
-              ]}
+              class:list={['text-[22px] font-medium transition-colors', isActive(link.href) ? 'text-accent' : 'text-offwhite hover:text-accent']}
             >
               {link.label}
             </a>
           ))}
-          <a href="/contact/" class="btn btn-primary self-start">Book a call</a>
+          <div class="w-full h-px bg-line" aria-hidden="true"></div>
+          <a href="/contact/" class="btn btn-primary">Book a call</a>
         </div>
       </nav>
     </header>
     <div id="mobile-menu-backdrop" class="hidden lg:hidden fixed inset-0 z-40 bg-dark/70" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main id="main" tabindex="-1" class="flex-1 pt-20 focus:outline-none">
+    <main id="main" tabindex="-1" class="flex-1 pt-[68px] lg:pt-[100px] focus:outline-none">
       <slot />
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-offwhite/10">
+    <footer class="border-t border-line">
       <div class="container-site pt-10 pb-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-          <a href="mailto:hello@griffithcreative.co" class="md:order-2 text-base md:text-sm font-medium text-offwhite hover:text-accent transition-colors">hello@griffithcreative.co</a>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-8">
+          <a href="mailto:hello@griffithcreative.co" class="md:order-2 flex items-center gap-2.5 text-base md:text-sm font-medium text-offwhite hover:text-accent transition-colors">
+            <svg width="18" height="18" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-[18px] h-[18px] shrink-0 text-accent"><path fill="currentColor" d="M 81.60 25.47 A 40 40 0 1 1 74.53 18.40 L 53.46 39.46 L 50 36 L 36 50 L 50 64 L 64 50 L 60.54 46.54 Z"/></svg>
+            hello@griffithcreative.co
+          </a>
           <nav aria-label="Footer" class="md:order-1 grid grid-cols-2 gap-x-8 gap-y-3 md:flex md:flex-wrap md:gap-x-7">
             {footerLinks.map((link) => (
               <a href={link.href} class="text-sm text-offwhite-muted hover:text-offwhite transition-colors py-1.5 md:py-0">{link.label}</a>
             ))}
           </nav>
         </div>
-        <div class="mt-10 md:mt-8 pt-6 md:pt-0 border-t md:border-t-0 border-offwhite/10 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
+        <div class="mt-10 md:mt-8 pt-6 md:pt-0 border-t md:border-t-0 border-line flex flex-col sm:flex-row sm:justify-between gap-2 meta">
           <p>Los Angeles, working worldwide &middot; Since 2020</p>
           <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy/" class="inline-block py-[15px] -my-[15px] hover:text-offwhite transition-colors">Privacy</a></p>
         </div>
       </div>
     </footer>
 
-    <!-- Mobile Menu Script -->
     <script>
+      // Nav: scroll state, the Services dropdown, and the mobile sheet.
+      const header = document.getElementById('site-header');
       const btn = document.getElementById('mobile-menu-btn');
       const menu = document.getElementById('mobile-menu');
       const backdrop = document.getElementById('mobile-menu-backdrop');
       const icon = document.getElementById('menu-icon');
-      let open = false;
 
+      // Border and blur arrive once the page has moved off the top.
+      const setScrolled = () => {
+        if (header) header.toggleAttribute('data-scrolled', window.scrollY > 8);
+      };
+      setScrolled();
+      window.addEventListener('scroll', setScrolled, { passive: true });
+
+      // Services dropdown
+      const dropdown = document.querySelector<HTMLElement>('[data-dropdown]');
+      const trigger = dropdown?.querySelector<HTMLButtonElement>('[data-dropdown-trigger]');
+      const panel = dropdown?.querySelector<HTMLElement>('[data-dropdown-menu]');
+      const items = panel ? Array.from(panel.querySelectorAll<HTMLAnchorElement>('a')) : [];
+      let dropdownOpen = false;
+
+      const setDropdown = (next: boolean, focusIndex?: number) => {
+        dropdownOpen = next;
+        panel?.classList.toggle('hidden', !next);
+        trigger?.setAttribute('aria-expanded', String(next));
+        if (next && typeof focusIndex === 'number') items[focusIndex]?.focus();
+      };
+
+      const moveWithin = (delta: number) => {
+        if (!items.length) return;
+        const current = items.indexOf(document.activeElement as HTMLAnchorElement);
+        const next = current === -1 ? 0 : (current + delta + items.length) % items.length;
+        items[next]?.focus();
+      };
+
+      trigger?.addEventListener('click', () => setDropdown(!dropdownOpen));
+      trigger?.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          setDropdown(true, 0);
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          setDropdown(true, items.length - 1);
+        }
+      });
+
+      panel?.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          moveWithin(1);
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          moveWithin(-1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          items[0]?.focus();
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          items[items.length - 1]?.focus();
+        }
+      });
+
+      // Pointer users get it on hover, keyboard users on Enter, Space, or the arrow keys.
+      dropdown?.addEventListener('pointerenter', () => setDropdown(true));
+      dropdown?.addEventListener('pointerleave', () => setDropdown(false));
+      dropdown?.addEventListener('focusout', (event) => {
+        if (!dropdown.contains(event.relatedTarget as Node)) setDropdown(false);
+      });
+      document.addEventListener('click', (event) => {
+        if (dropdownOpen && dropdown && !dropdown.contains(event.target as Node)) setDropdown(false);
+      });
+
+      // Mobile sheet
+      let open = false;
       const setMenu = (next: boolean) => {
         open = next;
         menu?.classList.toggle('hidden', !open);
@@ -214,7 +346,12 @@ const websiteJsonLd = {
       backdrop?.addEventListener('click', () => setMenu(false));
 
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && open) {
+        if (event.key !== 'Escape') return;
+        if (dropdownOpen) {
+          setDropdown(false);
+          trigger?.focus();
+        }
+        if (open) {
           setMenu(false);
           btn?.focus();
         }
