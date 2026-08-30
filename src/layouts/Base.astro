@@ -18,17 +18,17 @@ const currentPath = normalizePath(Astro.url.pathname);
 const isActive = (href: string) => normalizePath(href) === currentPath;
 
 const navLinks = [
-  { href: '/work', label: 'Work' },
-  { href: '/services', label: 'Services' },
-  { href: '/enterprise', label: 'Enterprise' },
-  { href: '/systems', label: 'Systems' },
-  { href: '/about', label: 'About' },
+  { href: '/work/', label: 'Work' },
+  { href: '/services/', label: 'Services' },
+  { href: '/enterprise/', label: 'Enterprise' },
+  { href: '/systems/', label: 'Systems' },
+  { href: '/about/', label: 'About' },
 ];
 const menuLinks = [
   ...navLinks,
-  { href: '/contact', label: 'Contact' },
-  { href: '/care', label: 'Care Plan' },
-  { href: '/process', label: 'Process' },
+  { href: '/contact/', label: 'Contact' },
+  { href: '/care/', label: 'Care Plan' },
+  { href: '/process/', label: 'Process' },
 ];
 const footerLinks = menuLinks;
 
@@ -126,7 +126,7 @@ const websiteJsonLd = {
               {link.label}
             </a>
           ))}
-          <a href="/contact" class="btn btn-primary !py-2.5 !px-5 text-sm">Book a call</a>
+          <a href="/contact/" class="btn btn-primary !py-2.5 !px-5 text-sm">Book a call</a>
         </nav>
 
         <!-- Mobile Menu Button -->
@@ -160,7 +160,7 @@ const websiteJsonLd = {
               {link.label}
             </a>
           ))}
-          <a href="/contact" class="btn btn-primary self-start">Book a call</a>
+          <a href="/contact/" class="btn btn-primary self-start">Book a call</a>
         </div>
       </nav>
     </header>
@@ -184,7 +184,7 @@ const websiteJsonLd = {
         </div>
         <div class="mt-10 md:mt-8 pt-6 md:pt-0 border-t md:border-t-0 border-offwhite/10 flex flex-col sm:flex-row sm:justify-between gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted">
           <p>Los Angeles, working worldwide &middot; Since 2020</p>
-          <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy" class="inline-block py-[15px] -my-[15px] hover:text-offwhite transition-colors">Privacy</a></p>
+          <p>&copy; {new Date().getFullYear()} &middot; <a href="/privacy/" class="inline-block py-[15px] -my-[15px] hover:text-offwhite transition-colors">Privacy</a></p>
         </div>
       </div>
     </footer>

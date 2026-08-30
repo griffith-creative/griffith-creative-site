@@ -40,12 +40,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   const honeypot = (data.get('company-website') ?? '').toString().trim();
   if (honeypot) {
-    return redirect('/contact/thanks', 303);
+    return redirect('/contact/thanks/', 303);
   }
 
   const token = (data.get('t') ?? '').toString();
   if (!tokenOk(token)) {
-    return redirect('/contact?error=1', 303);
+    return redirect('/contact/?error=1', 303);
   }
 
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
@@ -62,18 +62,18 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const message = (data.get('message') ?? '').toString().trim();
 
   if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return redirect('/contact?error=1', 303);
+    return redirect('/contact/?error=1', 303);
   }
 
   // The two qualifying selects are required in the markup; enforce it here too.
   if (!SERVICES.has(service) || !BUDGETS.has(budget)) {
-    return redirect('/contact?error=1', 303);
+    return redirect('/contact/?error=1', 303);
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error('RESEND_API_KEY is not configured');
-    return redirect('/contact?error=1', 303);
+    return redirect('/contact/?error=1', 303);
   }
 
   const resend = new Resend(apiKey);
@@ -116,11 +116,11 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     });
     if (result.error) {
       console.error('Resend error', result.error);
-      return redirect('/contact?error=1', 303);
+      return redirect('/contact/?error=1', 303);
     }
   } catch (err) {
     console.error('Contact form failed', err);
-    return redirect('/contact?error=1', 303);
+    return redirect('/contact/?error=1', 303);
   }
 
   // Confirmation to the person who wrote in. Failure here must not fail the inquiry.
@@ -149,7 +149,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     console.error('Confirmation email failed', err);
   }
 
-  return redirect('/contact/thanks', 303);
+  return redirect('/contact/thanks/', 303);
 };
 
 export const GET: APIRoute = () => new Response('Method Not Allowed', { status: 405 });

@@ -50,7 +50,7 @@ export const prerender = true;
         }
       </script>
 
-      <form id="contact-form" tabindex="-1" name="contact" method="POST" action="/api/contact" class="max-w-3xl space-y-5 focus:outline-none">
+      <form id="contact-form" tabindex="-1" name="contact" method="POST" action="/api/contact/" class="max-w-3xl space-y-5 focus:outline-none">
         <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
           <label for="company-website">Company website</label>
           <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
@@ -115,7 +115,7 @@ export const prerender = true;
         (function () {
           var field = document.querySelector('[data-form-token]');
           var loadToken = function (retry) {
-            fetch('/api/form-token', { headers: { Accept: 'application/json' } })
+            fetch('/api/form-token/', { headers: { Accept: 'application/json' } })
               .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
               .then(function (d) { if (field && d && d.token) field.value = d.token; })
               .catch(function () { if (retry) setTimeout(function () { loadToken(false); }, 1500); });
