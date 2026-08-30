@@ -7,13 +7,15 @@ import Base from '../layouts/Base.astro';
   description="Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them. Griffith Creative, Los Angeles, working worldwide."
 >
   <section class="hero">
-    <div class="container-site">
-      <p class="eyebrow mb-7">Enterprise</p>
-      <h1 class="h1 mb-7">Enterprise.</h1>
-      <p class="lede mb-8">
-        When traffic spikes and the deadline does not move, everything has to hold. We audit, rebuild, and manage the&nbsp;infrastructure&nbsp;behind&nbsp;it.
-      </p>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Enterprise</p>
+      <div class="hero-body">
+        <h1 class="h1">Built to hold under load.</h1>
+        <p class="lede">
+          When traffic spikes and the deadline does not move, everything has to hold. We audit, rebuild, and manage the infrastructure&nbsp;behind&nbsp;it.
+        </p>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
     </div>
   </section>
 
@@ -22,24 +24,24 @@ import Base from '../layouts/Base.astro';
       <div class="stacked">
         <h2 class="h2">What we take on</h2>
         <p class="para">
-          A rebuild of the site, a migration off whatever it runs on now, and management once it is live. Peak load is the design target: launches, press, seasonal demand, live events. The senior people who build it stay on it afterwards, through ongoing development, content operations, monitoring, and security patching.
+          A rebuild of the site, a migration off whatever it runs on now, and management once it is live. Peak load is the design target: launches, press, seasonal demand, live events. The senior people who build it stay on it afterwards, through ongoing development, content operations, monitoring,&nbsp;and&nbsp;security&nbsp;patching.
         </p>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container-site grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-      <div>
-        <h2 class="text-xl font-semibold mb-3">The audit</h2>
-        <p class="text-offwhite-muted leading-[1.65]">
-          Old platforms accumulate cost the way they accumulate tech debt: hosting contracts, redundant delivery layers, extended support for end-of-life software, and licenses for services you stopped using years ago. We map every contract, license, and dependency and show you what each one is for, before anything is rebuilt.
+    <div class="container-site pair">
+      <div class="flex flex-col gap-3">
+        <h2 class="sub-head">The audit</h2>
+        <p class="col-para">
+          Old platforms accumulate cost the way they accumulate tech debt: hosting contracts, redundant delivery layers, extended support for end-of-life software, and licenses for services you stopped using years ago. We map every contract, license, and dependency and show you what each one is for, before&nbsp;anything&nbsp;is&nbsp;rebuilt.
         </p>
       </div>
-      <div>
-        <h2 class="text-xl font-semibold mb-3">The rebuild</h2>
-        <p class="text-offwhite-muted leading-[1.65]">
-          Static-first architecture served from a global edge network, faster under load and more secure by default. Your data relationships, your measurement, and your content library come across with it. End-of-life software, unpatched dependencies, and accessibility gaps are closed as part of the work.
+      <div class="flex flex-col gap-3">
+        <h2 class="sub-head">The rebuild</h2>
+        <p class="col-para">
+          Static-first architecture served from a global edge network, faster under load and more secure by default. Your data relationships, your measurement, and your content library come across with it. End-of-life software, unpatched dependencies, and accessibility gaps are closed as part of&nbsp;the&nbsp;work.
         </p>
       </div>
     </div>
@@ -49,7 +51,7 @@ import Base from '../layouts/Base.astro';
     <div class="container-site two-col">
       <h2 class="h2">Systems</h2>
       <p class="para">
-        Most companies run on systems nobody chose. We sit with your team, learn how the work really happens, and rebuild the storage, software, and workflows around it. <a href="/systems/" class="underline decoration-accent underline-offset-4 hover:text-accent">More on Systems</a>.
+        Most companies run on systems nobody chose. We sit with your team, learn how the work really happens, and rebuild the storage, software, and workflows around it. <a href="/systems/" class="text-link">More&nbsp;on&nbsp;Systems</a>.
       </p>
     </div>
   </section>
@@ -62,10 +64,15 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <section class="section py-24 md:py-32">
-    <div class="container-site">
-      <h2 class="h2-close mb-8">Start with the audit.</h2>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+  <section class="section-close">
+    <div class="container-site close">
+      <div class="close-main">
+        <h2 class="h2-close">Start with the audit.</h2>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="close-next">
+        <a href="/systems/" class="next-link">Systems</a>
+      </div>
     </div>
   </section>
 </Base>

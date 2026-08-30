@@ -9,12 +9,12 @@ const offers = [
   },
   {
     title: 'Enterprise',
-    body: 'Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them.',
+    body: 'Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them.',
     href: '/enterprise/',
   },
   {
     title: 'Systems',
-    body: 'Systems that fit how a company actually works. Storage, software, and the workflows between them, reviewed and rebuilt around the team.',
+    body: 'Systems that fit how a company actually works. Storage, software, and the workflows between them, reviewed and rebuilt around the team.',
     href: '/systems/',
   },
 ];
@@ -25,25 +25,27 @@ const offers = [
   description="Griffith Creative is a web design and infrastructure firm in Los Angeles. We design and build websites, keep them running, and help companies build the systems they run on. Working worldwide."
 >
   <section class="hero">
-    <div class="container-site">
-      <p class="eyebrow mb-7">Los Angeles &middot; Worldwide</p>
-      <h1 class="h1 mb-7">We design websites<br class="hidden md:inline" /> and keep them running.</h1>
-      <p class="lede mb-8">
-        Web design and infrastructure, Los Angeles. We build the sites companies depend on and look after what&nbsp;sits&nbsp;behind&nbsp;them.
-      </p>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Los Angeles &middot; Worldwide</p>
+      <div class="hero-body">
+        <h1 class="h1">We design websites<br class="hidden md:inline" /> and keep them running.</h1>
+        <p class="lede">
+          Web design and infrastructure, Los Angeles. We build the sites companies depend on and look after what sits&nbsp;behind&nbsp;them.
+        </p>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container-site">
-      <h2 class="h2 mb-10">What we do</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+      <h2 class="h2 mb-12">What we do</h2>
+      <div class="rule-cols rule-cols-3">
         {offers.map((o) => (
-          <div>
-            <h3 class="text-xl font-semibold mb-3"><a href={o.href} class="hover:text-accent transition-colors">{o.title}</a></h3>
-            <p class="text-offwhite-muted leading-[1.65]">{o.body}</p>
-          </div>
+          <a href={o.href} class="flex flex-col gap-3">
+            <h3 class="col-title">{o.title}</h3>
+            <p class="col-para">{o.body}</p>
+          </a>
         ))}
       </div>
     </div>
@@ -60,16 +62,24 @@ const offers = [
   <section class="section">
     <div class="container-site two-col">
       <h2 class="h2">Who we build for</h2>
-      <p class="para">
-        Music and entertainment. Home, trade and construction. Professional and financial services. Retail and product. Those are where most of our work has been, and the same approach carries to any company that depends on&nbsp;its&nbsp;website.
-      </p>
+      <div class="flex flex-col items-start gap-6">
+        <p class="para">
+          Music and entertainment. Home, trade and construction. Professional and financial services. Retail&nbsp;and&nbsp;product.
+        </p>
+        <a href="/work/" class="next-link">Industries</a>
+      </div>
     </div>
   </section>
 
-  <section class="section py-24 md:py-32">
-    <div class="container-site">
-      <h2 class="h2-close mb-8">Start with a call.</h2>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+  <section class="section-close">
+    <div class="container-site close">
+      <div class="close-main">
+        <h2 class="h2-close">Start with a call.</h2>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="close-next">
+        <a href="/services/" class="next-link">What we do</a>
+      </div>
     </div>
   </section>
 </Base>

@@ -11,123 +11,130 @@ export const prerender = true;
   title="Contact | Griffith Creative"
   description="Book a fifteen-minute call with Griffith Creative, or write to us. Los Angeles, working worldwide."
 >
-  <section class="hero pb-10 md:pb-12">
-    <div class="container-site">
-      <p class="eyebrow mb-7">Contact</p>
-      <h1 class="h1 mb-7">Get in touch.</h1>
-      <p class="lede mb-8">Book a fifteen-minute call, or write&nbsp;to&nbsp;us.</p>
-      <div class="flex flex-wrap gap-3">
-        <a href="tel:+13108183092" class="btn btn-secondary">+1 (310) 818-3092</a>
-        <a href="mailto:hello@griffithcreative.co" class="btn btn-secondary">hello@griffithcreative.co</a>
+  <section class="hero pb-10 lg:pb-12">
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Contact</p>
+      <div class="hero-body">
+        <h1 class="h1">Get in touch.</h1>
+        <p class="lede">Book a fifteen-minute call, or write&nbsp;to&nbsp;us.</p>
+        <a href="#contact-form" class="inline-block meta text-link py-2">Skip to the form</a>
       </div>
-      <p class="mt-8">
-        <a href="#contact-form" class="inline-block font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-muted underline decoration-accent underline-offset-4 py-2 hover:text-accent transition-colors">Skip to the form</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="pb-16 md:pb-24">
-    <div class="container-site">
-      <CalEmbed />
     </div>
   </section>
 
   <section class="section">
     <div class="container-site">
-      <div
-        id="contact-error"
-        role="alert"
-        aria-live="assertive"
-        hidden
-        class="mb-8 border border-red-500/40 bg-red-500/10 text-red-200 text-sm px-4 py-3 rounded-lg max-w-3xl"
-      >
-        Something went wrong sending your message. Please try again, or email <a href="mailto:hello@griffithcreative.co" class="underline">hello@griffithcreative.co</a>.
+      <h2 class="h2 mb-8">Pick a time</h2>
+      <CalEmbed />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-site grid grid-cols-1 items-start gap-10 lg:grid-cols-[400px_minmax(0,720px)] lg:gap-20">
+      <div class="flex flex-col items-start gap-6">
+        <h2 class="h2">Write to us</h2>
+        <div class="flex flex-col items-start gap-3">
+          <a href="tel:+13108183092" class="btn btn-secondary">+1 (310) 818-3092</a>
+          <a href="mailto:hello@griffithcreative.co" class="btn btn-secondary">hello@griffithcreative.co</a>
+        </div>
       </div>
-      <script>
-        if (new URLSearchParams(location.search).get('error')) {
-          const el = document.getElementById('contact-error');
-          if (el) el.removeAttribute('hidden');
-        }
-      </script>
 
-      <form id="contact-form" tabindex="-1" name="contact" method="POST" action="/api/contact/" class="max-w-3xl space-y-5 focus:outline-none">
-        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-          <label for="company-website">Company website</label>
-          <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
+      <div>
+        <div
+          id="contact-error"
+          role="alert"
+          aria-live="assertive"
+          hidden
+          class="mb-8 border border-red-500/40 bg-red-500/10 text-red-200 text-sm px-4 py-3 rounded-lg"
+        >
+          Something went wrong sending your message. Please try again, or email <a href="mailto:hello@griffithcreative.co" class="underline">hello@griffithcreative.co</a>.
         </div>
-        <input type="hidden" name="t" value="" data-form-token />
+        <script>
+          if (new URLSearchParams(location.search).get('error')) {
+            const el = document.getElementById('contact-error');
+            if (el) el.removeAttribute('hidden');
+          }
+        </script>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label for="name" class="field-label">Name</label>
-            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name" class="field" />
+        <form id="contact-form" tabindex="-1" name="contact" method="POST" action="/api/contact/" class="space-y-5 focus:outline-none">
+          <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+            <label for="company-website">Company website</label>
+            <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
           </div>
-          <div>
-            <label for="email" class="field-label">Email</label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com" class="field" />
-          </div>
-        </div>
+          <input type="hidden" name="t" value="" data-form-token />
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label for="business" class="field-label">Company</label>
-            <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company" class="field" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="field-label">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name" class="field" />
+            </div>
+            <div>
+              <label for="email" class="field-label">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com" class="field" />
+            </div>
           </div>
-          <div>
-            <label for="phone" class="field-label">Phone <span class="text-offwhite-muted">(optional)</span></label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1" class="field" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="business" class="field-label">Company</label>
+              <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company" class="field" />
+            </div>
+            <div>
+              <label for="phone" class="field-label">Phone <span class="text-offwhite-muted">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1" class="field" />
+            </div>
           </div>
-        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label for="service" class="field-label">What do you need</label>
-            <select id="service" name="service" required class="field">
-              <option value="">Select</option>
-              <option value="design-build">Design and build</option>
-              <option value="enterprise">Enterprise</option>
-              <option value="systems">Systems</option>
-              <option value="care">Care Plan</option>
-              <option value="not-sure">Not sure yet</option>
-            </select>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="service" class="field-label">What do you need</label>
+              <select id="service" name="service" required class="field">
+                <option value="">Select</option>
+                <option value="design-build">Design and build</option>
+                <option value="enterprise">Enterprise</option>
+                <option value="systems">Systems</option>
+                <option value="care">Care Plan</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+            </div>
+            <div>
+              <label for="budget" class="field-label">Budget</label>
+              <select id="budget" name="budget" required class="field">
+                <option value="">Select a range</option>
+                <option value="under-10k">Under $10k</option>
+                <option value="10-25k">$10k to $25k</option>
+                <option value="25-75k">$25k to $75k</option>
+                <option value="75k-plus">$75k and up</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+            </div>
           </div>
+
           <div>
-            <label for="budget" class="field-label">Budget</label>
-            <select id="budget" name="budget" required class="field">
-              <option value="">Select a range</option>
-              <option value="under-10k">Under $10k</option>
-              <option value="10-25k">$10k to $25k</option>
-              <option value="25-75k">$25k to $75k</option>
-              <option value="75k-plus">$75k and up</option>
-              <option value="not-sure">Not sure yet</option>
-            </select>
+            <label for="message" class="field-label">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about the site or the system." class="field"></textarea>
           </div>
-        </div>
 
-        <div>
-          <label for="message" class="field-label">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us about the site or the system." class="field"></textarea>
-        </div>
+          <button type="submit" class="btn btn-primary px-12" data-submit>Send</button>
+        </form>
+        <script>
+          (function () {
+            var field = document.querySelector('[data-form-token]');
+            var loadToken = function (retry) {
+              fetch('/api/form-token/', { headers: { Accept: 'application/json' } })
+                .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+                .then(function (d) { if (field && d && d.token) field.value = d.token; })
+                .catch(function () { if (retry) setTimeout(function () { loadToken(false); }, 1500); });
+            };
+            loadToken(true);
 
-        <button type="submit" class="btn btn-primary px-12" data-submit>Send</button>
-      </form>
-      <script>
-        (function () {
-          var field = document.querySelector('[data-form-token]');
-          var loadToken = function (retry) {
-            fetch('/api/form-token/', { headers: { Accept: 'application/json' } })
-              .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-              .then(function (d) { if (field && d && d.token) field.value = d.token; })
-              .catch(function () { if (retry) setTimeout(function () { loadToken(false); }, 1500); });
-          };
-          loadToken(true);
-
-          document.querySelector('form[name=contact]')?.addEventListener('submit', function (e) {
-            var b = e.currentTarget.querySelector('[data-submit]');
-            if (b) { b.disabled = true; b.textContent = 'Sending'; }
-          });
-        })();
-      </script>
+            document.querySelector('form[name=contact]')?.addEventListener('submit', function (e) {
+              var b = e.currentTarget.querySelector('[data-submit]');
+              if (b) { b.disabled = true; b.textContent = 'Sending'; }
+            });
+          })();
+        </script>
+      </div>
     </div>
   </section>
 </Base>

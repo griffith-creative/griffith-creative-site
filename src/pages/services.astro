@@ -9,17 +9,17 @@ const offers = [
   },
   {
     title: 'Care Plan',
-    body: 'A monthly plan for sites we build. Updates, hosting, monitoring, and priority support.',
+    body: 'A monthly plan for sites we build. Updates, hosting, monitoring, and priority support.',
     href: '/care/',
   },
   {
     title: 'Enterprise',
-    body: 'Rebuilds and ongoing management for high-traffic sites. A senior team with response times in the agreement.',
+    body: 'Rebuilds and ongoing management for high-traffic sites. A senior team, and a named person who picks up.',
     href: '/enterprise/',
   },
   {
     title: 'Systems',
-    body: 'Storage, software, and workflows reviewed and rebuilt around how your team actually works.',
+    body: 'Storage, software, and workflows reviewed and rebuilt around how your team actually works.',
     href: '/systems/',
   },
 ];
@@ -30,27 +30,37 @@ const offers = [
   description="Websites designed, built, and looked after in house, and two services for companies with more than a website to run. Griffith Creative, Los Angeles."
 >
   <section class="hero">
-    <div class="container-site">
-      <p class="eyebrow mb-7">Services</p>
-      <h1 class="h1 mb-7">Design, build, care.</h1>
-      <p class="lede">
-        Websites designed, built, and looked after in house, and two services for companies with more than a website&nbsp;to&nbsp;run.
-      </p>
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Services</p>
+      <div class="hero-body">
+        <h1 class="h1">Design, build, care.</h1>
+        <p class="lede">
+          Websites designed, built, and looked after in house, and two services for companies with more than a website&nbsp;to&nbsp;run.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container-site">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <h2 class="h2 mb-12">What we offer</h2>
+      <div class="rule-cols rule-cols-4">
         {offers.map((o) => (
-          <div>
-            <h2 class="text-xl font-semibold mb-3">
-              {o.href ? <a href={o.href} class="hover:text-accent transition-colors">{o.title}</a> : o.title}
-            </h2>
-            <p class="text-offwhite-muted leading-[1.65]">{o.body}</p>
-          </div>
+          <a href={o.href} class="flex flex-col gap-3">
+            <h3 class="col-title">{o.title}</h3>
+            <p class="col-para">{o.body}</p>
+          </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-site two-col">
+      <h2 class="h2">What a build includes</h2>
+      <p class="para">
+        Every build starts from the company, not a template. Copy and design in house, a working preview you can click through before launch, and testing on real devices. Search, analytics, and the contact routes wired up before it goes live. Every account is created in your name and handed to you on&nbsp;launch&nbsp;day.
+      </p>
     </div>
   </section>
 
@@ -60,10 +70,15 @@ const offers = [
     </div>
   </section>
 
-  <section class="section py-24 md:py-32">
-    <div class="container-site">
-      <h2 class="h2-close mb-8">Tell us what you need.</h2>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+  <section class="section-close">
+    <div class="container-site close">
+      <div class="close-main">
+        <h2 class="h2-close">Tell us what you need.</h2>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="close-next">
+        <a href="/care/" class="next-link">Care Plan</a>
+      </div>
     </div>
   </section>
 </Base>

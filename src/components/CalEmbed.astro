@@ -3,7 +3,7 @@
 // CSP: app.cal.com must be allowed in script-src, frame-src, and connect-src (see vercel.json).
 // The snippet is bundled rather than inlined so script-src needs no 'unsafe-inline'.
 ---
-<div class="w-full min-h-[640px] lg:min-h-[570px] rounded-xl border border-offwhite/10 overflow-hidden bg-dark-secondary" id="my-cal-inline-disco"></div>
+<div class="w-full max-w-[880px] min-h-[640px] lg:min-h-[570px] rounded-xl border border-line overflow-hidden bg-dark-secondary" id="my-cal-inline-disco"></div>
 <script>
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   Cal("init", "disco", {origin:"https://app.cal.com"});

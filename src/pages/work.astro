@@ -58,53 +58,41 @@ const industries: Industry[] = [
   title="Industries | Griffith Creative"
   description="Web design and development for music and entertainment, home and construction, professional and financial services, and retail and product businesses."
 >
-  <!-- Hero -->
-  <section class="py-24 md:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="font-mono text-offwhite-muted text-xs uppercase tracking-widest mb-8">
-        Industries
-      </p>
-      <h1 class="text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-tight mb-8 text-balance">
-        Who we build for.
-      </h1>
-      <p class="text-offwhite-muted text-lg md:text-xl leading-relaxed max-w-[580px] text-pretty">
-        Web design and development for these industries.
-      </p>
+  <section class="hero">
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Industries</p>
+      <div class="hero-body">
+        <h1 class="h1">Who we build for.</h1>
+        <p class="lede">Web design and development&nbsp;for&nbsp;these&nbsp;industries.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Industries -->
+  <!-- Industries. The rule, the tiles and the site names all answer to the row. -->
   {industries.map((industry) => (
-    <section class="border-t border-offwhite/10 py-16 md:py-20">
-      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_440px] gap-10 lg:gap-20 items-start">
-        <div>
-          <h2 class="text-4xl md:text-5xl leading-[1.0] tracking-tight mb-4 max-w-2xl text-balance">
-            {industry.name}
-          </h2>
-          <p class="text-offwhite-muted text-lg">{industry.line}</p>
+    <section class="work-row py-14 lg:py-[72px]">
+      <div class="container-site flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-20">
+        <div class="flex flex-col gap-4 lg:w-[400px] lg:shrink-0">
+          <h2 class="h2">{industry.name}</h2>
+          <p class="text-offwhite-muted text-base lg:text-lg leading-[1.5]">{industry.line}</p>
         </div>
-        <ul class="flex flex-wrap gap-6 lg:pt-2" aria-label={`${industry.name} examples`}>
+        <ul class="work-tiles lg:w-[440px] lg:shrink-0 lg:pt-2.5" aria-label={`${industry.name} examples`}>
           {industry.sites.map((site) => (
             <li class="basis-[calc(50%-0.75rem)] sm:basis-52 grow-0 max-w-52">
-              <a
-                href={site.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block"
-              >
-                <div class="overflow-hidden rounded-md border border-offwhite/10 aspect-[8/5]">
+              <a href={site.url} target="_blank" rel="noopener noreferrer" class="block">
+                <div class="work-thumb aspect-[8/5]">
                   <Image
                     src={site.image}
                     alt={`${site.name}, website by Griffith Creative`}
                     widths={[256, 512]}
-                    sizes="(min-width: 640px) 208px, 45vw"
+                    sizes="(min-width: 1024px) 208px, 45vw"
                     loading="lazy"
                     decoding="async"
-                    class="w-full h-full object-cover object-top motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.02]"
+                    class="w-full h-full object-cover object-top"
                   />
                 </div>
-                <p class="text-offwhite text-sm mt-3 group-hover:text-accent transition-colors">{site.name}</p>
-                <p class="font-mono text-offwhite-muted text-[11px] uppercase tracking-widest mt-1">{site.caption}</p>
+                <p class="work-name mt-2.5">{site.name}</p>
+                <p class="meta mt-1">{site.caption}</p>
               </a>
             </li>
           ))}
@@ -113,16 +101,16 @@ const industries: Industry[] = [
     </section>
   ))}
 
-  <!-- CTA -->
-  <section class="border-t border-offwhite/10 py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6 text-balance">
-        Don't see your industry?
-      </h2>
-      <p class="text-offwhite-muted text-lg max-w-[580px] mb-10 text-pretty">
-        Get in touch and we'll let you know if it's a fit.
-      </p>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+  <section class="section-close">
+    <div class="container-site close">
+      <div class="close-main">
+        <h2 class="h2-close">Don't see your industry?</h2>
+        <p class="lede">Get in touch and we'll let you know if it's&nbsp;a&nbsp;fit.</p>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="close-next">
+        <a href="/process/" class="next-link">How we work</a>
+      </div>
     </div>
   </section>
 </Base>

@@ -7,27 +7,29 @@ import Base from '../layouts/Base.astro';
   description="A monthly plan for the sites we build. Updates, hosting, monitoring, and someone who answers."
 >
   <section class="hero">
-    <div class="container-site">
-      <p class="eyebrow mb-7">Care Plan</p>
-      <h1 class="h1 mb-7">Care Plan.</h1>
-      <p class="lede mb-8">
-        A monthly plan for the sites we build. Updates, hosting, monitoring, and someone who answers.
-      </p>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Care Plan</p>
+      <div class="hero-body">
+        <h1 class="h1">Launched,<br /> and looked after.</h1>
+        <p class="lede">
+          A monthly plan for the sites we build. Updates, hosting, monitoring, and someone&nbsp;who&nbsp;answers.
+        </p>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container-site">
-      <h2 class="h2 mb-10">What is covered</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-        <div>
-          <h3 class="text-xl font-semibold mb-3">Updates, hosting, and monitoring</h3>
-          <p class="text-offwhite-muted leading-[1.65]">Copy changes, new pages, and new sections without a new quote each time. Hosting, certificates, and DNS. Uptime and performance checks on every site under the plan.</p>
+      <h2 class="h2 mb-12">What is covered</h2>
+      <div class="pair">
+        <div class="flex flex-col gap-3">
+          <h3 class="col-title">Updates, hosting, and monitoring</h3>
+          <p class="col-para">Copy changes, new pages, and new sections without a new quote each time. Hosting, certificates, and DNS. Uptime and performance checks on every site under&nbsp;the&nbsp;plan.</p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-3">Maintenance and support</h3>
-          <p class="text-offwhite-muted leading-[1.65]">Framework and dependency updates, applied and tested, with backups kept off the hosting account. Priority support from the team that built the site, with a reply within one business day.</p>
+        <div class="flex flex-col gap-3">
+          <h3 class="col-title">Maintenance and support</h3>
+          <p class="col-para">Framework and dependency updates, applied and tested, with backups kept off the hosting account. Priority support from the team that built the site, with a reply within one&nbsp;business&nbsp;day.</p>
         </div>
       </div>
     </div>
@@ -38,16 +40,21 @@ import Base from '../layouts/Base.astro';
       <div class="stacked">
         <h2 class="h2">Terms</h2>
         <p class="para">
-          Billed monthly and scoped to the size of the site. Thirty days notice to cancel. The site, the domain, and the accounts are already yours. Care Plan covers sites Griffith Creative built or migrated; for anything else, start with an <a href="/enterprise/" class="underline decoration-accent underline-offset-4 hover:text-accent">Enterprise</a> conversation.
+          Billed monthly and scoped to the size of the site. Thirty days notice to cancel. The site, the domain, and the accounts are already yours. Care Plan covers sites Griffith Creative built or migrated; for anything else, start with an&nbsp;<a href="/enterprise/" class="text-link">Enterprise</a>&nbsp;conversation.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section py-24 md:py-32">
-    <div class="container-site">
-      <h2 class="h2-close mb-8">Ask about Care Plan.</h2>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+  <section class="section-close">
+    <div class="container-site close">
+      <div class="close-main">
+        <h2 class="h2-close">Ask about Care Plan.</h2>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="close-next">
+        <a href="/process/" class="next-link">How we work</a>
+      </div>
     </div>
   </section>
 </Base>

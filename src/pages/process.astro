@@ -1,5 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// The track beside each step fills further as the engagement runs on.
+const steps = [
+  { title: 'Scope', fill: 'h-1/3' },
+  { title: 'Build', fill: 'h-2/3' },
+  { title: 'After launch', fill: 'h-full' },
+];
 ---
 
 <Base
@@ -7,45 +14,60 @@ import Base from '../layouts/Base.astro';
   description="How an engagement with Griffith Creative runs: a call, a written scope, the build, and what happens after launch."
 >
   <section class="hero">
-    <div class="container-site">
-      <p class="eyebrow mb-7">Process</p>
-      <h1 class="h1 mb-7">How we work.</h1>
-      <p class="lede">The same shape for a single site and a <span class="whitespace-nowrap">company-wide rebuild.</span></p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container-site">
-      <div class="stacked">
-      <h2 class="h2">Scope</h2>
-      <p class="para">
-        It starts with a fifteen-minute call. If we are the right fit, you get a written scope with a fixed price and a timeline: what is included, what is not, how many revision rounds, and how we respond. Nothing starts until it is signed.
-      </p>
+    <div class="container-site hero-grid">
+      <p class="eyebrow">Process</p>
+      <div class="hero-body">
+        <h1 class="h1">How we work.</h1>
+        <p class="lede">The same shape for a single site and a <span class="whitespace-nowrap">company-wide rebuild.</span></p>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container-site two-col">
-      <h2 class="h2">Build</h2>
-      <p class="para">
-        A working preview inside the first two weeks, reviewed in the browser. Revisions are part of the scope, and scope changes are priced and agreed in writing before they start. Before launch we measure performance, accessibility, and search structure.
-      </p>
+    <div class="container-site step">
+      <div class="step-track" aria-hidden="true"><span class={steps[0].fill}></span></div>
+      <div class="step-body two-col">
+        <h2 class="h2">{steps[0].title}</h2>
+        <p class="para">
+          It starts with a fifteen-minute call. If we are the right fit, you get a written scope with a fixed price and a timeline: what is included, what is not, how many revision rounds, and how we respond. Nothing starts until it&nbsp;is&nbsp;signed.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container-site">
-      <p class="statement">
-        After launch, every account is handed over in your name. <a href="/care/" class="underline decoration-accent underline-offset-4 hover:text-accent">Care Plan</a> covers sites, ongoing management covers enterprise, and either side can end an ongoing plan with thirty days notice. Everything&nbsp;stays&nbsp;yours.
-      </p>
+    <div class="container-site step">
+      <div class="step-track" aria-hidden="true"><span class={steps[1].fill}></span></div>
+      <div class="step-body two-col">
+        <h2 class="h2">{steps[1].title}</h2>
+        <p class="para">
+          A working preview inside the first two weeks, reviewed in the browser. Revisions are part of the scope, and scope changes are priced and agreed in writing before they start. Before launch we measure performance, accessibility,&nbsp;and&nbsp;search&nbsp;structure.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="section py-24 md:py-32">
-    <div class="container-site">
-      <h2 class="h2-close mb-8">Start with a call.</h2>
-      <a href="/contact/" class="btn btn-primary">Book a call</a>
+  <section class="section">
+    <div class="container-site step">
+      <div class="step-track" aria-hidden="true"><span class={steps[2].fill}></span></div>
+      <div class="step-body two-col">
+        <h2 class="h2">{steps[2].title}</h2>
+        <p class="para">
+          After launch, every account is handed over in your name. <a href="/care/" class="text-link">Care Plan</a> covers sites, ongoing management covers enterprise, and either side can end an ongoing plan with thirty days notice. Everything&nbsp;stays&nbsp;yours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-close">
+    <div class="container-site close">
+      <div class="close-main">
+        <h2 class="h2-close">Start with the scope.</h2>
+        <a href="/contact/" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="close-next">
+        <a href="/contact/" class="next-link">Get in touch</a>
+      </div>
     </div>
   </section>
 </Base>
