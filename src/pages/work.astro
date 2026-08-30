@@ -76,7 +76,7 @@ const industries: Industry[] = [
   <!-- Industries -->
   {industries.map((industry) => (
     <section class="border-t border-offwhite/10 py-16 md:py-20">
-      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-10 lg:gap-20 items-start">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_440px] gap-10 lg:gap-20 items-start">
         <div>
           <h2 class="text-4xl md:text-5xl leading-[1.0] tracking-tight mb-4 max-w-2xl text-balance">
             {industry.name}
@@ -85,7 +85,7 @@ const industries: Industry[] = [
         </div>
         <ul class="flex flex-wrap gap-6 lg:pt-2" aria-label={`${industry.name} examples`}>
           {industry.sites.map((site) => (
-            <li class="basis-[calc(50%-0.75rem)] sm:basis-52 grow sm:grow-0 max-w-64">
+            <li class="basis-[calc(50%-0.75rem)] sm:basis-52 grow-0 max-w-52">
               <a
                 href={site.url}
                 target="_blank"
@@ -100,7 +100,7 @@ const industries: Industry[] = [
                     sizes="(min-width: 640px) 208px, 45vw"
                     loading="lazy"
                     decoding="async"
-                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                    class="w-full h-full object-cover object-top motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.02]"
                   />
                 </div>
                 <p class="text-offwhite text-sm mt-3 group-hover:text-accent transition-colors">{site.name}</p>
