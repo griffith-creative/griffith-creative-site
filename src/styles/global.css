@@ -73,6 +73,12 @@
     background-color: var(--color-accent);
     color: var(--color-dark);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @layer utilities {
@@ -99,7 +105,7 @@
   .stacked .h2 { @apply mb-6; }
   .tag { @apply inline-flex items-center rounded-full border border-offwhite/15 px-4 py-2 text-[15px] text-offwhite-muted; }
   .two-col { @apply grid grid-cols-1 lg:grid-cols-[400px_minmax(0,640px)] gap-6 lg:gap-20 items-start; }
-  .btn { @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-semibold transition-[color,background-color,border-color,transform] active:scale-[0.98] whitespace-nowrap disabled:opacity-60 disabled:pointer-events-none; }
+  .btn { @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[15px] font-semibold transition-[color,background-color,border-color,transform] motion-safe:active:scale-[0.98] whitespace-nowrap disabled:opacity-60 disabled:pointer-events-none; }
   .btn-primary { @apply bg-accent text-dark hover:bg-accent-hover; }
   .btn-secondary { @apply border border-offwhite/15 text-offwhite hover:border-offwhite/40; }
   .field-label { @apply block font-mono text-[11px] uppercase tracking-[0.06em] text-offwhite-muted mb-2; }
