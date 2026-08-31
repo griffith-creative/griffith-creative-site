@@ -36,8 +36,11 @@ const wideSizes = '(min-aspect-ratio: 8/5) 100vw, calc(100vh * 1.6)';
 // aspect are the tallest phones, and there it is short by a seventh of a percent.
 const tallSizes = '100vw';
 // The tall plate only ever paints in a portrait window, which is where the art direction
-// switches to it.
-const tallMedia = '(orientation: portrait) and (max-width: 1200px)';
+// switches to it. The switch is on orientation alone: what breaks the wide plate is the box
+// being narrower than the frame, not the box being small, so a width gate only moved the
+// cliff. At 1201 by 1600 and at a portrait-rotated 1440 by 2560 the width gate handed a
+// 16 by 10 frame to a 3 by 4 box and cropped the dome off the left edge.
+const tallMedia = '(orientation: portrait)';
 // Each source states its own plate's aspect, so the box is right on either art direction and
 // not just on the desktop fallback the img element describes. The numbers come off the
 // pipeline's copy of the master: reading them off the import instead makes Astro ship the

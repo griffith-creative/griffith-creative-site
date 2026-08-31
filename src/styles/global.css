@@ -223,7 +223,7 @@
      plate's own 1440 by 3117 and letterboxed below it: 10px at 360 by 800, 104px at 320 by
      900, with the loop reading up to 30 percent small. Each branch below drives from the
      dimension that covers. */
-  @media (orientation: portrait) and (max-width: 1200px) {
+  @media (orientation: portrait) {
     .dawn-loop {
       inset: auto;
       top: 50%;
@@ -235,12 +235,12 @@
     }
   }
   /* Wider than the plate: the box width is the cover width, so the frame is 8192 / 2129 of it. */
-  @media (orientation: portrait) and (max-width: 1200px) and (min-aspect-ratio: 1440 / 3117) {
+  @media (orientation: portrait) and (min-aspect-ratio: 1440 / 3117) {
     .dawn-loop { width: 384.7808%; height: auto; }
   }
   /* Taller than the plate: the box height is the cover height, and the plate's window is the
      frame's full height, so the loop is exactly as tall as the box. */
-  @media (orientation: portrait) and (max-width: 1200px) and (max-aspect-ratio: 1440 / 3117) {
+  @media (orientation: portrait) and (max-aspect-ratio: 1440 / 3117) {
     .dawn-loop { height: 100%; width: auto; }
   }
   .dawn-ink { @apply absolute inset-0; background-image: var(--dawn-ink); }
