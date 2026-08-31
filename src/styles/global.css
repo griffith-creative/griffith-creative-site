@@ -116,10 +116,24 @@
   /* Short windows: a landscape phone and a desktop at 200 percent zoom are both under 500px
      tall, and the 640px floor under the hero pushed the observatory clean off the bottom of
      the screen, leaving the gradient and nothing else. The hero is the window at these
-     heights, and the type block sits closer to the middle of it. */
+     heights, and the type block sits closer to the middle of it.
+     Which is why the falloff is redrawn here too. The gradient is in percentages of the hero,
+     so at 390px tall the whole of it is compressed into less than half the height it was
+     drawn for, and the headline lands where the ink has already gone. Measured under the
+     glyphs on the art itself, the headline needs 0.375 of ink out to 58 percent of the frame
+     and the eyebrow 0.68 out to 31; the falloff is held up to meet both and then let go, so
+     the dome and the sun below 68 percent keep the light they were given. */
   @media (max-height: 500px) {
     html {
       --hero-dawn-bias: 56px;
+      --dawn-ink: linear-gradient(
+        180deg,
+        rgb(10 10 10 / 0.735) 0%,
+        rgb(10 10 10 / 0.725) 36%,
+        rgb(10 10 10 / 0.63) 52%,
+        rgb(10 10 10 / 0.12) 68%,
+        rgb(10 10 10 / 0) 84%
+      );
     }
   }
 
