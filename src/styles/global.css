@@ -69,9 +69,9 @@
      recropped without a re-render. These are the small-screen values; the wide ones are set
      with the nav height below.
      Bias lifts the type block off the optical center so the dome and the sun keep the lower
-     half of the frame. Focus is the object-position that puts the composed window on screen:
-     the plates are cropped to their own window and sit at 50 percent, but the loop is a whole
-     frame, so on a phone it needs the offset that lands the dome center left.
+     half of the frame. Focus is the object-position of the loop, which is the whole frame and
+     is centered wherever the plate is; in a portrait window the loop is placed by geometry
+     instead, down with the hero rules.
      The ink runs 0.04 deeper at the head than the frame drew it. Measured on the render, the
      frame's own value left the gold eyebrow at 4.4 to 1 against the sky behind it, and the
      floor is 4.5; the second 0.015 buys the headline and the eyebrow a fifth of a point of
@@ -110,14 +110,6 @@
         rgb(10 10 10 / 0.14) 66%,
         rgb(10 10 10 / 0) 84%
       );
-    }
-  }
-
-  /* The plate switches to the phone crop at the same point the picture element does, so the
-     loop, which is always the whole frame, is offset to the same window underneath it. */
-  @media (max-width: 767px) and (orientation: portrait) {
-    html {
-      --dawn-focus: 24.6%;
     }
   }
 
@@ -206,6 +198,26 @@
      and a dissolve out to the plate is 13.8, so the cure was three times the disease. */
   .dawn-loop { object-position: var(--dawn-focus) 50%; opacity: 0; transition: opacity 900ms linear; }
   .dawn-loop[data-playing] { opacity: 1; }
+  /* In a portrait window the plate is a fixed crop of the photograph and the loop is the
+     whole 16:9 frame, so cover puts two different amounts of picture on screen and the loop
+     reads as a zoom out when it arrives. The plate's window is exactly the frame's full
+     height by 0.2599 of its width, centered on 0.31198, so the loop is sized to make that
+     slice fill the box instead of being covered into it: 1 / 0.2599 of the box wide, its own
+     aspect tall, and pulled left by the part of it that sits outside the window. The result
+     is the same picture at the same scale as the plate at every portrait aspect. */
+  @media (orientation: portrait) and (max-width: 1200px) {
+    .dawn-loop {
+      inset: auto;
+      top: 50%;
+      left: -70.055%;
+      /* Preflight caps video at the width of its box, and here it has to run past it. */
+      max-width: none;
+      width: 384.806%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      transform: translateY(-50%);
+    }
+  }
   .dawn-ink { @apply absolute inset-0; background-image: var(--dawn-ink); }
   @media (prefers-reduced-motion: reduce) {
     .dawn-loop { display: none; }

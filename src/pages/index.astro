@@ -4,26 +4,46 @@ import Base from '../layouts/Base.astro';
 import dawnWide from '../assets/dawn-wide.webp';
 import dawnTall from '../assets/dawn-tall.webp';
 
-// Two plates rather than one, because the hero is a cover crop and the phone shows barely a
-// quarter of the width the desktop frame shows. Cropping in the pipeline instead of in
-// object-position keeps the phone download at the size it is actually painted; one shared
-// plate would have to be four times as wide to hold the same detail, and it is the LCP.
+// Two plates rather than one, because the hero is a cover crop and a portrait window shows
+// barely a quarter of the width the desktop frame shows. Cropping in the pipeline instead of
+// in object-position keeps the portrait download at the size it is actually painted; one
+// shared plate would have to be four times as wide to hold the same detail.
 // Each plate is already cut to its own window, so both sit at object-position 50 percent.
+// The tall plate goes to every portrait window up to 1200, not just to phones: a 3:4 tablet
+// center-cropped out of a 16:10 frame loses the dome off the left edge.
 const wide = [1024, 1280, 1440, 1728, 1920, 2560, 2880];
-const tall = [390, 480, 585, 780, 960, 1170, 1290];
+const tall = [390, 480, 585, 780, 960, 1170, 1290, 1440];
 const quality = 50;
+// The tall plate is a sky at a tenth of the wide plate's pixel count, so the same quality
+// number buys far fewer bits per degree of sky and the gradient starts to step. It gets its
+// own rung: still a few KB at 780, and the banding measured out of it.
+const tallQuality = 57;
 
 const [wideAvif, wideWebp, tallAvif, tallWebp] = await Promise.all([
   getImage({ src: dawnWide, widths: wide, format: 'avif', quality }),
   getImage({ src: dawnWide, widths: wide, format: 'webp', quality }),
-  getImage({ src: dawnTall, widths: tall, format: 'avif', quality }),
-  getImage({ src: dawnTall, widths: tall, format: 'webp', quality }),
+  getImage({ src: dawnTall, widths: tall, format: 'avif', quality: tallQuality }),
+  getImage({ src: dawnTall, widths: tall, format: 'webp', quality: tallQuality }),
 ]);
 const fallback = await getImage({ src: dawnWide, width: 1440, format: 'webp', quality });
 
-// The plate covers the box at every aspect the hero meets, so 100vw is the painted width to
-// within a few percent at both design widths.
-const sizes = '100vw';
+// object-fit: cover paints the plate at max(box width, box height x plate aspect), so in any
+// window taller than the plate's own aspect the painted width runs past 100vw and a plain
+// 100vw hint under-serves it. Each plate states its own cover width instead.
+const wideSizes = '(min-aspect-ratio: 8/5) 100vw, calc(100vh * 1.6)';
+// The tall plate is cut to a portrait window, so in one it is always the width that drives
+// the cover and 100vw is the painted width. The only windows narrower than the plate's own
+// aspect are the tallest phones, and there it is short by a seventh of a percent.
+const tallSizes = '100vw';
+// The tall plate only ever paints in a portrait window, which is where the art direction
+// switches to it.
+const tallMedia = '(orientation: portrait) and (max-width: 1200px)';
+// Each source states its own plate's aspect, so the box is right on either art direction and
+// not just on the desktop fallback the img element describes. The numbers come off the
+// pipeline's copy of the master: reading them off the import instead makes Astro ship the
+// 2.7MB source file into the deploy.
+const wideDims = [wideAvif.options.src.width, wideAvif.options.src.height];
+const tallDims = [tallAvif.options.src.width, tallAvif.options.src.height];
 // The loop is served from public/ rather than the image pipeline, and the filename carries
 // its version so the immutable cache header in vercel.json stays honest.
 const loopMp4 = '/media/dawn-loop-v1.mp4';
@@ -59,10 +79,10 @@ const offers = [
          widths without a second render of the picture. -->
     <div class="dawn" aria-hidden="true" data-dawn>
       <picture class="dawn-plate">
-        <source media="(max-width: 767px) and (orientation: portrait)" type="image/avif" srcset={tallAvif.srcSet.attribute} sizes={sizes} />
-        <source media="(max-width: 767px) and (orientation: portrait)" type="image/webp" srcset={tallWebp.srcSet.attribute} sizes={sizes} />
-        <source type="image/avif" srcset={wideAvif.srcSet.attribute} sizes={sizes} />
-        <source type="image/webp" srcset={wideWebp.srcSet.attribute} sizes={sizes} />
+        <source media={tallMedia} type="image/avif" srcset={tallAvif.srcSet.attribute} sizes={tallSizes} width={tallDims[0]} height={tallDims[1]} />
+        <source media={tallMedia} type="image/webp" srcset={tallWebp.srcSet.attribute} sizes={tallSizes} width={tallDims[0]} height={tallDims[1]} />
+        <source type="image/avif" srcset={wideAvif.srcSet.attribute} sizes={wideSizes} width={wideDims[0]} height={wideDims[1]} />
+        <source type="image/webp" srcset={wideWebp.srcSet.attribute} sizes={wideSizes} width={wideDims[0]} height={wideDims[1]} />
         <img
           src={fallback.src}
           alt=""
