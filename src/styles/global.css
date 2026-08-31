@@ -359,8 +359,8 @@
   .col-title { @apply font-sans text-[17px] lg:text-xl font-semibold leading-normal tracking-normal; }
   .sub-head { @apply font-sans text-2xl lg:text-[32px] font-semibold leading-[1.1] tracking-[-0.01em]; }
   .lede { @apply text-offwhite-muted text-[17px] lg:text-xl leading-[1.5] max-w-[580px]; }
-  .para { @apply text-offwhite-muted text-base lg:text-[19px] leading-[1.65] max-w-[580px]; }
-  .col-para { @apply text-offwhite-muted text-[15px] lg:text-base leading-[1.65]; }
+  .para { @apply text-offwhite-muted text-base lg:text-[19px] leading-[1.65] max-w-[580px] text-pretty; }
+  .col-para { @apply text-offwhite-muted text-[15px] lg:text-base leading-[1.65] text-pretty; }
   .statement { @apply text-xl lg:text-4xl leading-[1.45] tracking-[-0.005em] max-w-[640px] text-pretty; }
   .meta { @apply font-mono text-[11px] uppercase tracking-[0.08em] text-offwhite-dim; }
 
@@ -411,7 +411,7 @@
   /* Close block: heading and pill on the left, the next page on the right. */
   .close { @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-20; }
   .close-main { @apply flex flex-col items-start gap-8; }
-  .close-next { @apply flex flex-col items-start gap-5 border-t border-line pt-5; }
+  .close-next { @apply flex flex-col items-start gap-5 border-t border-line pt-5 mt-[9px]; }
   .next-link { @apply text-base lg:text-[19px] font-medium text-accent hover:text-accent-hover transition-colors; }
 
   /* Ordering device on /process: a track beside each step block, filled with gold to a
