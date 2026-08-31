@@ -228,8 +228,12 @@
   .dawn-plate img { object-position: 50% 50%; }
   /* The loop fades in once, over the plate, and from then on it runs and wraps untouched.
      There is no fade at the wrap: measured, the loop's own tail-to-head step is 4.4 percent
-     and a dissolve out to the plate is 13.8, so the cure was three times the disease. */
-  .dawn-loop { object-position: var(--dawn-focus) 50%; opacity: 0; transition: opacity 900ms linear; }
+     and a dissolve out to the plate is 13.8, so the cure was three times the disease.
+     The fade in is 450ms rather than 900. It runs after load and it is deliberate, but it
+     lands inside the trace window, and a Lighthouse Speed Index reads a frame that is half
+     way between two pictures as a frame that is not finished: the loop cost 161ms of mobile
+     Speed Index and nothing else on the page cost any. Halving it halves that. */
+  .dawn-loop { object-position: var(--dawn-focus) 50%; opacity: 0; transition: opacity 450ms linear; }
   .dawn-loop[data-playing] { opacity: 1; }
   /* In a portrait window the plate is a fixed crop of the photograph and the loop is the
      whole 16:9 frame, so cover puts two different amounts of picture on screen and the loop
