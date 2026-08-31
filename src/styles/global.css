@@ -102,10 +102,16 @@
       --nav-height: 100px;
       --nav-clearance: 124px;
       --hero-dawn-bias: 130px;
+      /* The head of the falloff runs to 44 percent rather than 37.5. Nothing else moved: the
+         same two values, the same slope after them, the same end. The eyebrow sits between
+         35 and 45 percent depending on how tall the window is, and on the tall windows it was
+         landing past the shoulder of the old curve at 4.38 to 1 against a 4.5 floor. Holding
+         the head to 44 covers every position the eyebrow takes and lifts the headline's worst
+         loop phase with it. */
       --dawn-ink: linear-gradient(
         180deg,
         rgb(10 10 10 / 0.72) 0%,
-        rgb(10 10 10 / 0.705) 37.5%,
+        rgb(10 10 10 / 0.705) 44%,
         rgb(10 10 10 / 0.615) 53%,
         rgb(10 10 10 / 0.14) 66%,
         rgb(10 10 10 / 0) 84%
