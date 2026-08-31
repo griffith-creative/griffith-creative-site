@@ -72,15 +72,17 @@
      half of the frame. Focus is the object-position that puts the composed window on screen:
      the plates are cropped to their own window and sit at 50 percent, but the loop is a whole
      frame, so on a phone it needs the offset that lands the dome center left.
-     The ink runs 0.025 deeper at the head than the frame drew it. Measured on the render, the
+     The ink runs 0.04 deeper at the head than the frame drew it. Measured on the render, the
      frame's own value left the gold eyebrow at 4.4 to 1 against the sky behind it, and the
-     floor is 4.5. The shape of the falloff is unchanged. */
+     floor is 4.5; the second 0.015 buys the headline and the eyebrow a fifth of a point of
+     headroom over their floors in the worst loop phase, so a re-encode or a recrop does not
+     put either under. The shape of the falloff is unchanged. */
   --hero-dawn-bias: 240px;
   --dawn-focus: 50%;
   --dawn-ink: linear-gradient(
     180deg,
-    rgb(10 10 10 / 0.7) 0%,
-    rgb(10 10 10 / 0.69) 32%,
+    rgb(10 10 10 / 0.715) 0%,
+    rgb(10 10 10 / 0.705) 32%,
     rgb(10 10 10 / 0.615) 43%,
     rgb(10 10 10 / 0.1) 56%,
     rgb(10 10 10 / 0) 76%
@@ -102,8 +104,8 @@
       --hero-dawn-bias: 130px;
       --dawn-ink: linear-gradient(
         180deg,
-        rgb(10 10 10 / 0.705) 0%,
-        rgb(10 10 10 / 0.69) 37.5%,
+        rgb(10 10 10 / 0.72) 0%,
+        rgb(10 10 10 / 0.705) 37.5%,
         rgb(10 10 10 / 0.615) 53%,
         rgb(10 10 10 / 0.14) 66%,
         rgb(10 10 10 / 0) 84%
