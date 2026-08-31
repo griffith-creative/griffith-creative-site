@@ -411,6 +411,10 @@
   /* Close block: heading and pill on the left, the next page on the right. */
   .close { @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-20; }
   .close-main { @apply flex flex-col items-start gap-8; }
+  /* The band under the dawn hero carries the photograph's last light down into the ink,
+     so the hero ends in a dissolve instead of a hard cut. Colors sampled from the plate's
+     bottom rows. Home only. */
+  .dawn-after { background: linear-gradient(180deg, #2b1c1a 0%, #1b1210 34%, #0a0a0a 68%); }
   .close-next { @apply flex flex-col items-start gap-5 border-t border-line pt-5 mt-[9px]; }
   .next-link { @apply text-base lg:text-[19px] font-medium text-accent hover:text-accent-hover transition-colors; }
 

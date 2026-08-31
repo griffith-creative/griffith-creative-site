@@ -170,7 +170,20 @@ const offers = [
           () => {
             video.dataset.playing = '';
           },
-          () => stop(),
+          () => {
+            // Autoplay can be refused (iOS Low Power Mode among others). Keep the source
+            // and try once more on the first user gesture; the still stands in until then.
+            const retry = () => {
+              video.play().then(
+                () => {
+                  video.dataset.playing = '';
+                },
+                () => stop(),
+              );
+            };
+            window.addEventListener('touchstart', retry, { once: true, passive: true });
+            window.addEventListener('scroll', retry, { once: true, passive: true });
+          },
         );
       };
 
@@ -185,8 +198,11 @@ const offers = [
         new IntersectionObserver((entries) => {
           for (const entry of entries) {
             if (!loaded) continue;
-            if (entry.isIntersecting) void video.play().catch(() => {});
-            else video.pause();
+            if (entry.isIntersecting) {
+              if (!video.ended) void video.play().catch(() => {});
+            } else if (!video.ended) {
+              video.pause();
+            }
           }
         }).observe(art);
       }
@@ -206,7 +222,7 @@ const offers = [
     }
   </script>
 
-  <section class="section">
+  <section class="section dawn-after">
     <div class="container-site">
       <h2 class="h2 mb-12">What we do</h2>
       <div class="rule-cols rule-cols-3">
