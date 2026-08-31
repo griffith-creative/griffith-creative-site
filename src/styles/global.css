@@ -270,30 +270,49 @@
 
   /* The pill over the art -------------------------------------------------- */
 
-  /* Everywhere else the gold pill sits on ink and its edge reads at 8.66 to 1. Over the sun
-     it reads at 2.20, under the 3 to 1 that identifies a control, so here it carries a
-     hairline of its own. Drawn on a layer rather than as a border, so the pill keeps the
-     size the frame gives it. Separation by line, never by shadow. */
-  .hero-dawn .btn-primary { @apply relative; }
-  .hero-dawn .btn-primary::before {
+  /* Two gold pills sit on this photograph at once, the hero's and the nav's, so the class is
+     on the button rather than on the section and both wear the same edge. The nav loses it
+     the moment the bar goes solid on scroll, below, where the pill is back on flat ink and
+     reads at 8.66 to 1 unaided.
+     Everywhere else that is what it reads. Over the sun it reads 2.06 at the median. A single
+     ink hairline only half closed that, because the ink over the art makes the sky above the
+     pill dark and a dark line on a dark sky is nothing: it measured 5.00 at the bottom edge,
+     2.78 at the top, and 41 to 48 percent of the perimeter still came in under 3.
+     So the edge is built the way the focus ring is, ink inside and cream immediately outside,
+     and for the same reason: whatever the sky is doing behind the button, one of the two
+     lines is separated from it. Drawn on layers rather than as a border, so the pill keeps
+     the size the frame gives it. Separation by line, never by shadow. */
+  .btn-over-art { @apply relative; }
+  .btn-over-art::before {
     content: "";
     @apply absolute inset-0 rounded-full pointer-events-none;
-    border: 1px solid rgb(10 10 10 / 0.95);
+    border: 1px solid var(--color-dark);
+  }
+  .btn-over-art::after {
+    content: "";
+    @apply absolute rounded-full pointer-events-none;
+    inset: -1px;
+    border: 1px solid rgb(240 236 228 / 0.88);
   }
   /* The global focus ring is gold, which over the art is the pill's own color on an orange
      sky: it measured 1.46 to 1 and 73 percent of its pixels came in under 3. Here the ring is
-     two-tone, ink against the pill and cream outside it, so whatever the sky is doing behind
-     the button one of the two bands is separated from it. Ink carries the bright sky at 1440,
-     cream carries the darker crop at 390, and the two are 16 to 1 against each other. */
-  .hero-dawn .btn-primary:focus-visible {
+     two-tone, ink against the pill and cream outside it. Ink carries the bright sky at 1440,
+     cream carries the darker crop at 390, and the two are 16 to 1 against each other. The
+     resting cream line is what the ring's ink band lands on, so it steps aside for it. */
+  .btn-over-art:focus-visible {
     outline: 2px solid var(--color-offwhite);
     outline-offset: 2px;
   }
-  .hero-dawn .btn-primary:focus-visible::after {
-    content: "";
-    @apply absolute rounded-full pointer-events-none;
+  .btn-over-art:focus-visible::after {
     inset: -2px;
     border: 2px solid var(--color-dark);
+  }
+  /* Scrolled, the bar is solid and the pill is on ink like every other pill on the site. */
+  .site-header[data-scrolled] .btn-over-art::before,
+  .site-header[data-scrolled] .btn-over-art::after { content: none; }
+  .site-header[data-scrolled] .btn-over-art:focus-visible {
+    outline: 2px dashed var(--color-accent);
+    outline-offset: 3px;
   }
 
   /* Type -------------------------------------------------------------------- */

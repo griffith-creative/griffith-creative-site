@@ -7,9 +7,13 @@ interface Props {
   description: string;
   canonical?: string;
   noindex?: boolean;
+  // Set on the one page whose hero is a photograph under a transparent bar. The nav pill
+  // then sits on the same art as the hero pill and carries the same edge, until the bar
+  // goes solid on scroll.
+  heroArt?: boolean;
 }
 
-const { title, description, canonical, noindex = false } = Astro.props;
+const { title, description, canonical, noindex = false, heroArt = false } = Astro.props;
 
 // Canonical URLs are slashed, hrefs are not always. Normalize both sides so the
 // active link resolves whichever form is in the address bar.
@@ -165,7 +169,12 @@ const websiteJsonLd = {
         </nav>
 
         <div class="flex-1 min-w-0 flex items-center justify-end">
-          <a href="/contact/" class="hidden lg:inline-flex btn btn-primary">Book a call</a>
+          <a
+            href="/contact/"
+            class:list={['hidden lg:inline-flex btn btn-primary', heroArt && 'btn-over-art']}
+          >
+            Book a call
+          </a>
           <button
             id="mobile-menu-btn"
             class="lg:hidden text-offwhite p-2 -mr-2"
