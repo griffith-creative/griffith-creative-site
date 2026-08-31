@@ -113,6 +113,16 @@
     }
   }
 
+  /* Short windows: a landscape phone and a desktop at 200 percent zoom are both under 500px
+     tall, and the 640px floor under the hero pushed the observatory clean off the bottom of
+     the screen, leaving the gradient and nothing else. The hero is the window at these
+     heights, and the type block sits closer to the middle of it. */
+  @media (max-height: 500px) {
+    html {
+      --hero-dawn-bias: 56px;
+    }
+  }
+
   body {
     background-color: var(--color-dark);
     color: var(--color-offwhite);
@@ -181,7 +191,10 @@
     padding-top: var(--nav-height);
     padding-bottom: var(--hero-dawn-bias);
     min-height: 100vh;
-    min-height: max(100svh, 640px);
+    /* The hero is the window, full stop. A floor under it only ever bit on windows shorter
+       than the floor, which is exactly where it cost the picture: at 844 by 390 it made a
+       640px hero inside a 390px screen and put the dome below the fold. */
+    min-height: 100svh;
   }
   .hero-dawn > .container-site { @apply relative z-10 w-full; }
 
