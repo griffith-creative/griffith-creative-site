@@ -213,23 +213,35 @@
   .dawn-loop[data-playing] { opacity: 1; }
   /* In a portrait window the plate is a fixed crop of the photograph and the loop is the
      whole 16:9 frame, so cover puts two different amounts of picture on screen and the loop
-     reads as a zoom out when it arrives. The plate's window is exactly the frame's full
-     height by 0.2599 of its width, centered on 0.31198, so the loop is sized to make that
-     slice fill the box instead of being covered into it: 1 / 0.2599 of the box wide, its own
-     aspect tall, and pulled left by the part of it that sits outside the window. The result
-     is the same picture at the same scale as the plate at every portrait aspect. */
+     reads as a zoom out when it arrives. The plate's window is the frame's full height by
+     2129 of its 8192 pixels, centered on 0.311951, so the loop is placed to make that slice
+     fill the box: its own frame center pushed right of the box center by the part of the
+     frame that sits outside the window, which is 0.311951 of its width whatever its size.
+     Size is the other half of it. The plate is covered into the box, so it is driven by
+     whichever of the two dimensions runs short, and the loop has to be driven by the same
+     one or it lands at a different scale. Sizing it by width alone was right down to the
+     plate's own 1440 by 3117 and letterboxed below it: 10px at 360 by 800, 104px at 320 by
+     900, with the loop reading up to 30 percent small. Each branch below drives from the
+     dimension that covers. */
   @media (orientation: portrait) and (max-width: 1200px) {
     .dawn-loop {
       inset: auto;
       top: 50%;
-      left: -70.055%;
+      left: 50%;
       /* Preflight caps video at the width of its box, and here it has to run past it. */
       max-width: none;
-      width: 384.806%;
-      height: auto;
       aspect-ratio: 16 / 9;
-      transform: translateY(-50%);
+      transform: translate(-31.1951%, -50%);
     }
+  }
+  /* Wider than the plate: the box width is the cover width, so the frame is 8192 / 2129 of it. */
+  @media (orientation: portrait) and (max-width: 1200px) and (min-aspect-ratio: 1440 / 3117) {
+    .dawn-loop { width: 384.7808%; height: auto; }
+  }
+  /* Taller than the plate: the box height is the cover height, and the plate's window is the
+     frame's full height, so the loop is exactly as tall as the box. */
+  @media (orientation: portrait) and (max-width: 1200px) and (max-aspect-ratio: 1440 / 3117) {
+    .dawn-loop { height: 100%; width: auto; }
   }
   .dawn-ink { @apply absolute inset-0; background-image: var(--dawn-ink); }
   @media (prefers-reduced-motion: reduce) {
