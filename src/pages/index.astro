@@ -45,8 +45,9 @@ const tallMedia = '(orientation: portrait) and (max-width: 1200px)';
 const wideDims = [wideAvif.options.src.width, wideAvif.options.src.height];
 const tallDims = [tallAvif.options.src.width, tallAvif.options.src.height];
 // The loop is served from public/ rather than the image pipeline, and the filename carries
-// its version so the immutable cache header in vercel.json stays honest.
-const loopMp4 = '/media/dawn-loop-v1.mp4';
+// its version so the immutable cache header in vercel.json stays honest. The mp4 is at v2
+// because its encode changed; the webm bytes are untouched, so it keeps v1.
+const loopMp4 = '/media/dawn-loop-v2.mp4';
 const loopWebm = '/media/dawn-loop-v1.webm';
 
 const offers = [
