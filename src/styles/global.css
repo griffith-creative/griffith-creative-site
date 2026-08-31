@@ -63,6 +63,28 @@
      clear it (sticky headings, in-page anchors) reads these instead of repeating the number. */
   --nav-height: 68px;
   --nav-clearance: 92px;
+
+  /* Home hero art. The dawn plate fills the viewport behind a transparent nav, and the ink
+     over it is a gradient held here rather than baked into the picture, so the plate can be
+     recropped without a re-render. These are the small-screen values; the wide ones are set
+     with the nav height below.
+     Bias lifts the type block off the optical center so the dome and the sun keep the lower
+     half of the frame. Focus is the object-position that puts the composed window on screen:
+     the plates are cropped to their own window and sit at 50 percent, but the loop is a whole
+     frame, so on a phone it needs the offset that lands the dome center left.
+     The ink runs 0.025 deeper at the head than the frame drew it. Measured on the render, the
+     frame's own value left the gold eyebrow at 4.4 to 1 against the sky behind it, and the
+     floor is 4.5. The shape of the falloff is unchanged. */
+  --hero-dawn-bias: 240px;
+  --dawn-focus: 50%;
+  --dawn-ink: linear-gradient(
+    180deg,
+    rgb(10 10 10 / 0.7) 0%,
+    rgb(10 10 10 / 0.69) 32%,
+    rgb(10 10 10 / 0.615) 43%,
+    rgb(10 10 10 / 0.1) 56%,
+    rgb(10 10 10 / 0) 76%
+  );
 }
 
 @layer base {
@@ -77,6 +99,23 @@
     html {
       --nav-height: 100px;
       --nav-clearance: 124px;
+      --hero-dawn-bias: 130px;
+      --dawn-ink: linear-gradient(
+        180deg,
+        rgb(10 10 10 / 0.705) 0%,
+        rgb(10 10 10 / 0.69) 37.5%,
+        rgb(10 10 10 / 0.615) 53%,
+        rgb(10 10 10 / 0.14) 66%,
+        rgb(10 10 10 / 0) 84%
+      );
+    }
+  }
+
+  /* The plate switches to the phone crop at the same point the picture element does, so the
+     loop, which is always the whole frame, is offset to the same window underneath it. */
+  @media (max-width: 767px) and (orientation: portrait) {
+    html {
+      --dawn-focus: 24.6%;
     }
   }
 
@@ -138,6 +177,38 @@
   /* Hero: eyebrow in a left rail, everything else in the right column. */
   .hero-grid { @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-[60px]; }
   .hero-body { @apply flex flex-col items-start gap-8; }
+
+  /* Home only. The hero is the viewport, nav included, so it is pulled up through the top
+     padding the layout leaves for the fixed bar and takes that height back as its own. The
+     type block is centered in what is left, less the bias that lifts it clear of the dome. */
+  .hero-dawn {
+    @apply relative overflow-hidden flex items-center;
+    margin-top: calc(var(--nav-height) * -1);
+    padding-top: var(--nav-height);
+    padding-bottom: var(--hero-dawn-bias);
+    min-height: 100vh;
+    min-height: max(100svh, 640px);
+  }
+  .hero-dawn > .container-site { @apply relative z-10 w-full; }
+
+  .dawn { @apply absolute inset-0 overflow-hidden pointer-events-none; background-color: var(--color-dark); }
+  .dawn-plate { @apply absolute inset-0 block; }
+  .dawn-plate img,
+  .dawn-loop {
+    @apply absolute inset-0 block w-full h-full;
+    object-fit: cover;
+  }
+  .dawn-plate img { object-position: 50% 50%; }
+  /* The loop opens on the frame the plate was cut from, so it can dissolve in over it and,
+     at the wrap, dissolve back out to it. The tail of the loop has drifted off the head by
+     then, and this is what keeps that step out of sight. */
+  .dawn-loop { object-position: var(--dawn-focus) 50%; opacity: 0; transition: opacity 900ms linear; }
+  .dawn-loop[data-playing] { opacity: 1; }
+  .dawn-loop[data-wrapping] { opacity: 0; transition-duration: 420ms; }
+  .dawn-ink { @apply absolute inset-0; background-image: var(--dawn-ink); }
+  @media (prefers-reduced-motion: reduce) {
+    .dawn-loop { display: none; }
+  }
 
   /* Type -------------------------------------------------------------------- */
 
