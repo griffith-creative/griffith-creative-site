@@ -11,11 +11,15 @@ import dawnTall from '../assets/dawn-tall.webp';
 // Each plate is already cut to its own window, so both sit at object-position 50 percent.
 // The tall plate goes to every portrait window, not just to phones: a 3:4 tablet
 // center-cropped out of a 16:10 frame loses the dome off the left edge.
-// The tall master is now the window at its native 2129 by 4608 in the source rather than
-// resized to 1440 on the way out, so the two rungs above 1440 are real pixels and not an
-// upscale. Four portrait windows used to share the 1440 rung and the largest of them, an
-// iPad Pro at 1024 by 1366, painted 2048 device pixels out of it.
-const wide = [1024, 1280, 1440, 1728, 1920, 2560, 2880];
+// Both masters are now the window at its native size in the 8K source rather than resized on
+// the way out, so every rung is real pixels and not an upscale: the tall plate at 2129 by
+// 4608 and the wide plate at 7372 by 4608. Four portrait windows used to share a 1440 rung,
+// and every window past 2880 device pixels used to share the wide plate's top rung.
+// The wide master is the same window, also at its native size in the source rather than a
+// 2880 by 1800 downscale, so the top of the ladder is real pixels too. 2880 was the ceiling
+// and a 1440 by 1200 window paints 3840 device pixels, an ultrawide 3440 paints 3440, and a
+// 1680 by 1050 at 2x paints 3360. All three fetched a plate narrower than the box.
+const wide = [1024, 1280, 1440, 1728, 1920, 2560, 2880, 3456, 3840];
 const tall = [390, 480, 585, 780, 960, 1170, 1290, 1440, 1728, 2048];
 const quality = 50;
 // The tall plate is a sky at a tenth of the wide plate's pixel count, so the same quality
@@ -34,6 +38,8 @@ const fallback = await getImage({ src: dawnWide, width: 1440, format: 'webp', qu
 // object-fit: cover paints the plate at max(box width, box height x plate aspect), so in any
 // window taller than the plate's own aspect the painted width runs past 100vw and a plain
 // 100vw hint under-serves it. Each plate states its own cover width instead.
+// The wide crop is 7372 by 4608, which is 1.59983, so 8/5 and 1.6 still describe it to within
+// a hundredth of a percent and the hint does not need to carry the ugly number.
 const wideSizes = '(min-aspect-ratio: 8/5) 100vw, calc(100vh * 1.6)';
 // Cover paints the tall plate at whichever of the two dimensions runs short, same as the
 // wide one, so in a window narrower than the plate's own 2129 by 4608 the painted width runs
