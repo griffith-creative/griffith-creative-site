@@ -19,8 +19,11 @@ import dawnTall from '../assets/dawn-tall.webp';
 // 2880 by 1800 downscale, so the top of the ladder is real pixels too. 2880 was the ceiling
 // and a 1440 by 1200 window paints 3840 device pixels, an ultrawide 3440 paints 3440, and a
 // 1680 by 1050 at 2x paints 3360. All three fetched a plate narrower than the box.
+// The tall ladder tops out at the master's own 2129 rather than at 2048. A 1050 by 1680 window
+// at 2x paints 2100 device pixels of plate and used to take the 2048 rung, and anything larger
+// took it too. The last rung costs a few KB and it is the last real pixel there is.
 const wide = [1024, 1280, 1440, 1728, 1920, 2560, 2880, 3456, 3840];
-const tall = [390, 480, 585, 780, 960, 1170, 1290, 1440, 1728, 2048];
+const tall = [390, 480, 585, 780, 960, 1170, 1290, 1440, 1728, 2048, 2129];
 const quality = 50;
 // The tall plate is a sky at a tenth of the wide plate's pixel count, so the same quality
 // number buys far fewer bits per degree of sky and the gradient starts to step. It gets its

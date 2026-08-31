@@ -107,12 +107,20 @@
          35 and 45 percent depending on how tall the window is, and on the tall windows it was
          landing past the shoulder of the old curve at 4.38 to 1 against a 4.5 floor. Holding
          the head to 44 covers every position the eyebrow takes and lifts the headline's worst
-         loop phase with it. */
+         loop phase with it.
+         The middle two stops then carry a little over that, because both floors were being met
+         by a hair and nothing else. The eyebrow straddles the 44 percent stop on a tall window
+         and read 4.601 against 4.5 at 3840 by 2160; a hundredth on that stop takes it to 4.765.
+         The headline's second line drops to 53.8 percent on a 1440 by 502 window, just past the
+         53, and read 6.922 against 7.0; two hundredths on that stop take it to 7.352. Measured
+         against the picture, the whole change costs 5 of 255 on its darkest pixel and under one
+         level on the mean, which is under what a screen resolves. The shape and the end of the
+         falloff are unchanged. */
       --dawn-ink: linear-gradient(
         180deg,
         rgb(10 10 10 / 0.72) 0%,
-        rgb(10 10 10 / 0.705) 44%,
-        rgb(10 10 10 / 0.615) 53%,
+        rgb(10 10 10 / 0.715) 44%,
+        rgb(10 10 10 / 0.635) 53%,
         rgb(10 10 10 / 0.14) 66%,
         rgb(10 10 10 / 0) 84%
       );
