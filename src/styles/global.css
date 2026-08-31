@@ -267,6 +267,28 @@
   @media (orientation: portrait) and (max-aspect-ratio: 2129 / 4608) {
     .dawn-loop { height: 100%; width: auto; }
   }
+  /* The landscape half of the same problem, and it is the same reasoning. The wide plate is a
+     7372 of 8192 window on the frame, so it carries 89.99 percent of the width, and centering
+     alone only lines the two up while the box drives both from the same dimension. At or below
+     the plate's own 1.5998 both are height-driven and plain cover already agrees. Above it the
+     plate goes width-driven while the loop is still filling the box its own way, and the loop
+     lands as much as 10 percent small: 96px of horizontal push at 1920 by 955, 172 at 3440.
+     So above that aspect the loop is sized to put the plate's own 7372 of 8192 across the box,
+     which is 8192 / 7372 of it. The plate is centered and so is the loop, so no focus shift is
+     needed on this side. */
+  @media (min-aspect-ratio: 7372 / 4608) {
+    .dawn-loop {
+      inset: auto;
+      top: 50%;
+      left: 50%;
+      /* Preflight caps video at the width of its box, and here it has to run past it. */
+      max-width: none;
+      width: 111.1232%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      transform: translate(-50%, -50%);
+    }
+  }
   .dawn-ink { @apply absolute inset-0; background-image: var(--dawn-ink); }
   @media (prefers-reduced-motion: reduce) {
     .dawn-loop { display: none; }
