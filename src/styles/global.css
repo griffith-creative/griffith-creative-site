@@ -211,6 +211,34 @@
     .dawn-loop { display: none; }
   }
 
+  /* The pill over the art -------------------------------------------------- */
+
+  /* Everywhere else the gold pill sits on ink and its edge reads at 8.66 to 1. Over the sun
+     it reads at 2.20, under the 3 to 1 that identifies a control, so here it carries a
+     hairline of its own. Drawn on a layer rather than as a border, so the pill keeps the
+     size the frame gives it. Separation by line, never by shadow. */
+  .hero-dawn .btn-primary { @apply relative; }
+  .hero-dawn .btn-primary::before {
+    content: "";
+    @apply absolute inset-0 rounded-full pointer-events-none;
+    border: 1px solid rgb(10 10 10 / 0.95);
+  }
+  /* The global focus ring is gold, which over the art is the pill's own color on an orange
+     sky: it measured 1.46 to 1 and 73 percent of its pixels came in under 3. Here the ring is
+     two-tone, ink against the pill and cream outside it, so whatever the sky is doing behind
+     the button one of the two bands is separated from it. Ink carries the bright sky at 1440,
+     cream carries the darker crop at 390, and the two are 16 to 1 against each other. */
+  .hero-dawn .btn-primary:focus-visible {
+    outline: 2px solid var(--color-offwhite);
+    outline-offset: 2px;
+  }
+  .hero-dawn .btn-primary:focus-visible::after {
+    content: "";
+    @apply absolute rounded-full pointer-events-none;
+    inset: -2px;
+    border: 2px solid var(--color-dark);
+  }
+
   /* Type -------------------------------------------------------------------- */
 
   .eyebrow { @apply text-accent text-xs font-semibold uppercase tracking-[0.12em]; }
