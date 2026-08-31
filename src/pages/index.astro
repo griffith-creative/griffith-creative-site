@@ -1,5 +1,33 @@
 ---
+import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import dawnWide from '../assets/dawn-wide.webp';
+import dawnTall from '../assets/dawn-tall.webp';
+
+// Two plates rather than one, because the hero is a cover crop and the phone shows barely a
+// quarter of the width the desktop frame shows. Cropping in the pipeline instead of in
+// object-position keeps the phone download at the size it is actually painted; one shared
+// plate would have to be four times as wide to hold the same detail, and it is the LCP.
+// Each plate is already cut to its own window, so both sit at object-position 50 percent.
+const wide = [1024, 1280, 1440, 1728, 1920, 2560, 2880];
+const tall = [390, 480, 585, 780, 960, 1170, 1290];
+const quality = 50;
+
+const [wideAvif, wideWebp, tallAvif, tallWebp] = await Promise.all([
+  getImage({ src: dawnWide, widths: wide, format: 'avif', quality }),
+  getImage({ src: dawnWide, widths: wide, format: 'webp', quality }),
+  getImage({ src: dawnTall, widths: tall, format: 'avif', quality }),
+  getImage({ src: dawnTall, widths: tall, format: 'webp', quality }),
+]);
+const fallback = await getImage({ src: dawnWide, width: 1440, format: 'webp', quality });
+
+// The plate covers the box at every aspect the hero meets, so 100vw is the painted width to
+// within a few percent at both design widths.
+const sizes = '100vw';
+// The loop is served from public/ rather than the image pipeline, and the filename carries
+// its version so the immutable cache header in vercel.json stays honest.
+const loopMp4 = '/media/dawn-loop-v1.mp4';
+const loopWebm = '/media/dawn-loop-v1.webm';
 
 const offers = [
   {
@@ -9,12 +37,12 @@ const offers = [
   },
   {
     title: 'Enterprise',
-    body: 'Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them.',
+    body: 'Rebuilds, migrations, and ongoing management for high-traffic sites and the companies behind them.',
     href: '/enterprise/',
   },
   {
     title: 'Systems',
-    body: 'Systems that fit how a company actually works. Storage, software, and the workflows between them, reviewed and rebuilt around the team.',
+    body: 'Systems that fit how a company actually works. Storage, software, and the workflows between them, reviewed and rebuilt around the team.',
     href: '/systems/',
   },
 ];
@@ -24,18 +52,130 @@ const offers = [
   title="Griffith Creative | Web Design and Infrastructure, Los Angeles"
   description="Griffith Creative is a web design and infrastructure firm in Los Angeles. We design and build websites, keep them running, and help companies build the systems they run on. Working worldwide."
 >
-  <section class="hero">
+  <section class="hero-dawn">
+    <!-- Decorative: dawn over the observatory, downtown behind it. The plate paints on first
+         byte and the loop is swapped in later, so nothing here is on the load path. The ink
+         is a gradient over the art rather than part of it, so the type carries at both
+         widths without a second render of the picture. -->
+    <div class="dawn" aria-hidden="true" data-dawn>
+      <picture class="dawn-plate">
+        <source media="(max-width: 767px) and (orientation: portrait)" type="image/avif" srcset={tallAvif.srcSet.attribute} sizes={sizes} />
+        <source media="(max-width: 767px) and (orientation: portrait)" type="image/webp" srcset={tallWebp.srcSet.attribute} sizes={sizes} />
+        <source type="image/avif" srcset={wideAvif.srcSet.attribute} sizes={sizes} />
+        <source type="image/webp" srcset={wideWebp.srcSet.attribute} sizes={sizes} />
+        <img
+          src={fallback.src}
+          alt=""
+          width={fallback.options.width}
+          height={fallback.options.height}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
+      <video
+        class="dawn-loop"
+        data-mp4={loopMp4}
+        data-webm={loopWebm}
+        preload="none"
+        muted
+        loop
+        playsinline
+        disablepictureinpicture
+        aria-hidden="true"
+        tabindex="-1"
+      ></video>
+      <div class="dawn-ink"></div>
+    </div>
+
     <div class="container-site hero-grid">
       <p class="eyebrow">Los Angeles &middot; Worldwide</p>
       <div class="hero-body">
         <h1 class="h1">We design websites<br class="hidden md:inline" /> and keep them running.</h1>
-        <p class="lede">
-          Web design and infrastructure, Los Angeles. We build the sites companies depend on and look after what sits&nbsp;behind&nbsp;them.
-        </p>
         <a href="/contact/" class="btn btn-primary">Book a call</a>
       </div>
     </div>
   </section>
+
+  <script>
+    // The dawn loop is ambient, so it waits for the page to be interactive and then idle
+    // before it asks for a byte. It never loads at all under reduced motion or Save-Data.
+    const art = document.querySelector<HTMLElement>('[data-dawn]');
+    const video = art?.querySelector<HTMLVideoElement>('video');
+
+    if (art && video) {
+      const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+      let loaded = false;
+
+      // AV1 in WebM is a sixth of the H.264 file at the same measured quality. Anything that
+      // cannot decode it, Safari on most hardware included, gets the mp4.
+      const pick = () => {
+        const webm = video.dataset.webm;
+        if (webm && video.canPlayType('video/webm; codecs="av01.0.05M.08"') === 'probably') return webm;
+        return video.dataset.mp4;
+      };
+
+      const stop = () => {
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+        delete video.dataset.playing;
+        delete video.dataset.wrapping;
+        loaded = false;
+      };
+
+      const load = () => {
+        if (loaded || stillMotion.matches || saveData) return;
+        const src = pick();
+        if (!src) return;
+        loaded = true;
+        video.muted = true;
+        video.src = src;
+        video.play().then(
+          () => {
+            video.dataset.playing = '';
+          },
+          () => stop(),
+        );
+      };
+
+      // The last frames of the loop have drifted off the first, so the wrap would step.
+      // timeupdate fires a few times a second, which is enough to dissolve the video out
+      // to the plate before the cut and back in after it, with no per frame work.
+      const seam = 0.5;
+      video.addEventListener('timeupdate', () => {
+        const length = video.duration;
+        if (!Number.isFinite(length)) return;
+        if (length - video.currentTime <= seam) video.dataset.wrapping = '';
+        else delete video.dataset.wrapping;
+      });
+
+      // Nothing to animate once the hero is off screen.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!loaded) continue;
+            if (entry.isIntersecting) void video.play().catch(() => {});
+            else video.pause();
+          }
+        }).observe(art);
+      }
+
+      stillMotion.addEventListener('change', (event) => {
+        if (event.matches) stop();
+        else load();
+      });
+
+      const queue = () => {
+        if ('requestIdleCallback' in window) window.requestIdleCallback(load, { timeout: 2500 });
+        else window.setTimeout(load, 800);
+      };
+
+      if (document.readyState === 'complete') queue();
+      else window.addEventListener('load', queue, { once: true });
+    }
+  </script>
 
   <section class="section">
     <div class="container-site">
@@ -48,14 +188,6 @@ const offers = [
           </a>
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container-site">
-      <p class="statement">
-        Every project starts with a call and a written scope. You own the code, the domain, and the accounts. After launch we monitor it, patch it, and pick&nbsp;up&nbsp;the&nbsp;phone.
-      </p>
     </div>
   </section>
 
