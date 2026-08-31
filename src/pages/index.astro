@@ -9,10 +9,14 @@ import dawnTall from '../assets/dawn-tall.webp';
 // in object-position keeps the portrait download at the size it is actually painted; one
 // shared plate would have to be four times as wide to hold the same detail.
 // Each plate is already cut to its own window, so both sit at object-position 50 percent.
-// The tall plate goes to every portrait window up to 1200, not just to phones: a 3:4 tablet
+// The tall plate goes to every portrait window, not just to phones: a 3:4 tablet
 // center-cropped out of a 16:10 frame loses the dome off the left edge.
+// The tall master is now the window at its native 2129 by 4608 in the source rather than
+// resized to 1440 on the way out, so the two rungs above 1440 are real pixels and not an
+// upscale. Four portrait windows used to share the 1440 rung and the largest of them, an
+// iPad Pro at 1024 by 1366, painted 2048 device pixels out of it.
 const wide = [1024, 1280, 1440, 1728, 1920, 2560, 2880];
-const tall = [390, 480, 585, 780, 960, 1170, 1290, 1440];
+const tall = [390, 480, 585, 780, 960, 1170, 1290, 1440, 1728, 2048];
 const quality = 50;
 // The tall plate is a sky at a tenth of the wide plate's pixel count, so the same quality
 // number buys far fewer bits per degree of sky and the gradient starts to step. It gets its
@@ -31,10 +35,10 @@ const fallback = await getImage({ src: dawnWide, width: 1440, format: 'webp', qu
 // window taller than the plate's own aspect the painted width runs past 100vw and a plain
 // 100vw hint under-serves it. Each plate states its own cover width instead.
 const wideSizes = '(min-aspect-ratio: 8/5) 100vw, calc(100vh * 1.6)';
-// The tall plate is cut to a portrait window, so in one it is always the width that drives
-// the cover and 100vw is the painted width. The only windows narrower than the plate's own
-// aspect are the tallest phones, and there it is short by a seventh of a percent.
-const tallSizes = '100vw';
+// Cover paints the tall plate at whichever of the two dimensions runs short, same as the
+// wide one, so in a window narrower than the plate's own 2129 by 4608 the painted width runs
+// past 100vw. A plain 100vw hint under-served those by up to 30 percent at 320 by 900.
+const tallSizes = '(min-aspect-ratio: 2129/4608) 100vw, calc(100vh * 0.46202)';
 // The tall plate only ever paints in a portrait window, which is where the art direction
 // switches to it. The switch is on orientation alone: what breaks the wide plate is the box
 // being narrower than the frame, not the box being small, so a width gate only moved the
