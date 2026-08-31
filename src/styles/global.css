@@ -199,12 +199,11 @@
     object-fit: cover;
   }
   .dawn-plate img { object-position: 50% 50%; }
-  /* The loop opens on the frame the plate was cut from, so it can dissolve in over it and,
-     at the wrap, dissolve back out to it. The tail of the loop has drifted off the head by
-     then, and this is what keeps that step out of sight. */
+  /* The loop fades in once, over the plate, and from then on it runs and wraps untouched.
+     There is no fade at the wrap: measured, the loop's own tail-to-head step is 4.4 percent
+     and a dissolve out to the plate is 13.8, so the cure was three times the disease. */
   .dawn-loop { object-position: var(--dawn-focus) 50%; opacity: 0; transition: opacity 900ms linear; }
   .dawn-loop[data-playing] { opacity: 1; }
-  .dawn-loop[data-wrapping] { opacity: 0; transition-duration: 420ms; }
   .dawn-ink { @apply absolute inset-0; background-image: var(--dawn-ink); }
   @media (prefers-reduced-motion: reduce) {
     .dawn-loop { display: none; }

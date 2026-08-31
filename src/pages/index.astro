@@ -121,7 +121,6 @@ const offers = [
         video.removeAttribute('src');
         video.load();
         delete video.dataset.playing;
-        delete video.dataset.wrapping;
         loaded = false;
       };
 
@@ -140,16 +139,11 @@ const offers = [
         );
       };
 
-      // The last frames of the loop have drifted off the first, so the wrap would step.
-      // timeupdate fires a few times a second, which is enough to dissolve the video out
-      // to the plate before the cut and back in after it, with no per frame work.
-      const seam = 0.5;
-      video.addEventListener('timeupdate', () => {
-        const length = video.duration;
-        if (!Number.isFinite(length)) return;
-        if (length - video.currentTime <= seam) video.dataset.wrapping = '';
-        else delete video.dataset.wrapping;
-      });
+      // The loop cuts straight at the wrap. A dissolve out to the plate used to sit here, on
+      // the theory that it hid the step from the loop's tail back to its head. Measured, the
+      // step is 4.4 percent and the dissolve put a 13.8 percent one in its place, over 800ms,
+      // and timeupdate fires too coarsely for the fade to finish before the cut anyway. The
+      // raw seam is the quieter of the two, so there is nothing here but the loop.
 
       // Nothing to animate once the hero is off screen.
       if ('IntersectionObserver' in window) {
