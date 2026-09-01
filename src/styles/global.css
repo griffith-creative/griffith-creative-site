@@ -72,20 +72,26 @@
      half of the frame. Focus is the object-position of the loop, which is the whole frame and
      is centered wherever the plate is; in a portrait window the loop is placed by geometry
      instead, down with the hero rules.
-     The ink runs 0.04 deeper at the head than the frame drew it. Measured on the render, the
-     frame's own value left the gold eyebrow at 4.4 to 1 against the sky behind it, and the
-     floor is 4.5; the second 0.015 buys the headline and the eyebrow a fifth of a point of
-     headroom over their floors in the worst loop phase, so a re-encode or a recrop does not
-     put either under. The shape of the falloff is unchanged. */
+     The ink is a warm near-black rather than neutral: a neutral scrim over the peach sky
+     grey-cast the whole top of the frame, while the same alpha in a warm dark reads as the
+     sky deepening. Alphas sit about 0.08 under where they were; the headline was measured at
+     11 to 1 against a 7.0 floor on the render, so the lift spends headroom that was going
+     unused. Floors re-measured on the built page after the change. */
   --hero-dawn-bias: 240px;
   --dawn-focus: 50%;
   --dawn-ink: linear-gradient(
     180deg,
-    rgb(10 10 10 / 0.715) 0%,
-    rgb(10 10 10 / 0.705) 32%,
-    rgb(10 10 10 / 0.615) 43%,
-    rgb(10 10 10 / 0.1) 56%,
-    rgb(10 10 10 / 0) 76%
+    rgb(28 12 6 / 0.63) 0%,
+    rgb(28 12 6 / 0.62) 32%,
+    rgb(28 12 6 / 0.54) 43%,
+    rgb(28 12 6 / 0.51) 48%,
+    rgb(28 12 6 / 0.44) 53%,
+    rgb(28 12 6 / 0.35) 58%,
+    rgb(28 12 6 / 0.24) 63%,
+    rgb(28 12 6 / 0.13) 68%,
+    rgb(28 12 6 / 0.05) 73%,
+    rgb(28 12 6 / 0.01) 78%,
+    rgb(28 12 6 / 0) 82%
   );
 }
 
@@ -102,27 +108,25 @@
       --nav-height: 100px;
       --nav-clearance: 124px;
       --hero-dawn-bias: 130px;
-      /* The head of the falloff runs to 44 percent rather than 37.5. Nothing else moved: the
-         same two values, the same slope after them, the same end. The eyebrow sits between
-         35 and 45 percent depending on how tall the window is, and on the tall windows it was
-         landing past the shoulder of the old curve at 4.38 to 1 against a 4.5 floor. Holding
-         the head to 44 covers every position the eyebrow takes and lifts the headline's worst
-         loop phase with it.
-         The middle two stops then carry a little over that, because both floors were being met
-         by a hair and nothing else. The eyebrow straddles the 44 percent stop on a tall window
-         and read 4.601 against 4.5 at 3840 by 2160; a hundredth on that stop takes it to 4.765.
-         The headline's second line drops to 53.8 percent on a 1440 by 502 window, just past the
-         53, and read 6.922 against 7.0; two hundredths on that stop take it to 7.352. Measured
-         against the picture, the whole change costs 5 of 255 on its darkest pixel and under one
-         level on the mean, which is under what a screen resolves. The shape and the end of the
-         falloff are unchanged. */
+      /* Same warm ink; the head runs to 44 percent because the headline sits lower in a wide
+         window. The falloff is a smoothstep sampled every 5 percent rather than two straight
+         segments: the old release changed slope right where the photo's own haze band tops
+         out, and the two edges stacked into a visible straight seam across the frame. The
+         eased curve starts and ends at zero slope, so there is no line to see, and it runs
+         long enough (44 to 90) that the release crosses the haze band instead of tracing it. */
       --dawn-ink: linear-gradient(
         180deg,
-        rgb(10 10 10 / 0.72) 0%,
-        rgb(10 10 10 / 0.715) 44%,
-        rgb(10 10 10 / 0.635) 53%,
-        rgb(10 10 10 / 0.14) 66%,
-        rgb(10 10 10 / 0) 84%
+        rgb(28 12 6 / 0.64) 0%,
+        rgb(28 12 6 / 0.63) 44%,
+        rgb(28 12 6 / 0.60) 50%,
+        rgb(28 12 6 / 0.55) 55%,
+        rgb(28 12 6 / 0.46) 60%,
+        rgb(28 12 6 / 0.35) 65%,
+        rgb(28 12 6 / 0.24) 70%,
+        rgb(28 12 6 / 0.14) 75%,
+        rgb(28 12 6 / 0.07) 80%,
+        rgb(28 12 6 / 0.02) 85%,
+        rgb(28 12 6 / 0) 90%
       );
     }
   }
@@ -133,20 +137,25 @@
      heights, and the type block sits closer to the middle of it.
      Which is why the falloff is redrawn here too. The gradient is in percentages of the hero,
      so at 390px tall the whole of it is compressed into less than half the height it was
-     drawn for, and the headline lands where the ink has already gone. Measured under the
-     glyphs on the art itself, the headline needs 0.375 of ink out to 58 percent of the frame
-     and the eyebrow 0.68 out to 31; the falloff is held up to meet both and then let go, so
-     the dome and the sun below 68 percent keep the light they were given. */
+     drawn for, and the headline lands where the ink has already gone. The falloff is held up
+     through 52 percent to keep the type covered and then let go, so the dome and the sun
+     below 68 percent keep the light they were given. Warm ink and the same relative lift as
+     the other two curves. */
   @media (max-height: 500px) {
     html {
       --hero-dawn-bias: 56px;
       --dawn-ink: linear-gradient(
         180deg,
-        rgb(10 10 10 / 0.735) 0%,
-        rgb(10 10 10 / 0.725) 36%,
-        rgb(10 10 10 / 0.63) 52%,
-        rgb(10 10 10 / 0.12) 68%,
-        rgb(10 10 10 / 0) 84%
+        rgb(28 12 6 / 0.66) 0%,
+        rgb(28 12 6 / 0.65) 36%,
+        rgb(28 12 6 / 0.56) 52%,
+        rgb(28 12 6 / 0.52) 58%,
+        rgb(28 12 6 / 0.43) 64%,
+        rgb(28 12 6 / 0.31) 70%,
+        rgb(28 12 6 / 0.18) 76%,
+        rgb(28 12 6 / 0.07) 82%,
+        rgb(28 12 6 / 0.02) 88%,
+        rgb(28 12 6 / 0) 92%
       );
     }
   }

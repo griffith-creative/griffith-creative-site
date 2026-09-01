@@ -61,10 +61,13 @@ const tallMedia = '(orientation: portrait)';
 const wideDims = [wideAvif.options.src.width, wideAvif.options.src.height];
 const tallDims = [tallAvif.options.src.width, tallAvif.options.src.height];
 // The loop is served from public/ rather than the image pipeline, and the filename carries
-// its version so the immutable cache header in vercel.json stays honest. The mp4 is at v2
-// because its encode changed; the webm bytes are untouched, so it keeps v1.
-const loopMp4 = '/media/dawn-loop-v2.mp4';
-const loopWebm = '/media/dawn-loop-v1.webm';
+// its version so the immutable cache header in vercel.json stays honest. Both formats are
+// cut from the same 4K AI upscale of the original 720p loop (same motion, real detail
+// added), which also ends the era of the webm and mp4 being framed differently: the webm
+// carries the full 2160p, the mp4 fallback 1080p. The old files stay on disk so pages
+// cached against the previous version keep resolving.
+const loopMp4 = '/media/dawn-loop-v3.mp4';
+const loopWebm = '/media/dawn-loop-v2.webm';
 
 const offers = [
   {
